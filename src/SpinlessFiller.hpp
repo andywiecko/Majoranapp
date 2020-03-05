@@ -7,18 +7,21 @@
 class SpinlessFiller
 {
 public:
-    static void KineticTerm(Hamiltonian &ham, int i, int j, double t_integral)
+    template <class T>
+    static void KineticTerm(Hamiltonian<T> &ham, int i, int j, double t_integral)
     {
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpMinus, j, -0.5 * t_integral);
         ham.InsertBlock(Gamma::UpPlus, j, Gamma::UpMinus, i, -0.5 * t_integral);
     }
 
-    static void ProxTerm(Hamiltonian &ham, int i, int j, double delta)
+    template <class T>
+    static void ProxTerm(Hamiltonian<T> &ham, int i, int j, double delta)
     {
         // TODO        
     }
 
-    static void ChemicalTerm(Hamiltonian &ham, int i, double mu)
+    template <class T>
+    static void ChemicalTerm(Hamiltonian<T> &ham, int i, double mu)
     {
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpMinus, i, -0.5 * mu);
     }

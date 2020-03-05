@@ -6,10 +6,11 @@
 #include "SpinlessFiller.hpp"
 #include "Parameters.hpp"
 
-Hamiltonian SpinfullUniformChain(int L, Parameters parameters)
+template <class T>
+Hamiltonian<T> SpinfullUniformChain(int L, Parameters parameters)
 {
     int deg = 4;
-    Hamiltonian ham(L, deg);
+    Hamiltonian<T> ham(L, deg);
     for (int i = 0; i < L - 1; i++)
     {
         SpinfullFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);
@@ -25,10 +26,11 @@ Hamiltonian SpinfullUniformChain(int L, Parameters parameters)
     return ham;
 }
 
-Hamiltonian SpinlessUniformChain(int L, Parameters parameters)
+template <class T>
+Hamiltonian<T> SpinlessUniformChain(int L, Parameters parameters)
 {
     int deg = 2;
-    Hamiltonian ham(L, deg);
+    Hamiltonian<T> ham(L, deg);
     for (int i = 0; i < L - 1; i++)
     {
         SpinlessFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);

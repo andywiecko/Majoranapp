@@ -4,7 +4,6 @@
 #include "src/ArgvParser.hpp"
 #include "src/Factory.hpp"
 #include "src/Parameters.hpp"
-using namespace arma;
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +12,7 @@ int main(int argc, char *argv[])
 	int L = argvParser.L;
 	Parameters parameters = argvParser.parameters;
 
-	Hamiltonian ham = SpinfullUniformChain(L, parameters);
+	Hamiltonian<arma::mat> ham = SpinfullUniformChain<arma::mat>(L, parameters);
 	//Hamiltonian ham = SpinlessUniformChain(L, parameters);
 	//ham.Print();
 	Solver::Diagonalize(ham);

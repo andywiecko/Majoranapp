@@ -6,7 +6,8 @@
 class Solver
 {
 public:
-    static void Diagonalize(Hamiltonian &ham)
+    template <class T>
+    static void Diagonalize(Hamiltonian<T> &ham)
     {
         //int L = ham.L;
         arma::mat M = ham.elements;
