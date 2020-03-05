@@ -15,6 +15,9 @@ public:
     double t_integral = 1.0;
     double delta = 1.0;
     double mu_potential = 0.0;
+    double rashba = 0.0;
+    double zeeman = 0.0;
+
 
     void Info()
     {
@@ -22,13 +25,15 @@ public:
         std::cout << "# t_integral = " << this->t_integral << "\n";
         std::cout << "# delta = " << this->delta << "\n";
         std::cout << "# mu_potential = " << this->mu_potential << "\n";
+        std::cout << "# rashba = " << this->rashba << "\n";
+        std::cout << "# zeeman = " << this->zeeman << "\n";
     }
 
     void Parse(int argc, char *argv[])
     {
         int option;
         int returnCode = 0;
-        char optstring[] = ":L:t:d:m:v";
+        char optstring[] = ":L:t:d:m:r:z:v";
 
         while ((option = getopt(argc, argv, optstring)) != -1)
             switch (option)
@@ -46,6 +51,14 @@ public:
 
             case 'm':
                 this->mu_potential = std::atof(optarg);
+                break;
+
+	    case 'r':
+                this->rashba = std::atof(optarg);
+                break;
+
+            case 'z':
+                this->zeeman = std::atof(optarg);
                 break;
 
             case 'v':

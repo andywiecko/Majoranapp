@@ -6,11 +6,9 @@ using namespace arma;
 
 class Hamiltonian
 {
-private:
+public:
    int L;
    mat elements;
-
-public:
    Hamiltonian(int _L)
    {
       L = _L;
@@ -35,32 +33,7 @@ public:
    {
       this->elements.print();
    }
-
-   void Diagonalize()
-   {
-      mat M = this->elements;
-      mat ATA = -(M - M.t()) * (M - M.t());
-
-      vec eigval;
-      mat eigvec;
-      eig_sym(eigval, eigvec, ATA);
-
-      vec MO(2 * this->L);
-      vec OM(2 * this->L);
-      for (int i = 0; i < 2 * this->L; i++)
-      {
-         vec O = eigvec.col(i);
-         MO(i) = as_scalar(O.t() * M.t() * M * O);
-         OM(i) = as_scalar(O.t() * M * M.t() * O);
-      }
-
-      //join_horiz(eigval, MO, OM).print("#eig         |MO|     |OTM|");
-      eigval.print("#eig");
-
-      mat O = eigvec;
-      join_horiz(O.col(0), O.col(1)).print("\n#vec");
-   }
-
+   
    void LoadBlocks(mat ind, vec deltas, vec t_integrals, vec phis)
    {
       //
@@ -90,6 +63,7 @@ Hamiltonian LoadFromFile(std::string filename)
    return Ham;
 }
 
+/*
 Hamiltonian UniformChain(int L, double delta, double t_integral, double mu_potential = 0)
 {
    Hamiltonian Ham(L);
@@ -99,5 +73,6 @@ Hamiltonian UniformChain(int L, double delta, double t_integral, double mu_poten
       Ham.InsertSite(i, mu_potential);
    return Ham;
 }
+*/
 
 #endif
