@@ -18,7 +18,10 @@ public:
       L = _L;
       deg = _deg;
       elements.set_size(deg * L, deg * L);
-      elements.fill(0);
+
+      // [!] only for arma::mat
+      if constexpr (std::is_same<T, arma::mat>::value)
+         elements.fill(0);
    }
 
    void InsertBlock(Gamma gammai, int i, Gamma gammaj, int j, double value)

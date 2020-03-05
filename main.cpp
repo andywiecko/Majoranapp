@@ -12,9 +12,10 @@ int main(int argc, char *argv[])
 	int L = argvParser.L;
 	Parameters parameters = argvParser.parameters;
 
-	Hamiltonian<arma::mat> ham = SpinfullUniformChain<arma::mat>(L, parameters);
+	using matrixType = arma::sp_mat;
+	Hamiltonian<matrixType> ham = SpinfullUniformChain<matrixType>(L, parameters);
 	//Hamiltonian ham = SpinlessUniformChain(L, parameters);
 	//ham.Print();
-	Solver::Diagonalize(ham);
+	//Solver::Diagonalize(ham);
 
 }
