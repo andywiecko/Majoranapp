@@ -15,7 +15,11 @@ int main(int argc, char *argv[])
 	using matrixType = arma::sp_mat;
 	Hamiltonian<matrixType> ham = SpinfullUniformChain<matrixType>(L, parameters);
 	//Hamiltonian ham = SpinlessUniformChain(L, parameters);
+	
 	//ham.Print();
-	//Solver::Diagonalize(ham);
+
+	Solver::tol = 0.001; // tolerance of convergance
+	Solver::noe = 25; // number of eigenvalues 
+	Solver::Diagonalize(ham);
 
 }

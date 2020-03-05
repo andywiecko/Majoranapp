@@ -1,36 +1,55 @@
 #ifndef SOLVER_HPP
 #define SOLVER_HPP
 
+#include <string>
 #include "Hamiltonian.hpp"
 
 class Solver
 {
 public:
+
+    //solver options
+
+    /**
+     * @brief tolerance for arma::eigs_sym procedure
+     */
+    static double tol;
+    /**
+     * @brief number of eigenvalues
+     */
+    static size_t noe;
+    /**
+     * @brief target part of the spectrum
+     */
+    static std::string target;
+
+
     template <class T>
     static void Diagonalize(Hamiltonian<T> &ham)
     {
-        //int L = ham.L;
-        arma::mat M = ham.elements;
-        size_t size = M.n_cols;
-        arma::mat ATA = -(M - M.t()) * (M - M.t());
+        size_t size = ham.elements.n_cols;
+        T &M = ham.elements;
+        T ATA = -(M - M.t()) * (M - M.t());
 
         arma::vec eigval;
         arma::mat eigvec;
-        arma::eig_sym(eigval, eigvec, ATA);
 
-        arma::vec MO(size);
-        arma::vec OM(size);
-        for (size_t i = 0; i < size; i++)
+        if constexpr (std::is_same<T, arma::mat>::value)
+            arma::eig_sym(eigval, eigvec, ATA);
+
+        if constexpr (std::is_same<T, arma::sp_mat>::value)
         {
-            arma::vec O = eigvec.col(i);
-            MO(i) = as_scalar(O.t() * M.t() * M * O);
-            OM(i) = as_scalar(O.t() * M * M.t() * O);
+            int k = (size < noe) ? size-1 : noe;
+            //auto target = "sa";
+            arma::eigs_sym(eigval, eigvec, ATA, k, target.c_str(), tol);
         }
-        //join_horiz(eigval, MO, OM).print("#eig         |MO|     |OTM|");
-        eigval.print("# === eigs ===");
-        arma::mat O = eigvec;
-        //join_horiz(O.col(0), O.col(1)).print("\n#vec");
+
+        eigval.print("# == eigs ==");
     }
 };
+
+double Solver::tol = 0.0;
+size_t Solver::noe = 10;
+std::string Solver::target = "sa";
 
 #endif
