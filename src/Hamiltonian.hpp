@@ -4,7 +4,6 @@
 #include <armadillo>
 #include "EnumGamma.hpp"
 
-using namespace arma;
 
 class Hamiltonian
 {
@@ -13,7 +12,7 @@ private:
 
 public:
    int L;
-   mat elements;
+   arma::mat elements;
    Hamiltonian(int _L, int _deg)
    {
       L = _L;

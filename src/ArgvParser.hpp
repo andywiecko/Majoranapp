@@ -3,6 +3,7 @@
 
 #include <unistd.h>
 #include <iostream>
+#include "Parameters.hpp"
 
 class ArgvParser
 {
@@ -12,20 +13,22 @@ private:
 
 public:
     int L = 10;
-    double t_integral = 1.0;
-    double delta = 1.0;
-    double mu_potential = 0.0;
-    double rashba = 0.0;
-    double zeeman = 0.0;
+    Parameters parameters;
+
+    ArgvParser()
+    {
+        parameters.map["t_integral"] = 1.0;
+        parameters.map["delta"] = 1.0;
+    }
 
     void Info()
     {
         std::cout << "# L = " << this->L << "\n";
-        std::cout << "# t_integral = " << this->t_integral << "\n";
-        std::cout << "# delta = " << this->delta << "\n";
-        std::cout << "# mu_potential = " << this->mu_potential << "\n";
-        std::cout << "# rashba = " << this->rashba << "\n";
-        std::cout << "# zeeman = " << this->zeeman << "\n";
+        std::cout << "# t_integral = " << this->parameters.map["t_integral"] << "\n";
+        std::cout << "# delta = " << this->parameters.map["delta"] << "\n";
+        std::cout << "# mu_potential = " << this->parameters.map["mu_potential"] << "\n";
+        std::cout << "# rashba = " << this->parameters.map["rashba"] << "\n";
+        std::cout << "# zeeman = " << this->parameters.map["zeeman"] << "\n";
     }
 
     int Parse(int argc, char *argv[])
@@ -41,23 +44,23 @@ public:
                 this->L = std::atoi(optarg);
                 break;
             case 't':
-                this->t_integral = std::atof(optarg);
+                this->parameters.map["t_integral"] = std::atof(optarg);
                 break;
 
             case 'd':
-                this->delta = std::atof(optarg);
+                this->parameters.map["delta"] = std::atof(optarg);
                 break;
 
             case 'm':
-                this->mu_potential = std::atof(optarg);
+                this->parameters.map["mu_potential"] = std::atof(optarg);
                 break;
 
             case 'r':
-                this->rashba = std::atof(optarg);
+                this->parameters.map["rashba"] = std::atof(optarg);
                 break;
 
             case 'z':
-                this->zeeman = std::atof(optarg);
+                this->parameters.map["zeeman"] = std::atof(optarg);
                 break;
 
             case 'v':

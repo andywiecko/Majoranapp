@@ -9,25 +9,25 @@ public:
     static void Diagonalize(Hamiltonian &ham)
     {
         //int L = ham.L;
-        mat M = ham.elements;
+        arma::mat M = ham.elements;
         size_t size = M.n_cols;
-        mat ATA = -(M - M.t()) * (M - M.t());
+        arma::mat ATA = -(M - M.t()) * (M - M.t());
 
-        vec eigval;
-        mat eigvec;
-        eig_sym(eigval, eigvec, ATA);
+        arma::vec eigval;
+        arma::mat eigvec;
+        arma::eig_sym(eigval, eigvec, ATA);
 
-        vec MO(size);
-        vec OM(size);
+        arma::vec MO(size);
+        arma::vec OM(size);
         for (size_t i = 0; i < size; i++)
         {
-            vec O = eigvec.col(i);
+            arma::vec O = eigvec.col(i);
             MO(i) = as_scalar(O.t() * M.t() * M * O);
             OM(i) = as_scalar(O.t() * M * M.t() * O);
         }
         //join_horiz(eigval, MO, OM).print("#eig         |MO|     |OTM|");
         eigval.print("# === eigs ===");
-        mat O = eigvec;
+        arma::mat O = eigvec;
         //join_horiz(O.col(0), O.col(1)).print("\n#vec");
     }
 };
