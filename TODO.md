@@ -1,6 +1,10 @@
 # TODO list
 
-* parameters class
+* ~parameters class~
+* ~sparse/dense template~
+* ~solver options~
 * debug
-* sparse/dense template
-* solver options
+* add description
+* add phase
+* restore spinless delta term
+* do some clean up with the headers

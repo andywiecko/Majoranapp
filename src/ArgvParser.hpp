@@ -5,22 +5,40 @@
 #include <iostream>
 #include "Parameters.hpp"
 
+/**
+ * @brief primitive argv class
+ */
 class ArgvParser
 {
 
 private:
+    /**
+     * @brief increase verbosity of the output
+     */
     bool verbose = false;
 
 public:
+    /**
+     * @brief parsed number of sites
+     */
     int L = 10;
+    /**
+     * @brief parsed parameters
+     */
     Parameters parameters;
 
+    /**
+     * @brief construct a new Argv Parser object 
+     */
     ArgvParser()
     {
         parameters.map["t_integral"] = 1.0;
         parameters.map["delta"] = 1.0;
     }
 
+    /**
+     * @brief verbose info
+     */
     void Info()
     {
         std::cout << "# L = " << this->L << "\n";
@@ -31,6 +49,13 @@ public:
         std::cout << "# zeeman = " << this->parameters.map["zeeman"] << "\n";
     }
 
+    /**
+     * @brief 
+     * 
+     * @param argc 
+     * @param argv 
+     * @return int parser's returnCode 
+     */
     int Parse(int argc, char *argv[])
     {
         int option;

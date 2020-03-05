@@ -4,14 +4,30 @@
 #include <armadillo>
 #include "EnumGamma.hpp"
 
+/**
+ * @brief Hamiltonian class for counting MZM in non-interacting systems
+ * 
+ * @tparam T matrix type, support for: arma::mat, arma::sp_mat
+ */
 template <class T>
 class Hamiltonian
 {
 private:
+   /**
+    * @brief number degree of freedom
+    * deg = 2 spinless systems
+    * deg = 4 spinfull systems (1/2 spin)
+    */
    int deg;
 
 public:
+   /**
+    * @brief number of sites
+    */
    int L;
+   /**
+    * @brief matrix element container
+    */
    T elements;
    Hamiltonian(int _L, int _deg)
    {
@@ -24,6 +40,15 @@ public:
          elements.fill(0);
    }
 
+   /**
+    * @brief insert block
+    * 
+    * @param gammai type of gamma
+    * @param i site index
+    * @param gammaj type of gamma
+    * @param j site index
+    * @param value 
+    */
    void InsertBlock(Gamma gammai, int i, Gamma gammaj, int j, double value)
    {
       int ishift = static_cast<int>(gammai) % deg;
@@ -31,6 +56,9 @@ public:
       this->elements(deg * i + ishift, deg * j + jshift) += value;
    }
 
+   /**
+    * @brief display matrix elements
+    */
    void Print()
    {
       this->elements.print();

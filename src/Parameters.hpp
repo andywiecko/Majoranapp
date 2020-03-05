@@ -4,11 +4,20 @@
 #include <string>
 #include <map>
 
+/**
+ * @brief primitive class for storing uniform parameters
+ */
 class Parameters
 {
 public:
+    /**
+     * @brief map with parameters
+     */
     std::map<std::string, double> map;
 
+    /**
+     * @brief Construct a new Parameters object
+     */
     Parameters()
     {
         map["delta"] = 0.0;

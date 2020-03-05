@@ -4,10 +4,12 @@
 #include <string>
 #include "Hamiltonian.hpp"
 
+/**
+ * @brief static solver
+ */
 class Solver
 {
 public:
-
     //solver options
 
     /**
@@ -23,7 +25,13 @@ public:
      */
     static std::string target;
 
-
+    /**
+     * @brief procedure for solving:
+     * -(M-M^T).(M-M^T)
+     * 
+     * @tparam T support for: arma::mat, arma::sp_mat
+     * @param ham 
+     */
     template <class T>
     static void Diagonalize(Hamiltonian<T> &ham)
     {
@@ -39,8 +47,7 @@ public:
 
         if constexpr (std::is_same<T, arma::sp_mat>::value)
         {
-            int k = (size < noe) ? size-1 : noe;
-            //auto target = "sa";
+            int k = (size < noe) ? size - 1 : noe;
             arma::eigs_sym(eigval, eigvec, ATA, k, target.c_str(), tol);
         }
 
