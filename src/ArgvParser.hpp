@@ -18,7 +18,6 @@ public:
     double rashba = 0.0;
     double zeeman = 0.0;
 
-
     void Info()
     {
         std::cout << "# L = " << this->L << "\n";
@@ -29,7 +28,7 @@ public:
         std::cout << "# zeeman = " << this->zeeman << "\n";
     }
 
-    void Parse(int argc, char *argv[])
+    int Parse(int argc, char *argv[])
     {
         int option;
         int returnCode = 0;
@@ -53,7 +52,7 @@ public:
                 this->mu_potential = std::atof(optarg);
                 break;
 
-	    case 'r':
+            case 'r':
                 this->rashba = std::atof(optarg);
                 break;
 
@@ -78,8 +77,10 @@ public:
         for (; optind < argc; ++optind)
             std::cout << "argv[" << optind << "]='" << argv[optind] << "'\n";
 
-            if (verbose)
-                this->Info();
+        if (verbose)
+            this->Info();
+
+        return returnCode;
     }
 };
 
