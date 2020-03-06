@@ -41,7 +41,7 @@ public:
    }
 
    /**
-    * @brief insert block
+    * @brief insert block: value * gamma_i^alpha gamma_j^beta
     * 
     * @param gammai type of gamma
     * @param i site index

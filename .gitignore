@@ -34,5 +34,6 @@
 # VS code
 .vscode
 
-# logs
+# logs, doxygen files
 logs/
+Doxy/
