@@ -8,11 +8,11 @@
  * @brief static class for spinfull model term filler
  * 
  * Support:
- *  * kinetic term
- *  * Rashba term
- *  * proximity (superconducting) term
- *  * Zeeman term
- *  * chemical potential term
+ *  * kinetic term \f$t_{ij}\f$
+ *  * Rashba term \f$\alpha_{ij}\f$
+ *  * proximity (superconducting) term \f$\Delta_i \f$
+ *  * Zeeman term \f$ V_i^Z \f$
+ *  * chemical potential term \f$ \mu_i \f$
  */
 class SpinfullFiller
 {
@@ -41,7 +41,7 @@ public:
      * @param ham hamiltonian container
      * @param i site index 
      * @param j site index 
-     * @param t_integral hopping value \f(t_{ij}\f)
+     * @param t_integral hopping value \f$t_{ij}\f$
      */
     template <class T>
     static void KineticTerm(Hamiltonian<T> &ham, int i, int j, double t_integral)
@@ -73,7 +73,7 @@ public:
      * @param ham hamiltonian container
      * @param i site index 
      * @param j site index 
-     * @param rashba rashba interaction value \f(\alpha_{ij}\f)
+     * @param rashba rashba interaction value \f$\alpha_{ij}\f$
      */
     template <class T>
     static void RashbaTerm(Hamiltonian<T> &ham, int i, int j, double rashba)
@@ -101,7 +101,7 @@ public:
      * @tparam T matrix type, support for: arma::mat, arma::sp_mat
      * @param ham hamiltonian container
      * @param i site index 
-     * @param delta delta potential value \f(\Delta_{i}\f)
+     * @param delta delta potential value \f$\Delta_{i}\f$
      */
    template <class T>
     static void ProxTerm(Hamiltonian<T> &ham, int i, double delta)
@@ -127,7 +127,7 @@ public:
      * @tparam T matrix type, support for: arma::mat, arma::sp_mat
      * @param ham hamiltonian container
      * @param i site index 
-     * @param zeeman Zeeman potential value \f(V_{i}^Z\f)
+     * @param zeeman Zeeman potential value \f$V_{i}^Z\f$
      */
     template <class T>
     static void ZeemanTerm(Hamiltonian<T> &ham, int i, double zeeman)
@@ -150,7 +150,7 @@ public:
      * @tparam T matrix type, support for: arma::mat, arma::sp_mat
      * @param ham hamiltonian container
      * @param i site index 
-     * @param zeeman Zeeman potential value \f(\mu_{i}\f)
+     * @param zeeman Zeeman potential value \f$\mu_{i}\f$
      */
     template <class T>
     static void ChemicalTerm(Hamiltonian<T> &ham, int i, double mu)

@@ -15,9 +15,10 @@ public:
     }
 
     template <class T>
-    static void ProxTerm(Hamiltonian<T> &ham, int i, int j, double delta)
+    static void ProxTerm(Hamiltonian<T> &ham, int i, int j, double delta, double phase = 0.0)
     {
         // TODO        
+        
     }
 
     template <class T>
