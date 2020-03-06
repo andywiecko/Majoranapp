@@ -1,25 +1,25 @@
-#include <armadillo>
-#include "src/Hamiltonian.hpp"
-#include "src/ArgvParser.hpp"
-using namespace arma;
+#include "CountingMajorana/CountingMajorana.hpp"
 
 int main(int argc, char *argv[])
 {
-
 	ArgvParser argvParser;
-	argvParser.Parse(argc,argv);
+	argvParser.Parse(argc, argv);
+	int L = argvParser.L;
+	Parameters parameters = argvParser.parameters;
 
-	//Hamiltonian Ham = LoadFromFile("ham.txt");
+	/**
+	 * @brief matrix typedef:
+	 * support for: arma::mat, arma::sp_mat
+	 */
+	using matrixType = arma::sp_mat;
 
-	int    L =            argvParser.L;
-	double delta =        argvParser.delta;
-	double t_integral =   argvParser.t_integral;
-	double mu_potential = argvParser.mu_potential;
+	auto ham = SpinfullUniformChain<matrixType>(L, parameters);
+	//auto ham = SpinlessUniformChain<matrixType>(L, parameters);
+	
+	//ham.Print();
 
-	Hamiltonian Ham = UniformChain(L, delta, t_integral, mu_potential);
+	Solver::tol = 0.001; // tolerance of convergance
+	Solver::noe = 25; // number of eigenvalues 
+	Solver::Diagonalize(ham);
 
-	Ham.Diagonalize();
-	//Ham.Print();
-
-	return 0;
 }
