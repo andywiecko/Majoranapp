@@ -150,7 +150,7 @@ public:
      * @tparam T matrix type, support for: arma::mat, arma::sp_mat
      * @param ham hamiltonian container
      * @param i site index 
-     * @param zeeman Zeeman potential value \f$\mu_{i}\f$
+     * @param mu chemical potential value \f$\mu_{i}\f$
      */
     template <class T>
     static void ChemicalTerm(Hamiltonian<T> &ham, int i, double mu)

@@ -1,9 +1,4 @@
-#include <armadillo>
-#include "src/Hamiltonian.hpp"
-#include "src/Solver.hpp"
-#include "src/ArgvParser.hpp"
-#include "src/Factory.hpp"
-#include "src/Parameters.hpp"
+#include "CountingMajorana/CountingMajorana.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -18,8 +13,8 @@ int main(int argc, char *argv[])
 	 */
 	using matrixType = arma::sp_mat;
 
-	Hamiltonian<matrixType> ham = SpinfullUniformChain<matrixType>(L, parameters);
-	//Hamiltonian ham = SpinlessUniformChain(L, parameters);
+	auto ham = SpinfullUniformChain<matrixType>(L, parameters);
+	//auto ham = SpinlessUniformChain<matrixType>(L, parameters);
 	
 	//ham.Print();
 

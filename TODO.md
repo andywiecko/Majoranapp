@@ -8,3 +8,4 @@
 * add phase
 * restore spinless delta term
 * do some clean up with the headers
+* info class
