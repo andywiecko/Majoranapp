@@ -55,6 +55,7 @@ const std::map<char, std::string> KeyBindings::mapParameters{
     {'d', "delta"},
     {'m', "mu_potential"},
     {'x', "rashbaX"},
+    {'f', "spin_flip"},
     {'r', "rashbaY"},
     {'z', "zeeman"}};
 

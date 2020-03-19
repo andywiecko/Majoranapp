@@ -12,6 +12,7 @@
 #include "SpinfullFiller/RashbaXTerm.hpp"
 #include "SpinfullFiller/RashbaYTerm.hpp"
 #include "SpinfullFiller/ZeemanTerm.hpp"
+#include "SpinfullFiller/SpinFlipTerm.hpp"
 // spinless
 #include "SpinlessFiller/ChemicalTerm.hpp"
 #include "SpinlessFiller/KineticTerm.hpp"

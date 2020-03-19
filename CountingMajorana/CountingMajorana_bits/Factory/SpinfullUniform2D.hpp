@@ -25,6 +25,7 @@ public:
             Filler<Spinfull::ProxTerm>::Fill(ham, parameters, i);
             Filler<Spinfull::ZeemanTerm>::Fill(ham, parameters, i);
             Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::SpinFlipTerm>::Fill(ham, parameters, i);
         }
 
         // x-direction links
@@ -37,7 +38,7 @@ public:
                 //std::cout << "(" << from << ", " << to << ")" << std::endl;
                 Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
                 Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
-                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
+                //Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
             }
         }
 
@@ -52,7 +53,7 @@ public:
                 int to = (y+1) * length + x;
                 //std::cout << "(" << from << ", " << to << ")" << std::endl;
                 Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
-                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
+                //Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
                 Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
             }
         }
