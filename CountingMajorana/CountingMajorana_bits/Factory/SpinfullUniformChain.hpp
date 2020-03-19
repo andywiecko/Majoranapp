@@ -16,7 +16,7 @@ public:
         for (int i = 0; i < L - 1; i++)
         {
             SpinfullFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);
-            SpinfullFiller::RashbaTerm(ham, i, i + 1, parameters.map["rashba"]);
+            SpinfullFiller::RashbaTerm(ham, i, i + 1, 0.0, parameters.map["rashba"]);// TODO rashbaX rashbaY
         }
         for (int i = 0; i < L; i++)
         {

@@ -12,14 +12,19 @@ int main(int argc, char *argv[])
 	 * support for: arma::mat, arma::sp_mat
 	 */
 	using matrixType = arma::sp_mat;
+	/**
+	 * @brief geometry and model type
+	 * support for:
+	 * - SpinfullUniformChain
+	 * - SpinlessUniformChain
+	 */
+	using geometry = SpinfullUniformChain;
 
-	auto ham = SpinfullUniformChain<matrixType>(L, parameters);
-	//auto ham = SpinlessUniformChain<matrixType>(L, parameters);
-	
+	auto ham = Factory<geometry>::Generate<matrixType>(L, parameters);
+	//auto ham = Factory<SpinlessUniformChain>::Generate<matrixType>(L, parameters);
 	//ham.Print();
 
-	Solver::tol = 0.001; // tolerance of convergance
-	Solver::noe = 25; // number of eigenvalues 
+	Solver::tol = 0.005; // tolerance of convergance
+	Solver::noe = 30;	 // number of eigenvalues
 	Solver::Diagonalize(ham);
-
 }

@@ -54,14 +54,30 @@ public:
     }
     /**
      * @brief rashba term
+     * 
      * \f[
-     * \hat H_{\mathrm{Rashba}} = 
-     * \sum_{\langle i,j\rangle}\alpha_{ij}\left(
+     * \hat H_{\mathrm{Rashba}\, x} = 
+     * \sum_{\langle i,j\rangle}\mathrm i\alpha_{ij}^x \left(
+     *  c_{i\uparrow}^\dagger c_{j\downarrow}
+     * +c_{i\downarrow}^\dagger c_{j\uparrow}\right)
+     * +\mathrm{h.c.} = 
+     * i\sum_{\langle i,j\rangle}
+     * \frac{\alpha_{ij}^x}{2}\left(
+     * \gamma_{i\uparrow}^+ \gamma_{j\downarrow}^+
+     * +\gamma_{j\downarrow}^- \gamma_{i\uparrow}^-
+     * +\gamma_{i\downarrow}^+ \gamma_{j\uparrow}^+
+     * +\gamma_{j\uparrow}^- \gamma_{i\downarrow}^-
+     * \right)
+     * \f]
+     * 
+     * \f[
+     * \hat H_{\mathrm{Rashba}\, y} = 
+     * \sum_{\langle i,j\rangle}\alpha_{ij}^y\left(
      * c_{i\uparrow}^\dagger c_{j\downarrow}
      * -c_{i\downarrow}^\dagger c_{j\uparrow}\right)
      * +\mathrm{h.c.} = 
      * i\sum_{\langle i,j\rangle}
-     * \frac{\alpha_{ij}}{2}\left(
+     * \frac{\alpha_{ij}^y}{2}\left(
      * -\gamma_{i\uparrow}^+ \gamma_{j\downarrow}^-
      * -\gamma_{j\downarrow}^+ \gamma_{i\uparrow}^-
      * +\gamma_{i\downarrow}^+ \gamma_{j\uparrow}^-
@@ -73,16 +89,24 @@ public:
      * @param ham hamiltonian container
      * @param i site index 
      * @param j site index 
-     * @param rashba rashba interaction value \f$\alpha_{ij}\f$
+     * @param rashbaX rashba interaction value \f$\alpha_{ij}^x\f$
+     * @param rashbaY rashba interaction value \f$\alpha_{ij}^y\f$
      */
     template <class T>
-    static void RashbaTerm(Hamiltonian<T> &ham, int i, int j, double rashba)
+    static void RashbaTerm(Hamiltonian<T> &ham, int i, int j, double rashbaX, double rashbaY)
     {
         DegreeWarning();
-        ham.InsertBlock(Gamma::UpPlus, i, Gamma::DownMinus, j, -0.5 * rashba);
-        ham.InsertBlock(Gamma::DownPlus, j, Gamma::UpMinus, i, -0.5 * rashba);
-        ham.InsertBlock(Gamma::DownPlus, i, Gamma::UpMinus, j, +0.5 * rashba);
-        ham.InsertBlock(Gamma::UpPlus, j, Gamma::DownMinus, i, +0.5 * rashba);
+        // rashbaX
+        ham.InsertBlock(Gamma::UpPlus, i, Gamma::DownPlus, j, +0.5 * rashbaX);
+        ham.InsertBlock(Gamma::UpMinus, i, Gamma::DownMinus, j, +0.5 * rashbaX);
+        ham.InsertBlock(Gamma::DownPlus, i, Gamma::UpPlus, j, +0.5 * rashbaX);
+        ham.InsertBlock(Gamma::DownMinus, i, Gamma::UpMinus, j, +0.5 * rashbaX);
+
+        // rashbaY
+        ham.InsertBlock(Gamma::UpPlus, i, Gamma::DownMinus, j, -0.5 * rashbaY);
+        ham.InsertBlock(Gamma::DownPlus, j, Gamma::UpMinus, i, -0.5 * rashbaY);
+        ham.InsertBlock(Gamma::DownPlus, i, Gamma::UpMinus, j, +0.5 * rashbaY);
+        ham.InsertBlock(Gamma::UpPlus, j, Gamma::DownMinus, i, +0.5 * rashbaY);
     }
     /**
      * @brief proximity term
@@ -103,7 +127,7 @@ public:
      * @param i site index 
      * @param delta delta potential value \f$\Delta_{i}\f$
      */
-   template <class T>
+    template <class T>
     static void ProxTerm(Hamiltonian<T> &ham, int i, double delta)
     {
         DegreeWarning();

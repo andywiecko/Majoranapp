@@ -9,7 +9,7 @@
 #include "Factory/SpinlessUniformChain.hpp"
 
 /**
- * @brief class which produses stuff
+ * @brief class which produces stuff
  * 
  * @tparam O static object to execute
  */
