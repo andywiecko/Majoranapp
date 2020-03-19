@@ -3,9 +3,10 @@
 * ~parameters class~
 * ~sparse/dense template~
 * ~solver options~
+* ~add description~
+* ~do some clean up with the headers~
+* [!] key bindings in argv parser
 * debug
-* add description
 * add phase
 * restore spinless delta term
-* do some clean up with the headers
 * info class

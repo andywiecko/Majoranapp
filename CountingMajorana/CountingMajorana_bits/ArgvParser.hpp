@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <iostream>
 #include "Parameters.hpp"
+#include "KeyBinding.hpp"
 
 /**
  * @brief primitive argv class
@@ -42,12 +43,10 @@ public:
     void Info()
     {
         std::cout << "# L = " << this->L << "\n";
-        std::cout << "# t_integral = " << this->parameters.map["t_integral"] << "\n";
-        std::cout << "# delta = " << this->parameters.map["delta"] << "\n";
-        std::cout << "# mu_potential = " << this->parameters.map["mu_potential"] << "\n";
-        std::cout << "# rashbaX = " << this->parameters.map["rashbaX"] << "\n";
-        std::cout << "# rashbaY = " << this->parameters.map["rashbaY"] << "\n";
-        std::cout << "# zeeman = " << this->parameters.map["zeeman"] << "\n";
+        for(const auto &item: KeyBindings::map)
+        {
+            std::cout << "# "<< item.second << " = " << parameters.map[item.second] << "\n";
+        }
     }
 
     /**
@@ -61,53 +60,54 @@ public:
     {
         int option;
         int returnCode = 0;
-        char optstring[] = ":L:t:d:m:x:r:z:v";
+        std::string optstringKeys = KeyBindings::GetOptstring();
+        optstringKeys += "vh";
+        const char *optstring = optstringKeys.c_str();
+        
 
         while ((option = getopt(argc, argv, optstring)) != -1)
-            switch (option)
+        {
+            if (option == 'L')
             {
-            case 'L':
                 this->L = std::atoi(optarg);
-                break;
+                continue;             
+            }
 
-            case 't':
-                this->parameters.map["t_integral"] = std::atof(optarg);
-                break;
+        	for(auto &[key,name] : KeyBindings::map)
+            {
+                if (option == key)
+                {
+                    this->parameters.map[name] = std::atof(optarg);
+                }
+            }
 
-            case 'd':
-                this->parameters.map["delta"] = std::atof(optarg);
-                break;
-
-            case 'm':
-                this->parameters.map["mu_potential"] = std::atof(optarg);
-                break;
-
-            case 'x':
-                this->parameters.map["rashbaX"] = std::atof(optarg);
-                break;
-
-            case 'r':
-                this->parameters.map["rashbaY"] = std::atof(optarg);
-                break;
-
-            case 'z':
-                this->parameters.map["zeeman"] = std::atof(optarg);
-                break;
-
-            case 'v':
+            if(option == 'v')
+            {
                 this->verbose = true;
-                break;
+                continue;
+            }
 
-            case ':':
+            if(option == 'h')
+            {
+                KeyBindings::Help();
+                // TODO exit here!
+                continue;
+            }
+
+            if(option == ':')
+            {
                 std::cout << "option requires argument\n";
                 returnCode = 1;
-                break;
-            case '?':
-            default:
-                std::cout << "unknown option '" << char(optopt) << "'\n";
-                returnCode = 1;
-                break;
+                continue;
             }
+
+            if(option == '?'){;}
+            
+            std::cout << "unknown option '" << char(optopt) << "'\n";
+            returnCode = 1;
+                
+            
+        }
 
         for (; optind < argc; ++optind)
             std::cout << "argv[" << optind << "]='" << argv[optind] << "'\n";
