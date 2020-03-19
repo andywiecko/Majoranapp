@@ -73,12 +73,11 @@ public:
                 continue;             
             }
 
-        	for(auto &[key,name] : KeyBindings::map)
-            {
-                if (option == key)
-                {
-                    this->parameters.map[name] = std::atof(optarg);
-                }
+            if (KeyBindings::map.count(option) > 0)
+        	{
+                std::string name{KeyBindings::map.at(option)};
+                this->parameters.map[name] = std::atof(optarg);
+                continue;
             }
 
             if(option == 'v')
