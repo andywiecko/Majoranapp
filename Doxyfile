@@ -745,6 +745,9 @@ WARN_LOGFILE           =
 
 INPUT                  = CountingMajorana/ \
                          CountingMajorana/CountingMajorana_bits/ \
+                         CountingMajorana/CountingMajorana_bits/Factory/ \
+                         CountingMajorana/CountingMajorana_bits/SpinlessFiller/ \
+                         CountingMajorana/CountingMajorana_bits/SpinfullFiller/ \
                          main.cpp \
                          README.md \
                          LICENSE.md \
