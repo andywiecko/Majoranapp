@@ -24,7 +24,8 @@ public:
         map["t_integral"] = 0.0;
         map["mu_potential"] = 0.0;
         map["zeeman"] = 0.0;
-        map["rashba"] = 0.0;
+        map["rashbaX"] = 0.0;
+        map["rashbaY"] = 0.0;
     }
 };
 

@@ -45,7 +45,8 @@ public:
         std::cout << "# t_integral = " << this->parameters.map["t_integral"] << "\n";
         std::cout << "# delta = " << this->parameters.map["delta"] << "\n";
         std::cout << "# mu_potential = " << this->parameters.map["mu_potential"] << "\n";
-        std::cout << "# rashba = " << this->parameters.map["rashba"] << "\n";
+        std::cout << "# rashbaX = " << this->parameters.map["rashbaX"] << "\n";
+        std::cout << "# rashbaY = " << this->parameters.map["rashbaY"] << "\n";
         std::cout << "# zeeman = " << this->parameters.map["zeeman"] << "\n";
     }
 
@@ -60,7 +61,7 @@ public:
     {
         int option;
         int returnCode = 0;
-        char optstring[] = ":L:t:d:m:r:z:v";
+        char optstring[] = ":L:t:d:m:x:r:z:v";
 
         while ((option = getopt(argc, argv, optstring)) != -1)
             switch (option)
@@ -68,6 +69,7 @@ public:
             case 'L':
                 this->L = std::atoi(optarg);
                 break;
+
             case 't':
                 this->parameters.map["t_integral"] = std::atof(optarg);
                 break;
@@ -80,8 +82,12 @@ public:
                 this->parameters.map["mu_potential"] = std::atof(optarg);
                 break;
 
+            case 'x':
+                this->parameters.map["rashbaX"] = std::atof(optarg);
+                break;
+
             case 'r':
-                this->parameters.map["rashba"] = std::atof(optarg);
+                this->parameters.map["rashbaY"] = std::atof(optarg);
                 break;
 
             case 'z':
@@ -91,6 +97,7 @@ public:
             case 'v':
                 this->verbose = true;
                 break;
+
             case ':':
                 std::cout << "option requires argument\n";
                 returnCode = 1;
