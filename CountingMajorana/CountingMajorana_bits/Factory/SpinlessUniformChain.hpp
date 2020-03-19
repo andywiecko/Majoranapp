@@ -3,15 +3,17 @@
 
 #include "../Hamiltonian.hpp"
 #include "../Parameters.hpp"
+#include "../Dimensions.hpp"
 #include "../SpinlessFiller.hpp"
 
 class SpinlessUniformChain
 {
 public:
     template <class T>
-    static Hamiltonian<T> Generate(int &L, Parameters &parameters)
+    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
     {
         int deg = 2;
+        int L = dimensions.map["Length"];
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {

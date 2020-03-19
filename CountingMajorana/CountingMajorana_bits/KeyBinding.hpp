@@ -12,13 +12,17 @@ private:
     static const std::string Ldescription;
 
 public:
-    static const std::map<char, std::string> map;
+    static const std::map<char, std::string> mapDimensions;
+    static const std::map<char, std::string> mapParameters;
 
     static void Help()
     {
         std::cout << "# key   name\n";
-        std::cout << "# " << Lbinding << ": " << Ldescription << "\n";
-        for (auto &[key, name] : KeyBindings::map)
+        for (auto &[key, name] : KeyBindings::mapDimensions)
+        {
+            std::cout << "# " << key << ": " + name + "\n";
+        }
+        for (auto &[key, name] : KeyBindings::mapParameters)
         {
             std::cout << "# " << key << ": " + name + "\n";
         }
@@ -26,8 +30,12 @@ public:
 
     static std::string GetOptstring()
     {
-        std::string ret = {':', Lbinding};
-        for (auto const &item : KeyBindings::map)
+        std::string ret;
+        for (auto const &item : KeyBindings::mapDimensions)
+        {
+            ret += ":" + std::string{item.first};
+        }
+        for (auto const &item : KeyBindings::mapParameters)
         {
             ret += ":" + std::string{item.first};
         }
@@ -37,7 +45,12 @@ public:
 
 const std::string KeyBindings::Ldescription{"L (sites)"};
 
-const std::map<char, std::string> KeyBindings::map{
+const std::map<char, std::string> KeyBindings::mapDimensions{
+    {'L', "Length"},
+    {'W', "Width"},
+    {'H', "Height"}};
+
+const std::map<char, std::string> KeyBindings::mapParameters{
     {'t', "t_integral"},
     {'d', "delta"},
     {'m', "mu_potential"},

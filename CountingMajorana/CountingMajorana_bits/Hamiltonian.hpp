@@ -24,7 +24,7 @@ public:
    /**
     * @brief number of sites
     */
-   int L;
+   int N;
    /**
     * @brief matrix element container
     */
@@ -32,12 +32,12 @@ public:
    /**
     * @brief Construct a new Hamiltonian object
     * 
-    * @param _L number of sites
+    * @param _N number of sites
     * @param _deg degree of freedom
     */
-   Hamiltonian(int _L, int _deg) : deg{_deg}, L{_L}
+   Hamiltonian(int _N, int _deg) : deg{_deg}, N{_N}
    {
-      elements.set_size(deg * L, deg * L);
+      elements.set_size(deg * N, deg * N);
 
       // [!] only for arma::mat
       if constexpr (std::is_same<T, arma::mat>::value)

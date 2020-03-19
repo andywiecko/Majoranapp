@@ -3,10 +3,12 @@
 
 #include "Hamiltonian.hpp"
 #include "Parameters.hpp"
+#include "Dimensions.hpp"
 
 // implemented geometries and stuff
-#include "Factory/SpinfullUniformChain.hpp"
 #include "Factory/SpinlessUniformChain.hpp"
+#include "Factory/SpinfullUniformChain.hpp"
+#include "Factory/SpinfullUniform2D.hpp"
 
 /**
  * @brief class which produces stuff
@@ -22,14 +24,14 @@ public:
      * @brief run the `Generate()` function of static class `O`
      * 
      * @tparam T matrix type, support for: arma::mat, arma::sp_mat
-     * @param L number of sites
+     * @param dimensions dimensions of the model
      * @param parameters parameters of the model
      * @return Hamiltonian<T> 
      */
-    template <class T>
-    static Hamiltonian<T> Generate(int &L, Parameters &parameters)
+    template <class T,typename ... Targs>
+    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters, Targs... Fargs)
     {
-        return O::template Generate<T>(L, parameters);
+        return O::template Generate<T>(dimensions, parameters, Fargs...);
     }
 };
 

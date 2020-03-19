@@ -5,8 +5,8 @@
 * ~solver options~
 * ~add description~
 * ~do some clean up with the headers~
-* [!] key bindings in argv parser
+* ~restore spinless delta term~
+* ~[!] key bindings in argv parser~
+* [!] static names in terms
 * debug
-* add phase
-* restore spinless delta term
 * info class

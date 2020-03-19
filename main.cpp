@@ -4,7 +4,7 @@ int main(int argc, char *argv[])
 {
 	ArgvParser argvParser;
 	argvParser.Parse(argc, argv);
-	int L = argvParser.L;
+	Dimensions dimensions = argvParser.dimensions;
 	Parameters parameters = argvParser.parameters;
 
 	/**
@@ -15,12 +15,13 @@ int main(int argc, char *argv[])
 	/**
 	 * @brief geometry and model type
 	 * support for:
-	 * - SpinfullUniformChain
-	 * - SpinlessUniformChain
+	 * - SpinfullUniformChain (Length)
+	 * - SpinlessUniformChain (Length)
+	 * - SpinfullUniform2D    (Length, Height)
 	 */
 	using geometry = SpinfullUniformChain;
-
-	auto ham = Factory<geometry>::Generate<matrixType>(L, parameters);
+	
+	auto ham = Factory<geometry>::Generate<matrixType>(dimensions, parameters);
 	//auto ham = Factory<SpinlessUniformChain>::Generate<matrixType>(L, parameters);
 	//ham.Print();
 

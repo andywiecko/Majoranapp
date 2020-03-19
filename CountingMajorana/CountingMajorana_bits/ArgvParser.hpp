@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <iostream>
 #include "Parameters.hpp"
+#include "Dimensions.hpp"
 #include "KeyBinding.hpp"
 
 /**
@@ -19,14 +20,13 @@ private:
     bool verbose = false;
 
 public:
-    /**
-     * @brief parsed number of sites
-     */
-    int L = 10;
+
     /**
      * @brief parsed parameters
      */
     Parameters parameters;
+
+    Dimensions dimensions;
 
     /**
      * @brief construct a new Argv Parser object 
@@ -35,6 +35,7 @@ public:
     {
         parameters.map["t_integral"] = 1.0;
         parameters.map["delta"] = 1.0;
+        dimensions.map["Length"] = 10;
     }
 
     /**
@@ -42,11 +43,18 @@ public:
      */
     void Info()
     {
-        std::cout << "# L = " << this->L << "\n";
-        for(const auto &item: KeyBindings::map)
+        std::cout << "# "<<std::string(15,'=') << "\n"<< "# Dimensions\n# "<< std::string(15,'=') << "\n";
+        for(const auto &item: KeyBindings::mapDimensions)
+        {
+            std::cout << "# "<< item.second << " = " << dimensions.map[item.second] << "\n";
+        }
+
+        std::cout << "# "<<std::string(15,'=') << "\n"<< "# Parameters\n# " << std::string(15,'=') << "\n";
+        for(const auto &item: KeyBindings::mapParameters)
         {
             std::cout << "# "<< item.second << " = " << parameters.map[item.second] << "\n";
         }
+        std::cout << "# "<<std::string(15,'=') << "\n";
     }
 
     /**
@@ -67,15 +75,16 @@ public:
 
         while ((option = getopt(argc, argv, optstring)) != -1)
         {
-            if (option == 'L')
-            {
-                this->L = std::atoi(optarg);
-                continue;             
+            if (KeyBindings::mapDimensions.count(option) > 0)
+        	{
+                std::string name{KeyBindings::mapDimensions.at(option)};
+                this->dimensions.map[name] = std::atof(optarg);
+                continue;
             }
 
-            if (KeyBindings::map.count(option) > 0)
+            if (KeyBindings::mapParameters.count(option) > 0)
         	{
-                std::string name{KeyBindings::map.at(option)};
+                std::string name{KeyBindings::mapParameters.at(option)};
                 this->parameters.map[name] = std::atof(optarg);
                 continue;
             }
