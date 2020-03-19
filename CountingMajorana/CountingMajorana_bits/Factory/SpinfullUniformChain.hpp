@@ -1,6 +1,7 @@
 #ifndef FACTORY_SPINFULLUNIFORMCHAIN_HPP
 #define FACTORY_SPINFULLUNIFORMCHAIN_HPP
 
+#include <map>
 #include "../Hamiltonian.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
@@ -15,18 +16,19 @@ public:
         int deg = 4;
         int L = dimensions.map["Length"];
         Hamiltonian<T> ham(L, deg);
+        auto & map = parameters.map;
         for (int i = 0; i < L - 1; i++)
         {
-            SpinfullFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);
+            SpinfullFiller::KineticTerm(ham, i, i + 1, map[SpinfullFiller::KineticTermName]);
             SpinfullFiller::RashbaTerm(ham, i, i + 1,
-                                       parameters.map["rashbaX"],
-                                       parameters.map["rashbaY"]);
+                                       map[SpinfullFiller::RashbaTermXName],
+                                       map[SpinfullFiller::RashbaTermYName]);
         }
         for (int i = 0; i < L; i++)
         {
-            SpinfullFiller::ProxTerm(ham, i, parameters.map["delta"]);
-            SpinfullFiller::ZeemanTerm(ham, i, parameters.map["zeeman"]);
-            SpinfullFiller::ChemicalTerm(ham, i, parameters.map["mu_potential"]);
+            SpinfullFiller::ProxTerm(ham, i, map[SpinfullFiller::ProxTermName]);
+            SpinfullFiller::ZeemanTerm(ham, i, map[SpinfullFiller::ZeemanTermName]);
+            SpinfullFiller::ChemicalTerm(ham, i, map[SpinfullFiller::ChemicalTermName]);
         }
 
         return ham;

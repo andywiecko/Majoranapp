@@ -1,6 +1,7 @@
 #ifndef SPINFULLFILLER_HPP
 #define SPINFULLFILLER_HPP
 
+#include "Parameters.hpp"
 #include "EnumGamma.hpp"
 #include "Hamiltonian.hpp"
 
@@ -52,6 +53,15 @@ public:
         ham.InsertBlock(Gamma::UpPlus, j, Gamma::UpMinus, i, -0.5 * t_integral);
         ham.InsertBlock(Gamma::DownPlus, j, Gamma::DownMinus, i, -0.5 * t_integral);
     }
+    inline static const std::string KineticTermName{"t_integral"};
+    
+    template <class T>
+    static void KineticTerm(Hamiltonian<T> &ham, int i, int j, Parameters &parameters)
+    {
+        KineticTerm(ham,i,j,parameters.map.at(KineticTermName));
+    }
+
+
     /**
      * @brief rashba term
      * 
@@ -108,6 +118,9 @@ public:
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::UpMinus, j, +0.5 * rashbaY);
         ham.InsertBlock(Gamma::UpPlus, j, Gamma::DownMinus, i, +0.5 * rashbaY);
     }
+        inline static const std::string RashbaTermXName{"rashbaX"};
+        inline static const std::string RashbaTermYName{"rashbaY"};
+
     /**
      * @brief proximity term
      * \f[
@@ -134,6 +147,7 @@ public:
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::DownMinus, i, +0.5 * delta);
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::UpMinus, i, -0.5 * delta);
     }
+    inline static const std::string ProxTermName{"delta"};
     /**
      * @brief Zeeman term
      * \f[
@@ -160,6 +174,7 @@ public:
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpMinus, i, -0.5 * zeeman);
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::DownMinus, i, +0.5 * zeeman);
     }
+    inline static const std::string ZeemanTermName{"zeeman"};
     /**
      * @brief chemical potential term
      * \f[
@@ -183,6 +198,7 @@ public:
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpMinus, i, -0.5 * mu);
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::DownMinus, i, -0.5 * mu);
     }
+    inline static const std::string ChemicalTermName{"mu_potential"};
 };
 
 #endif
