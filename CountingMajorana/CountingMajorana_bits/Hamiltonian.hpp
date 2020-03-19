@@ -29,10 +29,14 @@ public:
     * @brief matrix element container
     */
    T elements;
-   Hamiltonian(int _L, int _deg)
+   /**
+    * @brief Construct a new Hamiltonian object
+    * 
+    * @param _L number of sites
+    * @param _deg degree of freedom
+    */
+   Hamiltonian(int _L, int _deg) : deg{_deg}, L{_L}
    {
-      L = _L;
-      deg = _deg;
       elements.set_size(deg * L, deg * L);
 
       // [!] only for arma::mat
