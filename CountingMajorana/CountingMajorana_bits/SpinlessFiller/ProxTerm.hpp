@@ -3,6 +3,7 @@
 
 #include "../Hamiltonian.hpp"
 #include "../EnumGamma.hpp"
+#include "../SpinfullFiller/ProxTerm.hpp"
 
 namespace Spinless
 {
@@ -48,7 +49,7 @@ public:
     static const std::string name;
 };
 
-const std::string ProxTerm::name{"delta"};
+const std::string ProxTerm::name{Spinfull::ProxTerm::name};
 
 }
 

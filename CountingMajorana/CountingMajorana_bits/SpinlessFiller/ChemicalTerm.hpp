@@ -3,6 +3,7 @@
 
 #include "../Hamiltonian.hpp"
 #include "../EnumGamma.hpp"
+#include "../SpinfullFiller/ChemicalTerm.hpp"
 
 namespace Spinless
 {
@@ -39,7 +40,8 @@ public:
     static const std::string name;
 };
 
-const std::string ChemicalTerm::name{"zeeman"};
-}
+const std::string ChemicalTerm::name{Spinfull::ChemicalTerm::name};
+
+} // namespace Spinless
 
 #endif

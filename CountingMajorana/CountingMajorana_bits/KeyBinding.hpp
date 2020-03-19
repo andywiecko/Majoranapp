@@ -5,6 +5,8 @@
 #include <map>
 #include <string>
 
+#include "Filler.hpp"
+
 class KeyBindings
 {
 private:
@@ -51,12 +53,12 @@ const std::map<char, std::string> KeyBindings::mapDimensions{
     {'H', "Height"}};
 
 const std::map<char, std::string> KeyBindings::mapParameters{
-    {'t', "t_integral"},
-    {'d', "delta"},
-    {'m', "mu_potential"},
-    {'x', "rashbaX"},
-    {'f', "spin_flip"},
-    {'r', "rashbaY"},
-    {'z', "zeeman"}};
+    {'t', Spinfull::KineticTerm::name},
+    {'d', Spinfull::ProxTerm::name},
+    {'m', Spinfull::ChemicalTerm::name},
+    {'x', Spinfull::RashbaXTerm::name},
+    {'r', Spinfull::RashbaYTerm::name},
+    {'f', Spinfull::SpinFlipTerm::name},
+    {'z', Spinfull::ZeemanTerm::name}};
 
 #endif

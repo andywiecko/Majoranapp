@@ -3,6 +3,8 @@
 
 #include "../Hamiltonian.hpp"
 #include "../EnumGamma.hpp"
+#include "../SpinfullFiller/KineticTerm.hpp"
+
 
 namespace Spinless
 {
@@ -42,7 +44,7 @@ public:
     static const std::string name;
 };
 
-const std::string KineticTerm::name{"t_integral"};
+const std::string KineticTerm::name{Spinfull::KineticTerm::name};
 
 }
 
