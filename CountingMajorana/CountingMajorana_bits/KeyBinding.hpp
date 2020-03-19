@@ -9,10 +9,6 @@
 
 class KeyBindings
 {
-private:
-    static const char Lbinding = 'L';
-    static const std::string Ldescription;
-
 public:
     static const std::map<char, std::string> mapDimensions;
     static const std::map<char, std::string> mapParameters;
@@ -44,8 +40,6 @@ public:
         return ret;
     }
 };
-
-const std::string KeyBindings::Ldescription{"L (sites)"};
 
 const std::map<char, std::string> KeyBindings::mapDimensions{
     {'L', "Length"},
