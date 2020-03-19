@@ -27,13 +27,33 @@ public:
             Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
         }
 
-        for (int x = 0; x < length - 1; x++)
+        // x-direction links
+        for (int y = 0; y < height; y++)
         {
-            for (int y = 0; y < height - 1; y++)
+            for (int x = 0; x < length - 1; x++)
             {
-                Filler<Spinfull::KineticTerm>::Fill(ham, parameters, x, y);
-                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, x, y);
-                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, x, y);
+                int from = y * length + x;
+                int to = y * length + x + 1;
+                //std::cout << "(" << from << ", " << to << ")" << std::endl;
+                Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
+                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
+                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
+            }
+        }
+
+        //std::cout << std::endl;
+
+        // y-direction links
+        for (int x = 0; x < length; x++)
+        {
+            for (int y = 0; y < height-1; y++)
+            {
+                int from = y * length + x;
+                int to = (y+1) * length + x;
+                //std::cout << "(" << from << ", " << to << ")" << std::endl;
+                Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
+                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
+                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
             }
         }
 
