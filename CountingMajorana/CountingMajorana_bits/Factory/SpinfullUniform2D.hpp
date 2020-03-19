@@ -4,7 +4,7 @@
 #include "../Hamiltonian.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
-#include "../SpinfullFiller.hpp"
+#include "../Filler.hpp"
 
 class SpinfullUniform2D
 {
@@ -22,19 +22,18 @@ public:
         // local terms
         for (int i = 0; i < N; i++)
         {
-            SpinfullFiller::ProxTerm(ham, i, parameters.map["delta"]);
-            SpinfullFiller::ZeemanTerm(ham, i, parameters.map["zeeman"]);
-            SpinfullFiller::ChemicalTerm(ham, i, parameters.map["mu_potential"]);
+            Filler<Spinfull::ProxTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
         }
 
         for (int x = 0; x < length - 1; x++)
         {
             for (int y = 0; y < height - 1; y++)
             {
-                SpinfullFiller::KineticTerm(ham, x, y, parameters.map["t_integral"]);
-                SpinfullFiller::RashbaTerm(ham, x, y,
-                                           parameters.map["rashbaX"],
-                                           parameters.map["rashbaY"]);
+                Filler<Spinfull::KineticTerm>::Fill(ham, parameters, x, y);
+                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, x, y);
+                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, x, y);
             }
         }
 

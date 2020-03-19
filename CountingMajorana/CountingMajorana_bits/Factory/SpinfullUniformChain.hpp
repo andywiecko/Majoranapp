@@ -5,7 +5,7 @@
 #include "../Hamiltonian.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
-#include "../SpinfullFiller.hpp"
+#include "../Filler.hpp"
 
 class SpinfullUniformChain
 {
@@ -16,19 +16,17 @@ public:
         int deg = 4;
         int L = dimensions.map["Length"];
         Hamiltonian<T> ham(L, deg);
-        auto & map = parameters.map;
         for (int i = 0; i < L - 1; i++)
         {
-            SpinfullFiller::KineticTerm(ham, i, i + 1, map[SpinfullFiller::KineticTermName]);
-            SpinfullFiller::RashbaTerm(ham, i, i + 1,
-                                       map[SpinfullFiller::RashbaTermXName],
-                                       map[SpinfullFiller::RashbaTermYName]);
+            Filler<Spinfull::KineticTerm>::Fill(ham, parameters, i, i + 1);
+            Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, i, i + 1);
+            Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, i, i + 1);
         }
         for (int i = 0; i < L; i++)
         {
-            SpinfullFiller::ProxTerm(ham, i, map[SpinfullFiller::ProxTermName]);
-            SpinfullFiller::ZeemanTerm(ham, i, map[SpinfullFiller::ZeemanTermName]);
-            SpinfullFiller::ChemicalTerm(ham, i, map[SpinfullFiller::ChemicalTermName]);
+            Filler<Spinfull::ProxTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
         }
 
         return ham;

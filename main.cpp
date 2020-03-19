@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	 * - SpinlessUniformChain (Length)
 	 * - SpinfullUniform2D    (Length, Height)
 	 */
-	using geometry = SpinfullUniformChain;
+	using geometry = SpinfullUniform2D;
 	
 	auto ham = Factory<geometry>::Generate<matrixType>(dimensions, parameters);
 	//auto ham = Factory<SpinlessUniformChain>::Generate<matrixType>(L, parameters);

@@ -4,7 +4,7 @@
 #include "../Hamiltonian.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
-#include "../SpinlessFiller.hpp"
+#include "../Filler.hpp"
 
 class SpinlessUniformChain
 {
@@ -13,16 +13,17 @@ public:
     static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
     {
         int deg = 2;
+        double phase = 0.0;
         int L = dimensions.map["Length"];
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {
-            SpinlessFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);
-            SpinlessFiller::ProxTerm(ham, i, i + 1, parameters.map["delta"]);
+            Filler<Spinless::KineticTerm>::Fill(ham, parameters, i, i + 1);
+            Filler<Spinless::ProxTerm>::Fill(ham, parameters, i, i + 1, phase);
         }
         for (int i = 0; i < L; i++)
         {
-            SpinlessFiller::ChemicalTerm(ham, i, parameters.map["mu_potential"]);
+            Filler<Spinless::ChemicalTerm>::Fill(ham, parameters, i);
         }
 
         return ham;
