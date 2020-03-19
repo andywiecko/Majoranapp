@@ -39,7 +39,7 @@ public:
     static const std::string name;
 };
 
-const std::string ChemicalTerm::name{"zeeman"};
+const std::string ChemicalTerm::name{"mu_potential"};
 
 }
 

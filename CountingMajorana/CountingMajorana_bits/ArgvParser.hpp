@@ -43,6 +43,7 @@ public:
      */
     void Info()
     {
+        // TODO make Info class [!]
         std::cout << "# "<<std::string(15,'=') << "\n"<< "# Dimensions\n# "<< std::string(15,'=') << "\n";
         for(const auto &item: KeyBindings::mapDimensions)
         {
@@ -69,7 +70,8 @@ public:
         int option;
         int returnCode = 0;
         std::string optstringKeys = KeyBindings::GetOptstring();
-        optstringKeys += "vh";
+        optstringKeys += ":vh";
+        //std::cout << optstringKeys <<std::endl;
         const char *optstring = optstringKeys.c_str();
         
 
