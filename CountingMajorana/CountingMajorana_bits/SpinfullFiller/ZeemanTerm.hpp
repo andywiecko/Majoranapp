@@ -9,7 +9,6 @@ namespace Spinfull
 
 /**
  * @brief Zeeman term
- * 
  * \f[
  * \hat H_{\mathrm{Zeeman}} = 
  * \sum_{i}V_{i}^Z\left(

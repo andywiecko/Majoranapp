@@ -9,7 +9,6 @@ namespace Spinfull
 
 /**
  * @brief proximity term
- * 
  * \f[
  * \hat H_{\mathrm{prox}} = 
  * \sum_{i}\Delta_{i}\left(

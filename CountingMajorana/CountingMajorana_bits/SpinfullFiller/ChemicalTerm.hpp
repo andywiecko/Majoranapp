@@ -9,7 +9,6 @@ namespace Spinfull
 
 /**
  * @brief chemical potential term
- * 
  * \f[
  * \hat H_{\mu} = 
  * \sum_{i\sigma}\mu_{i}

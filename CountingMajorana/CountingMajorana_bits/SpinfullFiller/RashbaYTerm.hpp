@@ -9,7 +9,6 @@ namespace Spinfull
 
 /**
  * @brief Rashba Y term
- * 
  * \f[
  * \hat H_{\mathrm{Rashba}\, y} = 
  * \sum_{\langle i,j\rangle}\alpha_{ij}^y\left(

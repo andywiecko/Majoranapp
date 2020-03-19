@@ -9,7 +9,6 @@ namespace Spinless
 
 /**
  * @brief kinetic term
- * 
  * \f[
  * \hat H_{\mathrm{kin}} = 
  * \sum_{\langle i,j\rangle}
