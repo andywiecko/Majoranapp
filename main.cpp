@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
 	Dimensions dimensions = argvParser.dimensions;
 	Parameters parameters = argvParser.parameters;
 
+	VectorViewer::length = dimensions.map["Length"];
+	VectorViewer::height = dimensions.map["Height"];
+
 	/**
 	 * @brief matrix typedef:
 	 * support for: arma::mat, arma::sp_mat
@@ -27,5 +30,7 @@ int main(int argc, char *argv[])
 
 	Solver::tol = 0.00; // tolerance of convergance
 	Solver::noe = 30;	 // number of eigenvalues
+
+	Solver::showVectors = true;
 	Solver::Diagonalize(ham);
 }

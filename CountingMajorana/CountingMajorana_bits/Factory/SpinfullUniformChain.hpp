@@ -13,7 +13,7 @@ public:
     static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
     {
         int deg = 4;
-        int L = dimensions.map["Length"];
+        int L = dimensions.map[Dimensions::lengthName];
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {

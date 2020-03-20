@@ -33,9 +33,9 @@ public:
      */
     ArgvParser()
     {
-        parameters.map["t_integral"] = 1.0;
-        parameters.map["delta"] = 1.0;
-        dimensions.map["Length"] = 10;
+        parameters.map[Spinfull::KineticTerm::name] = 1.0;
+        parameters.map[Spinfull::ProxTerm::name] = 1.0;
+        dimensions.map[Dimensions::lengthName] = 10;
     }
 
     /**

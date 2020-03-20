@@ -4,6 +4,10 @@
 class VectorViewer
 {
 public:
+
+    static int height;
+    static int length;
+
     template <class T>
     static void View(T &vectors, int deg)
     {
@@ -29,7 +33,7 @@ public:
     }
 
     template <class T>
-    static void View2DGrid(T &vectors, int deg, int length, int height)
+    static void View2DGrid(T &vectors, int deg)
     {
         int rows = vectors.n_rows;
         int cols = vectors.n_cols;
@@ -59,5 +63,8 @@ public:
         }
     }
 };
+
+int VectorViewer::height{1};
+int VectorViewer::length{10};
 
 #endif
