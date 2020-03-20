@@ -7,6 +7,6 @@
 * ~do some clean up with the headers~
 * ~restore spinless delta term~
 * ~[!] key bindings in argv parser~
-* [!] static names in terms
+* ~[!] static names in terms~
 * debug
-* info class
+* info class (gamma ascii for fun)

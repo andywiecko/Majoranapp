@@ -1,6 +1,8 @@
 #ifndef VECTORVIEWER_HPP
 #define VECTORVIEWER_HPP
 
+#include "Info.hpp"
+
 class VectorViewer
 {
 public:

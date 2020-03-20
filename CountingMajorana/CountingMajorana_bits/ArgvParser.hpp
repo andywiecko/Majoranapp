@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Parameters.hpp"
 #include "Dimensions.hpp"
-#include "KeyBinding.hpp"
+#include "KeyBindings.hpp"
 
 /**
  * @brief primitive argv class
@@ -26,6 +26,9 @@ public:
      */
     Parameters parameters;
 
+    /**
+     * @brief parsed parameters
+     */
     Dimensions dimensions;
 
     /**
@@ -43,19 +46,11 @@ public:
      */
     void Info()
     {
-        // TODO make Info class [!]
-        std::cout << "# "<<std::string(15,'=') << "\n"<< "# Dimensions\n# "<< std::string(15,'=') << "\n";
-        for(const auto &item: KeyBindings::mapDimensions)
-        {
-            std::cout << "# "<< item.second << " = " << dimensions.map[item.second] << "\n";
-        }
-
+        Info::Title("Dimensions");
+        Info::ShowMapCommonValue(KeyBindings::mapDimensions, dimensions.map);
         std::cout << "# "<<std::string(15,'=') << "\n"<< "# Parameters\n# " << std::string(15,'=') << "\n";
-        for(const auto &item: KeyBindings::mapParameters)
-        {
-            std::cout << "# "<< item.second << " = " << parameters.map[item.second] << "\n";
-        }
-        std::cout << "# "<<std::string(15,'=') << "\n";
+        Info::ShowMapCommonValue(KeyBindings::mapParameters, parameters.map);
+        Info::Line();
     }
 
     /**
