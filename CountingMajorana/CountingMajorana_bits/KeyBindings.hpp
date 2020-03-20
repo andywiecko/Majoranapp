@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 
+#include "Info.hpp"
 #include "Filler.hpp"
 
 class KeyBindings
@@ -16,14 +17,9 @@ public:
     static void Help()
     {
         std::cout << "# key   name\n";
-        for (auto &[key, name] : KeyBindings::mapDimensions)
-        {
-            std::cout << "# " << key << ": " + name + "\n";
-        }
-        for (auto &[key, name] : KeyBindings::mapParameters)
-        {
-            std::cout << "# " << key << ": " + name + "\n";
-        }
+        Info::ShowMap(KeyBindings::mapDimensions);
+        Info::ShowMap(KeyBindings::mapParameters);
+
     }
 
     static std::string GetOptstring()
@@ -42,9 +38,9 @@ public:
 };
 
 const std::map<char, std::string> KeyBindings::mapDimensions{
-    {'L', "Length"},
-    {'W', "Width"},
-    {'H', "Height"}};
+    {'L', Dimensions::lengthName},
+    {'W', Dimensions::widthName},
+    {'H', Dimensions::heightName}};
 
 const std::map<char, std::string> KeyBindings::mapParameters{
     {'t', Spinfull::KineticTerm::name},
