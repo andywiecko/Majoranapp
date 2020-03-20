@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	//auto ham = Factory<SpinlessUniformChain>::Generate<matrixType>(L, parameters);
 	//ham.Print();
 
-	Solver::tol = 0.005; // tolerance of convergance
+	Solver::tol = 0.00; // tolerance of convergance
 	Solver::noe = 30;	 // number of eigenvalues
 	Solver::Diagonalize(ham);
 }

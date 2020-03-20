@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Hamiltonian.hpp"
+#include "VectorViewer.hpp"
 
 /**
  * @brief static solver
@@ -51,7 +52,9 @@ public:
             arma::eigs_sym(eigval, eigvec, ATA, k, target.c_str(), tol);
         }
 
-        eigval.print("# == eigs ==");
+        //eigval.print("# == eigs ==");
+        //arma::mat vectors = join_horiz(eigvec.col(0),eigvec.col(1));
+        //VectorViewer::View2DGrid<arma::mat>(vectors, ham.deg,100,10);
     }
 };
 

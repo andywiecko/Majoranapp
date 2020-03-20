@@ -12,6 +12,9 @@
 template <class T>
 class Hamiltonian
 {
+
+friend class Solver;
+
 private:
    /**
     * @brief number degree of freedom

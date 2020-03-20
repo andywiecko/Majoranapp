@@ -37,8 +37,8 @@ public:
                 int to = y * length + x + 1;
                 //std::cout << "(" << from << ", " << to << ")" << std::endl;
                 Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
-                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
-                //Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
+                //Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
+                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
             }
         }
 
@@ -53,8 +53,8 @@ public:
                 int to = (y+1) * length + x;
                 //std::cout << "(" << from << ", " << to << ")" << std::endl;
                 Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
-                //Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
-                Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
+                Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
+                //Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
             }
         }
 

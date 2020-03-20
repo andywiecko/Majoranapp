@@ -1,7 +1,6 @@
 #ifndef FACTORY_SPINFULLUNIFORMCHAIN_HPP
 #define FACTORY_SPINFULLUNIFORMCHAIN_HPP
 
-#include <map>
 #include "../Hamiltonian.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
