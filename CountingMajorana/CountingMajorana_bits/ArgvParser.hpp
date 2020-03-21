@@ -14,10 +14,15 @@ class ArgvParser
 {
 
 private:
-    /**
-     * @brief increase verbosity of the output
+    /*
+     * @brief increase verbosity of the output (flag)
      */
     bool verbose = false;
+
+    /**
+     * @brief show help (flag)
+     */
+    bool help = false;
 
 public:
 
@@ -38,7 +43,7 @@ public:
     {
         parameters.map[Spinfull::KineticTerm::name] = 1.0;
         parameters.map[Spinfull::ProxTerm::name] = 1.0;
-        dimensions.map[Dimensions::lengthName] = 10;
+        //dimensions.map[Dimensions::lengthName] = 10;
     }
 
     /**
@@ -94,8 +99,7 @@ public:
 
             if(option == 'h')
             {
-                KeyBindings::Help();
-                // TODO exit here!
+                this->help = true;
                 continue;
             }
 
@@ -110,8 +114,7 @@ public:
             
             std::cout << "unknown option '" << char(optopt) << "'\n";
             returnCode = 1;
-                
-            
+                    
         }
 
         for (; optind < argc; ++optind)
@@ -119,6 +122,12 @@ public:
 
         if (verbose)
             this->Info();
+
+        if (help)
+        {
+            KeyBindings::Help();
+            return 1;
+        }
 
         return returnCode;
     }

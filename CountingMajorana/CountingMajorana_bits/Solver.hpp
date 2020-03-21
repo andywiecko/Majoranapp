@@ -26,8 +26,15 @@ public:
      */
     static std::string target;
 
+    /**
+     * @brief show eigenvalues (flag)
+     */
+    static bool showEigenvalues;
 
-    static bool showVectors;
+    /**
+     * @brief show eigenvectors (flag)
+     */
+    static bool showEigenvectors;
 
     /**
      * @brief procedure for solving:
@@ -55,8 +62,9 @@ public:
             arma::eigs_sym(eigval, eigvec, ATA, k, target.c_str(), tol);
         }
 
-        eigval.print("# == eigs ==");
-        if(showVectors)
+        if(showEigenvalues)
+            eigval.print("# == eigs ==");
+        if(showEigenvectors)
         {
             arma::mat vectors = join_horiz(eigvec.col(0),eigvec.col(1));
             VectorViewer::View2DGrid<arma::mat>(vectors, ham.deg);
@@ -67,6 +75,7 @@ public:
 double Solver::tol = 0.0;
 size_t Solver::noe = 10;
 std::string Solver::target = "sa";
-bool Solver::showVectors = false;
+bool Solver::showEigenvalues = true;
+bool Solver::showEigenvectors = false;
 
 #endif

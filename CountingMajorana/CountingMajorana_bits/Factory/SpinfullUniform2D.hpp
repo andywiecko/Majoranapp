@@ -6,6 +6,24 @@
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
 
+/**
+ * @brief Spinfull 2D plaquette with open boundary conditions
+ * 
+ * Dimensions:
+ * - Length (L)
+ * - Height (H)
+ * 
+ * Parameters:
+ * - Non-local terms:
+ *      - Spinfull::KineticTerm
+ *      - Spinfull::RashbaXTerm
+ *      - Spinfull::RashbaYTerm
+ * - Local terms:
+ *      - Spinfull::ProxTerm
+ *      - Spinfull::ZeemanTerm
+ *      - Spinfull::ChemicalTerm
+ *      - Spinfull::SpinFlipTerm
+ */
 class SpinfullUniform2D
 {
 public:

@@ -6,6 +6,19 @@
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
 
+/**
+ * @brief Spinless uniform 1D chain with open boundary conditions
+ * 
+ * Dimensions:
+ * - Length (L)
+ * 
+ * Parameters:
+ * - Non-local terms:
+ *      - Spinless::KineticTerm
+ *      - Spinless::ProxTerm
+  * - Local terms:
+ *      - Spinless::ChemicalTerm
+ */
 class SpinlessUniformChain
 {
 public:

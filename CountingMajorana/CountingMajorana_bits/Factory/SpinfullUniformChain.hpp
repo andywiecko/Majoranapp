@@ -6,6 +6,22 @@
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
 
+/**
+ * @brief Spinfull uniform 1D chain with open boundary conditions
+ * 
+ * Dimensions:
+ * - Length (L)
+ * 
+ * Parameters:
+ * - Non-local terms:
+ *      - Spinfull::KineticTerm
+ *      - Spinfull::RashbaXTerm
+ *      - Spinfull::RashbaYTerm
+ * - Local terms:
+ *      - Spinfull::ProxTerm
+ *      - Spinfull::ZeemanTerm
+ *      - Spinfull::ChemicalTerm
+ */
 class SpinfullUniformChain
 {
 public:

@@ -23,16 +23,18 @@
  * 
  * Support:
  *  - Spinfull (deg = 4) aka Rashba type model
- *      - kinetic term \f$t_{ij}\f$
- *      - Rashba term \f$\alpha_{ij}\f$
- *      - proximity (superconducting) term \f$\Delta_i \f$
- *      - Zeeman term \f$ V_i^Z \f$
- *      - chemical potential term \f$ \mu_i \f$
+ *      - Spinfull::KineticTerm \f$t_{ij}\f$
+ *      - Spinfull::RashbaXTerm \f$\alpha_{ij}^x\f$
+ *      - Spinfull::RashbaYTerm \f$\alpha_{ij}^y\f$
+ *      - Spinfull::ProxTerm \f$\Delta_i \f$
+ *      - Spinfull::SpinFlipTerm  \f$f_i\f$
+ *      - Spinfull::ZeemanTerm \f$ V_i^Z \f$
+ *      - Spinfull::ChemicalTerm \f$ \mu_i \f$
  * 
  *  - Spinless (deg = 2) aka Kitaev type model
- *      - kinetic term \f$t_{ij}\f$
- *      - proximity (superconducting) term \f$\Delta_{ij}\exp(\phi_{ij}) \f$
- *      - chemical potential term \f$ \mu_i \f$
+ *      - Spinless::KineticTerm \f$t_{ij}\f$
+ *      - Spinless::ProxTerm \f$\Delta_{ij}\exp(\phi_{ij}) \f$
+ *      - Spinless::ChemicalTerm \f$ \mu_i \f$
  */
 template <class O>
 class Filler

@@ -3,13 +3,24 @@
 
 #include "Info.hpp"
 
+/**
+ * @brief class for viewing eigenvectors
+ */
 class VectorViewer
 {
 public:
 
+    //TODO it should be set by argvparser!
     static int height;
     static int length;
 
+    /**
+     * @brief displays vectors unnumbered sites
+     * 
+     * @tparam T 
+     * @param vectors 
+     * @param deg 
+     */
     template <class T>
     static void View(T &vectors, int deg)
     {
@@ -34,6 +45,19 @@ public:
         }
     }
 
+    /**
+     * @brief displays vectors with sites numbered in 2D grid,
+     * 
+     * e.g. (length=5,height=2)
+     * 
+     * 0 1 2 3 4
+     * 
+     * 5 6 7 8 9
+     * 
+     * @tparam T 
+     * @param vectors 
+     * @param deg 
+     */
     template <class T>
     static void View2DGrid(T &vectors, int deg)
     {

@@ -3,7 +3,8 @@
 int main(int argc, char *argv[])
 {
 	ArgvParser argvParser;
-	argvParser.Parse(argc, argv);
+	if (argvParser.Parse(argc, argv))
+		return 0;
 	Dimensions dimensions = argvParser.dimensions;
 	Parameters parameters = argvParser.parameters;
 
@@ -31,6 +32,6 @@ int main(int argc, char *argv[])
 	Solver::tol = 0.00; // tolerance of convergance
 	Solver::noe = 30;	 // number of eigenvalues
 
-	Solver::showVectors = true;
+	Solver::showEigenvectors = true;
 	Solver::Diagonalize(ham);
 }

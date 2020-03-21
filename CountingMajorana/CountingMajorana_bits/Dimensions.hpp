@@ -24,9 +24,9 @@ public:
      */
     Dimensions()
     {
-        map["Length"] = 10;
-        map["Height"] = 1;
-        map["Width"] = 1;
+        map[lengthName] = 10;
+        map[heightName] = 1;
+        map[widthName] = 1;
     }
 };
 
