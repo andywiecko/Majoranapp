@@ -10,7 +10,6 @@ protected:
     static const std::string comment;
 
 public:
-
     static void Comment(std::string text)
     {
         std::cout << comment << text << "\n";
@@ -18,14 +17,13 @@ public:
 
     static void Title(std::string title)
     {
-        Line();
         Comment(title);
         Line();
     }
 
-    static void Line()
+    static void Line(int n = 40)
     {
-        std::cout << comment << std::string(15,'=') << "\n";
+        std::cout << comment << std::string(n, '=') << "\n";
     }
 };
 

@@ -5,9 +5,11 @@ int main(int argc, char *argv[])
 	ArgvParser argvParser;
 	if (argvParser.Parse(argc, argv))
 		return 0;
+
 	Dimensions dimensions = argvParser.dimensions;
 	Parameters parameters = argvParser.parameters;
 
+	// TODO hide this in argv
 	VectorViewer::length = dimensions.map["Length"];
 	VectorViewer::height = dimensions.map["Height"];
 
@@ -29,9 +31,9 @@ int main(int argc, char *argv[])
 	//auto ham = Factory<SpinlessUniformChain>::Generate<matrixType>(L, parameters);
 	//ham.Print();
 
-	Solver::tol = 0.00; // tolerance of convergance
+	Solver::tol = 0.005; // tolerance of convergance
 	Solver::noe = 30;	 // number of eigenvalues
 
-	Solver::showEigenvectors = true;
+	Solver::showEigenvectors = false;
 	Solver::Diagonalize(ham);
 }

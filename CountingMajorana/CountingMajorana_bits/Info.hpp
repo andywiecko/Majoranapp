@@ -4,6 +4,7 @@
 #include "Info/Basics.hpp"
 #include "Info/ShowMap.hpp"
 #include "Info/GammaASCII.hpp"
+#include "Info/Version.hpp"
 
 /**
  * @brief misc class containing all stuff related with cout
@@ -11,7 +12,8 @@
 class Info : 
     public BasicsInfo,
     public ShowMapInfo,
-    public GammaASCII
+    public GammaASCII,
+    public VersionInfo
 {
 
 };

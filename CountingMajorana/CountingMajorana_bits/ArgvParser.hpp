@@ -41,6 +41,8 @@ public:
      */
     ArgvParser()
     {
+        Info::Line();
+        Info::ShowVersion();
         parameters.map[Spinfull::KineticTerm::name] = 1.0;
         parameters.map[Spinfull::ProxTerm::name] = 1.0;
         //dimensions.map[Dimensions::lengthName] = 10;
@@ -53,7 +55,8 @@ public:
     {
         Info::Title("Dimensions");
         Info::ShowMapCommonValue(KeyBindings::mapDimensions, dimensions.map);
-        std::cout << "# "<<std::string(15,'=') << "\n"<< "# Parameters\n# " << std::string(15,'=') << "\n";
+        Info::Line();
+        Info::Title("Parameters");
         Info::ShowMapCommonValue(KeyBindings::mapParameters, parameters.map);
         Info::Line();
     }
