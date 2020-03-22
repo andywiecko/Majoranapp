@@ -1,0 +1,21 @@
+{
+  "model name" : "SpinfulUniform2D",
+  "dimensions" :
+  {
+      "Length" : 100
+  },  
+  "parameters" :
+  {
+      "t_integral" : 1.0,
+      "delta" : 1.05,
+      "rashbaX" : 0.5
+  },
+  "solver options" :
+  {
+    "tol" : 0.005,
+    "noe" : 10,
+    "target" : "sa",
+    "showEigenvalues" : true,
+    "showEigenvectors" : false
+  }
+}

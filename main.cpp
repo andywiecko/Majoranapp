@@ -1,4 +1,5 @@
 #include "CountingMajorana/CountingMajorana.hpp"
+#include <type_traits>
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
 	 * support for: arma::mat, arma::sp_mat
 	 */
 	using matrixType = arma::sp_mat;
+
 	/**
 	 * @brief geometry and model type
 	 * support for:
@@ -36,4 +38,6 @@ int main(int argc, char *argv[])
 
 	Solver::showEigenvectors = false;
 	Solver::Diagonalize(ham);
+
+
 }

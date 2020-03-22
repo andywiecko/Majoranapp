@@ -7,6 +7,8 @@
 #include "Dimensions.hpp"
 #include "KeyBindings.hpp"
 
+#include "InputScriptParser.hpp"
+
 /**
  * @brief primitive argv class
  */
@@ -73,7 +75,7 @@ public:
         int option;
         int returnCode = 0;
         std::string optstringKeys = KeyBindings::GetOptstring();
-        optstringKeys += ":vh";
+        optstringKeys += ":vhf:";
         //std::cout << optstringKeys <<std::endl;
         const char *optstring = optstringKeys.c_str();
         
@@ -103,6 +105,13 @@ public:
             if(option == 'h')
             {
                 this->help = true;
+                continue;
+            }
+
+            if(option == 'f')
+            {
+                std::string filename = optarg;
+                InputScriptParser::Parse(filename, parameters, dimensions);
                 continue;
             }
 

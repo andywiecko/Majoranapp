@@ -15,6 +15,9 @@ class VersionInfo
 
     static arma::arma_version armaVersion;
 
+    static const nlohmann::basic_json<> jsonVer;
+    static const std::string jsonVersion;
+
     static std::string Version()
     {
         return std::to_string(major) + "." +
@@ -27,11 +30,14 @@ public:
     {
         std::cout << "# " << libname << " @ " << Version() << " (" << vername << ")\n";
         std::cout << "# armadillo       " << " @ " << armaVersion.as_string() << "\n";
-        BasicsInfo::Line();
+        std::cout << "# nlohmann JSON   " << " @ " << jsonVersion << "\n";
+	    BasicsInfo::Line();
     }
 };
 
 const std::string VersionInfo::libname{"CountingMajorana"};
 const std::string VersionInfo::vername{"alpha"};
+const nlohmann::basic_json<> VersionInfo::jsonVer = nlohmann::json::meta();
+const std::string VersionInfo::jsonVersion = VersionInfo::jsonVer["version"]["string"];
 
 #endif

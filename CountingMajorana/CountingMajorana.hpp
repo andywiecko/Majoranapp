@@ -9,7 +9,9 @@
  * 
  */
 #include <armadillo>
+#include <nlohmann/json.hpp>
 
 #include "CountingMajorana_bits/ArgvParser.hpp"
+#include "CountingMajorana_bits/InputScriptParser.hpp"
 #include "CountingMajorana_bits/Factory.hpp"
 #include "CountingMajorana_bits/Solver.hpp"
