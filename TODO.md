@@ -10,3 +10,4 @@
 * ~[!] static names in terms~
 * debug
 * info class (gamma ascii for fun)
+* add "system" key description in key bindings

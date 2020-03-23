@@ -5,7 +5,7 @@ VERB=-Wall -Werror -Wpedantic
 WEB=firefox
 
 all: main.cpp
-	${GCC} main.cpp -o mainJSON.exe ${FLAGS} ${VERB}
+	${GCC} main.cpp -o main.exe ${FLAGS} ${VERB}
 
 doxy:
 	doxygen
