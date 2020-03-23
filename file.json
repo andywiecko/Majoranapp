@@ -7,9 +7,13 @@
   },  
   "parameters" :
   {
-      "t_integral" : 1.0,
-      "delta" : 1.05,
-      "rashbaX" : 0.5
+      "t_integral" :   1.0,
+      "delta" :        1.0,
+      "rashbaX" :      0.5,
+      "rashbaY" :      0.0,
+      "spin_flip" :    0.0,
+      "zeeman" :       0.0,
+      "mu_potential" : 0.0
   },
   "solver options" :
   {

@@ -1,15 +1,15 @@
-#ifndef INPUTSCRIPTPARSER_HPP
-#define INPUTSCRIPTPARSER_HPP
+#ifndef PARSERS_INPUTSCRIPTPARSER_HPP
+#define PARSERS_INPUTSCRIPTPARSER_HPP
 
 #include <map>
 #include <string>
 #include <fstream>
 #include <nlohmann/json.hpp>
 
-#include "Misc.hpp"
-#include "Parameters.hpp"
-#include "Dimensions.hpp"
-#include "Solver.hpp"
+#include "../Misc.hpp"
+#include "../Parameters.hpp"
+#include "../Dimensions.hpp"
+#include "../Solver.hpp"
 #include "ModelSelector.hpp"
 
 // for convenience

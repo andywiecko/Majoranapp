@@ -1,12 +1,12 @@
-#ifndef KEYBINDINGS_HPP
-#define KEYBINDINGS_HPP
+#ifndef PARSERS_KEYBINDINGS_HPP
+#define PARSERS_KEYBINDINGS_HPP
 
 #include <iostream>
 #include <map>
 #include <string>
 
-#include "Info.hpp"
-#include "Filler.hpp"
+#include "../Info.hpp"
+#include "../Filler.hpp"
 
 class KeyBindings
 {

@@ -1,13 +1,13 @@
-#ifndef MODELSELECTOR_HPP
-#define MODELSELECTOR_HPP
+#ifndef PARSERS_MODELSELECTOR_HPP
+#define PARSERS_MODELSELECTOR_HPP
 
 #include <string>
 #include <vector>
 
-#include "Factory.hpp"
-#include "Misc.hpp"
-#include "Parameters.hpp"
-#include "Dimensions.hpp"
+#include "../Factory.hpp"
+#include "../Misc.hpp"
+#include "../Parameters.hpp"
+#include "../Dimensions.hpp"
 
 class ModelSelector
 {

@@ -1,10 +1,10 @@
-#ifndef ARGV_PARSER_HPP
-#define ARGV_PARSER_HPP
+#ifndef PARSERS_ARGVPARSER_HPP
+#define PARSERS_ARGVPARSER_HPP
 
 #include <unistd.h>
 #include <iostream>
-#include "Parameters.hpp"
-#include "Dimensions.hpp"
+#include "../Parameters.hpp"
+#include "../Dimensions.hpp"
 #include "KeyBindings.hpp"
 
 #include "InputScriptParser.hpp"
