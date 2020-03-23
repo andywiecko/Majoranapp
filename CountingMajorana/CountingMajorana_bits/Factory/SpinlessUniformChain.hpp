@@ -27,7 +27,7 @@ public:
     {
         int deg = 2;
         double phase = 0.0;
-        int L = dimensions.map[Dimensions::lengthName];
+        int L = dimensions.GetLength();
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {

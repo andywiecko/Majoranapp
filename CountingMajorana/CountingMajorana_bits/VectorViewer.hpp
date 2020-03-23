@@ -2,6 +2,7 @@
 #define VECTORVIEWER_HPP
 
 #include "Info.hpp"
+#include "Dimensions.hpp"
 
 /**
  * @brief class for viewing eigenvectors
@@ -10,9 +11,16 @@ class VectorViewer
 {
 public:
 
-    //TODO it should be set by argvparser!
     static int height;
     static int length;
+    static int width;
+
+    static void SetDimensions(Dimensions dimensions)
+    {
+        height = dimensions.GetHeight();
+        length = dimensions.GetLength();
+        width = dimensions.GetWidth();
+    }
 
     /**
      * @brief displays vectors unnumbered sites
@@ -92,5 +100,6 @@ public:
 
 int VectorViewer::height{1};
 int VectorViewer::length{10};
+int VectorViewer::width{1};
 
 #endif

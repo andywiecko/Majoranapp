@@ -57,8 +57,7 @@ private:
                 Solver::showEigenvectors = val;
                 break;
             default:
-                // TODO move to info
-                std::cout << "Warning! Unrecognized option: " << key << "\n";
+                Info::Warning("Warning! Unrecognized option: ", key);
             }
         }
     }

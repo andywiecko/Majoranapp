@@ -35,11 +35,8 @@ public:
             return Factory<SpinlessUniformChain>::Generate<T>(dimensions, parameters);
 
         default:
-            //TODO warning
-            std::cout << "[!] Warning, unrecognized model and/or matrix type: "
-                      << ModelSelector::GetSelected()
-                      << "\nRunning with default: SpinfullUniformChain @ "
-                      << selectedMatrixType << "\n";
+            Info::Warning("Warning, unrecognized model and/or matrix type: ",ModelSelector::GetSelected());
+            Info::Warning("Running with default: ", "SpinfullUniformChain @ "+selectedMatrixType);
             return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
         }
     }

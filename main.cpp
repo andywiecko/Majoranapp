@@ -9,14 +9,8 @@ int main(int argc, char *argv[])
 	Dimensions dimensions = argvParser.dimensions;
 	Parameters parameters = argvParser.parameters;
 
-	// TODO hide this in argv
-	VectorViewer::length = dimensions.map["Length"];
-	VectorViewer::height = dimensions.map["Height"];
-
 	if (ModelSelector::GetSelected() == " @ ")
 	{
-		std::cout << "Say whaaaat?"
-				  << "\n";
 		/**
 		 * @brief matrix typedef:
 		 * support for: arma::mat, arma::sp_mat
@@ -39,6 +33,7 @@ int main(int argc, char *argv[])
 		Solver::showEigenvectors = false;
 		Solver::Diagonalize(ham);
 	}
+	// parsed from JSON
 	else if (ModelSelector::SparseSelected())
 	{
 		auto ham = ModelSelector::SelectSparse(dimensions, parameters);
@@ -51,9 +46,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		// Warning info TODO
-		std::cout << "[!] Warning, unrecognized model and/or matrix type: " 
-				  << ModelSelector::GetSelected()
-		          << "\nExiting...\n";
+		Info::Warning("Warning, unrecognized model and/or matrix type: ",
+					  ModelSelector::GetSelected());
+		Info::Warning("Exiting...");
 	}
 }

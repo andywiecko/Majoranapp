@@ -28,6 +28,22 @@ public:
         map[heightName] = 1;
         map[widthName] = 1;
     }
+
+    int GetHeight()
+    {
+        return map[heightName];
+    }
+
+    int GetLength()
+    {
+        return map[lengthName];
+    }
+
+    int GetWidth()
+    {
+        return map[widthName];
+    }
+
 };
 
 const std::string Dimensions::lengthName{"Length"};

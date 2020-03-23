@@ -29,7 +29,7 @@ public:
     static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
     {
         int deg = 4;
-        int L = dimensions.map[Dimensions::lengthName];
+        int L = dimensions.GetLength();
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {

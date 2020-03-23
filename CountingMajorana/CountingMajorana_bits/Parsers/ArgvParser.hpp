@@ -144,6 +144,8 @@ public:
             return 1;
         }
 
+        VectorViewer::SetDimensions(dimensions);
+
         return returnCode;
     }
 };

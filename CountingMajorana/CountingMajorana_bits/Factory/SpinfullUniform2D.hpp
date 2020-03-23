@@ -31,8 +31,8 @@ public:
     static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
     {
         int deg = 4;
-        int length = dimensions.map[Dimensions::lengthName]; // TODO make it more elegant
-        int height = dimensions.map[Dimensions::heightName];
+        int length = dimensions.GetLength();
+        int height = dimensions.GetHeight();
         int N = length * height;
 
         Hamiltonian<T> ham(N, deg);
