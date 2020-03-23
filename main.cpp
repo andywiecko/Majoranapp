@@ -1,5 +1,4 @@
 #include "CountingMajorana/CountingMajorana.hpp"
-#include <type_traits>
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +13,7 @@ int main(int argc, char *argv[])
 	VectorViewer::length = dimensions.map["Length"];
 	VectorViewer::height = dimensions.map["Height"];
 
-	if (ModelSelector::GetSelected() == "@")
+	if (ModelSelector::GetSelected() == " @ ")
 	{
 		std::cout << "Say whaaaat?"
 				  << "\n";
@@ -53,6 +52,8 @@ int main(int argc, char *argv[])
 	else
 	{
 		// Warning info TODO
-		std::cout << "[!] Warning, unrecognized matrix type!\nExiting...\n";
+		std::cout << "[!] Warning, unrecognized model and/or matrix type: " 
+				  << ModelSelector::GetSelected()
+		          << "\nExiting...\n";
 	}
 }

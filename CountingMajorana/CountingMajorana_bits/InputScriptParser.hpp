@@ -83,9 +83,6 @@ public:
         ModelSelector::selectedModel = modelName.get<std::string>();
         auto &matrixType = inputScript["matrix type"];
         ModelSelector::selectedMatrixType = matrixType.get<std::string>();
-        std::cout << ModelSelector::selectedModel << "\n";
-        std::cout << ModelSelector::selectedMatrixType << "\n";
-        // parameters
 
         // TODO add warning when parameter name is invalid!
         ParseMap(inputScript["parameters"], parameters.map);

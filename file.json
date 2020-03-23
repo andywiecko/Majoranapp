@@ -1,5 +1,5 @@
 {
-  "model name" : "SpinfulUniform2D",
+  "model name" : "SpinfullUniformChain",
   "matrix type" : "sparse",
   "dimensions" :
   {

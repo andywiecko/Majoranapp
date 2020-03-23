@@ -55,6 +55,9 @@ public:
      */
     void Info()
     {
+        Info::Title("Model");
+        Info::Comment(ModelSelector::GetSelected());
+        Info::Line();
         Info::Title("Dimensions");
         Info::ShowMapCommonValue(KeyBindings::mapDimensions, dimensions.map);
         Info::Line();
