@@ -1,5 +1,6 @@
 {
   "model name" : "SpinfulUniform2D",
+  "matrix type" : "sparse",
   "dimensions" :
   {
       "Length" : 100

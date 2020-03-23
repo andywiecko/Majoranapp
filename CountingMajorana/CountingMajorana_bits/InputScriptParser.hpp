@@ -10,6 +10,7 @@
 #include "Parameters.hpp"
 #include "Dimensions.hpp"
 #include "Solver.hpp"
+#include "ModelSelector.hpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -25,7 +26,7 @@ private:
         {
             json &val = it.value();
             const std::string &key = it.key();
-            std::cout << key << " " << val << "\n";
+            //std::cout << key << " " << val << "\n";
             map[key] = val;
         }
     }
@@ -36,7 +37,7 @@ private:
         {
             json &val = it.value();
             const std::string &key = it.key();
-            std::cout << key << " " << val << "\n";
+            //std::cout << key << " " << val << "\n";
 
             switch (str2int(key.c_str()))
             {
@@ -67,6 +68,7 @@ private:
     }
 
 public:
+    typedef int type;
     static void Parse(std::string filename,
                       Parameters &parameters,
                       Dimensions &dimensions)
@@ -78,7 +80,11 @@ public:
 
         // selecting the model
         auto &modelName = inputScript["model name"];
-        std::cout << modelName << "\n";
+        ModelSelector::selectedModel = modelName.get<std::string>();
+        auto &matrixType = inputScript["matrix type"];
+        ModelSelector::selectedMatrixType = matrixType.get<std::string>();
+        std::cout << ModelSelector::selectedModel << "\n";
+        std::cout << ModelSelector::selectedMatrixType << "\n";
         // parameters
 
         // TODO add warning when parameter name is invalid!
