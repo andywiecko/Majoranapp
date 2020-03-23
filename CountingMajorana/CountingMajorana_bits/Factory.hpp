@@ -2,46 +2,37 @@
 #define FACTORY_HPP
 
 #include "Hamiltonian.hpp"
-#include "SpinfullFiller.hpp"
-#include "SpinlessFiller.hpp"
 #include "Parameters.hpp"
+#include "Dimensions.hpp"
 
-template <class T>
-Hamiltonian<T> SpinfullUniformChain(int L, Parameters parameters)
+// implemented geometries and stuff
+#include "Factory/SpinlessUniformChain.hpp"
+#include "Factory/SpinfullUniformChain.hpp"
+#include "Factory/SpinfullUniform2D.hpp"
+
+/**
+ * @brief class which produces stuff
+ * 
+ * @tparam O static object to execute
+ */
+template <class O>
+class Factory
 {
-    int deg = 4;
-    Hamiltonian<T> ham(L, deg);
-    for (int i = 0; i < L - 1; i++)
-    {
-        SpinfullFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);
-        SpinfullFiller::RashbaTerm(ham, i, i + 1, parameters.map["rashba"]);
-    }
-    for (int i = 0; i < L; i++)
-    {
-        SpinfullFiller::ProxTerm(ham, i, parameters.map["delta"]);
-        SpinfullFiller::ZeemanTerm(ham, i, parameters.map["zeeman"]);
-        SpinfullFiller::ChemicalTerm(ham, i, parameters.map["mu_potential"]);
-    }
+public:
 
-    return ham;
-}
-
-template <class T>
-Hamiltonian<T> SpinlessUniformChain(int L, Parameters parameters)
-{
-    int deg = 2;
-    Hamiltonian<T> ham(L, deg);
-    for (int i = 0; i < L - 1; i++)
+    /**
+     * @brief run the `Generate()` function of static class `O`
+     * 
+     * @tparam T matrix type, support for: arma::mat, arma::sp_mat
+     * @param dimensions dimensions of the model
+     * @param parameters parameters of the model
+     * @return Hamiltonian<T> 
+     */
+    template <class T,typename ... Targs>
+    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters, Targs... Fargs)
     {
-        SpinlessFiller::KineticTerm(ham, i, i + 1, parameters.map["t_integral"]);
-        SpinlessFiller::ProxTerm(ham, i, i+1, parameters.map["delta"]);
+        return O::template Generate<T>(dimensions, parameters, Fargs...);
     }
-    for (int i = 0; i < L; i++)
-    {
-        SpinlessFiller::ChemicalTerm(ham, i, parameters.map["mu_potential"]);
-    }
-
-    return ham;
-}
+};
 
 #endif

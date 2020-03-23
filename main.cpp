@@ -3,23 +3,51 @@
 int main(int argc, char *argv[])
 {
 	ArgvParser argvParser;
-	argvParser.Parse(argc, argv);
-	int L = argvParser.L;
+	if (argvParser.Parse(argc, argv))
+		return 0;
+
+	Dimensions dimensions = argvParser.dimensions;
 	Parameters parameters = argvParser.parameters;
 
-	/**
-	 * @brief matrix typedef:
-	 * support for: arma::mat, arma::sp_mat
-	 */
-	using matrixType = arma::sp_mat;
+	if (ModelSelector::GetSelected() == " @ ")
+	{
+		/**
+		 * @brief matrix typedef:
+		 * support for: arma::mat, arma::sp_mat
+		 */
+		using matrixType = arma::sp_mat;
 
-	auto ham = SpinfullUniformChain<matrixType>(L, parameters);
-	//auto ham = SpinlessUniformChain<matrixType>(L, parameters);
-	
-	//ham.Print();
+		/**
+		 * @brief geometry and model type
+		 * support for:
+		 * - SpinfullUniformChain (Length)
+		 * - SpinlessUniformChain (Length)
+	 	* - SpinfullUniform2D    (Length, Height)
+	 	*/
+		using geometry = SpinfullUniform2D;
 
-	Solver::tol = 0.001; // tolerance of convergance
-	Solver::noe = 25; // number of eigenvalues 
-	Solver::Diagonalize(ham);
+		auto ham = Factory<geometry>::Generate<matrixType>(dimensions, parameters);
 
+		Solver::tol = 0.005; // tolerance of convergance
+		Solver::noe = 30;	 // number of eigenvalues
+		Solver::showEigenvectors = false;
+		Solver::Diagonalize(ham);
+	}
+	// parsed from JSON
+	else if (ModelSelector::SparseSelected())
+	{
+		auto ham = ModelSelector::SelectSparse(dimensions, parameters);
+		Solver::Diagonalize(ham);
+	}
+	else if (ModelSelector::DenseSelected())
+	{
+		auto ham = ModelSelector::SelectDense(dimensions, parameters);
+		Solver::Diagonalize(ham);
+	}
+	else
+	{
+		Info::Warning("Warning, unrecognized model and/or matrix type: ",
+					  ModelSelector::GetSelected());
+		Info::Warning("Exiting...");
+	}
 }

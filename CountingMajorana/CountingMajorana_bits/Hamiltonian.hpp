@@ -12,6 +12,9 @@
 template <class T>
 class Hamiltonian
 {
+
+friend class Solver;
+
 private:
    /**
     * @brief number degree of freedom
@@ -24,16 +27,20 @@ public:
    /**
     * @brief number of sites
     */
-   int L;
+   int N;
    /**
     * @brief matrix element container
     */
    T elements;
-   Hamiltonian(int _L, int _deg)
+   /**
+    * @brief Construct a new Hamiltonian object
+    * 
+    * @param _N number of sites
+    * @param _deg degree of freedom
+    */
+   Hamiltonian(int _N, int _deg) : deg{_deg}, N{_N}
    {
-      L = _L;
-      deg = _deg;
-      elements.set_size(deg * L, deg * L);
+      elements.set_size(deg * N, deg * N);
 
       // [!] only for arma::mat
       if constexpr (std::is_same<T, arma::mat>::value)
