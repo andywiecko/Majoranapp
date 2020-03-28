@@ -47,6 +47,9 @@ private:
             case str2int("noe"):
                 Solver::noe = val;
                 break;
+            case str2int("nov"):
+                Solver::nov = val;
+                break;
             case str2int("target"):
                 Solver::target = val.get<std::string>();
                 break;

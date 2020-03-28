@@ -9,6 +9,7 @@
 #include "Factory/SpinlessUniformChain.hpp"
 #include "Factory/SpinfullUniformChain.hpp"
 #include "Factory/SpinfullUniform2D.hpp"
+#include "Factory/SpinfullUniform3D.hpp"
 
 /**
  * @brief class which produces stuff

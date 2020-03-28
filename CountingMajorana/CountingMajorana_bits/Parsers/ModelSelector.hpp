@@ -8,6 +8,7 @@
 #include "../Misc.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
+#include "../VectorViewer.hpp"
 
 class ModelSelector
 {
@@ -25,7 +26,12 @@ public:
 
         switch (str2int(selectedModel.c_str()))
         {
+        case str2int("SpinfullUniform3D"):
+            VectorViewer::View = &SpinfullUniform3D::View;
+            return Factory<SpinfullUniform3D>::Generate<T>(dimensions, parameters);
+
         case str2int("SpinfullUniform2D"):
+            VectorViewer::View = &SpinfullUniform2D::View;
             return Factory<SpinfullUniform2D>::Generate<T>(dimensions, parameters);
 
         case str2int("SpinfullUniformChain"):

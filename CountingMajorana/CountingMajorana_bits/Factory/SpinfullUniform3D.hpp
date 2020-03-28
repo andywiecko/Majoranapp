@@ -5,6 +5,7 @@
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
+#include "../VectorViewers/Grid3DViewer.hpp"
 
 /**
  * @brief Spinfull 3D cuboid with open boundary conditions
@@ -27,7 +28,7 @@
  *      - Spinfull::ZeemanYTerm
  *      - Spinfull::ZeemanZTerm
  */
-class SpinfullUniform3D
+class SpinfullUniform3D : public Grid3DViewer
 {
 public:
     template <class T>
@@ -58,8 +59,8 @@ public:
             {
                 for (int x = 0; x < length - 1; x++)
                 {
-                    int from = ToSite(x, y, z, length, int width);
-                    int to = ToSite(x + 1, y, z, length, int width);
+                    int from = ToSite(x, y, z, length, width);
+                    int to = ToSite(x + 1, y, z, length, width);
                     //std::cout << "(" << from << ", " << to << ")" << std::endl;
                     Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
                     Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
@@ -76,8 +77,8 @@ public:
             {
                 for (int y = 0; y < width - 1; y++)
                 {
-                    int from = ToSite(x, y, z, length, int width);
-                    int to = ToSite(x, y + 1, z, length, int width);
+                    int from = ToSite(x, y, z, length, width);
+                    int to = ToSite(x, y + 1, z, length, width);
                     //std::cout << "(" << from << ", " << to << ")" << std::endl;
                     Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
                     Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
@@ -92,11 +93,11 @@ public:
             {
                 for (int z = 0; z < height - 1; z++)
                 {
-                    int from = ToSite(x, y, z, length, int width);
-                    int to = ToSite(x, y, z + 1, length, int width);
+                    int from = ToSite(x, y, z, length, width);
+                    int to = ToSite(x, y, z + 1, length, width);
                     //std::cout << "(" << from << ", " << to << ")" << std::endl;
                     Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
-                    Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);
+                    Filler<Spinfull::RashbaZTerm>::Fill(ham, parameters, from, to);
                 }
             }
         }
@@ -105,15 +106,9 @@ public:
     }
 
 private:
-    int ToSite(int x, int y, int z, int L, int W)
+    static int ToSite(int x, int y, int z, int L, int W)
     {
         return x + L * y + L * W * z;
-    }
-    void ToCoord(int i, int &x, int &y, int &z, int L, int W)
-    {
-        x = i % L;
-        y = (i / L) % W;
-        z = i / (L * W);
     }
 };
 

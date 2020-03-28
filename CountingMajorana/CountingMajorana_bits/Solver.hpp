@@ -21,6 +21,11 @@ public:
      * @brief number of eigenvalues
      */
     static size_t noe;
+
+    /**
+     * @brief number of eigenvectors
+     */
+    static size_t nov;
     /**
      * @brief target part of the spectrum
      */
@@ -66,14 +71,16 @@ public:
             eigval.print("# === λ ===");
         if(showEigenvectors)
         {
-            arma::mat vectors = join_horiz(eigvec.col(0),eigvec.col(1));
-            VectorViewer::View2DGrid<arma::mat>(vectors, ham.deg);
+            //arma::mat vectors = join_horiz(eigvec.col(0),eigvec.col(1));
+            arma::mat vectors = eigvec.cols(0,nov < size ? nov-1 : size-1);
+            VectorViewer::View(vectors, ham.deg);
         }
     }
 };
 
 double Solver::tol = 0.0;
 size_t Solver::noe = 10;
+size_t Solver::nov = 2;
 std::string Solver::target = "sa";
 bool Solver::showEigenvalues = true;
 bool Solver::showEigenvectors = false;

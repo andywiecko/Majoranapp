@@ -6,12 +6,14 @@
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
 
+#include "../VectorViewers/Grid2DViewer.hpp"
+
 /**
  * @brief Spinfull 2D plaquette with open boundary conditions
  * 
  * Dimensions:
  * - Length (L)
- * - Height (H)
+ * - Width (W)
  * 
  * Parameters:
  * - Non-local terms:
@@ -24,7 +26,7 @@
  *      - Spinfull::ZeemanXTerm
  *      - Spinfull::ZeemanZTerm
  */
-class SpinfullUniform2D
+class SpinfullUniform2D : public Grid2DViewer
 {
 public:
     template <class T>
@@ -32,8 +34,8 @@ public:
     {
         int deg = 4;
         int length = dimensions.GetLength();
-        int height = dimensions.GetHeight();
-        int N = length * height;
+        int width = dimensions.GetWidth();
+        int N = length * width;
 
         Hamiltonian<T> ham(N, deg);
 
@@ -47,7 +49,7 @@ public:
         }
 
         // x-direction links
-        for (int y = 0; y < height; y++)
+        for (int y = 0; y < width; y++)
         {
             for (int x = 0; x < length - 1; x++)
             {
@@ -65,7 +67,7 @@ public:
         // y-direction links
         for (int x = 0; x < length; x++)
         {
-            for (int y = 0; y < height-1; y++)
+            for (int y = 0; y < width-1; y++)
             {
                 int from = y * length + x;
                 int to = (y+1) * length + x;

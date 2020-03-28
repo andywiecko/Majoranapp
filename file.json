@@ -1,26 +1,28 @@
 {
-  "model name" : "SpinfullUniformChain",
-  "matrix type" : "sparse",
-  "dimensions" :
-  {
-      "Length" : 50
-  },  
-  "parameters" :
-  {
-      "t_integral" :   1.0,
-      "delta" :        1.0,
-      "rashbaX" :      0.5,
-      "rashbaY" :      0.0,
-      "spin_flip" :    0.0,
-      "zeeman" :       0.0,
-      "mu_potential" : 0.0
+  "model name": "SpinfullUniform3D",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 100,
+    "Height": 3,
+    "Width": 3
   },
-  "solver options" :
-  {
-    "tol" : 0.005,
-    "noe" : 10,
-    "target" : "sa",
-    "showEigenvalues" : true,
-    "showEigenvectors" : false
+  "parameters": {
+    "mu_potential": 0.0,
+    "t_integral": 1.0,
+    "delta": 1.0,
+    "rashbaX": 0.5,
+    "rashbaY": 0.0,
+    "rashbaZ": 0.0,
+    "zeemanX": 0.0,
+    "zeemanY": 0.0,
+    "zeemanZ": 0.0
+  },
+  "solver options": {
+    "tol": 0.005,
+    "noe": 10,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
   }
 }
