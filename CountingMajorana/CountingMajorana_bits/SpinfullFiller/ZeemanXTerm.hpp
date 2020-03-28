@@ -43,7 +43,7 @@ public:
     static const std::string name;
 };
 
-const std::string ZeemanXTerm::name{"zeemanx"};
+const std::string ZeemanXTerm::name{"zeemanX"};
 
 }
 

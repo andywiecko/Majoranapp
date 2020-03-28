@@ -11,7 +11,8 @@ namespace Spinfull
  * @brief Rashba X term
  * \f[
  * \hat H_{\mathrm{Rashba}\, x} = 
- * \sum_{\langle i,j\rangle}\mathrm i\alpha_{ij}^x \left(
+ * \sum_{\langle i,j\rangle}\sum_{\sigma\sigma'} \alpha_{ij}^x c_{i\sigma}^\dagger (i\sigma^x)_{\sigma\sigma'} c_{j\sigma'} +\mathrm{h.c.}= 
+ * \sum_{\langle i,j\rangle} i\alpha_{ij}^x \left(
  *  c_{i\uparrow}^\dagger c_{j\downarrow}
  * +c_{i\downarrow}^\dagger c_{j\uparrow}\right)
  * +\mathrm{h.c.} = 

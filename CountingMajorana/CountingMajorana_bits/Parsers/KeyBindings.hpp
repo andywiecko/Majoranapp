@@ -48,6 +48,7 @@ const std::map<char, std::string> KeyBindings::mapParameters{
     {'m', Spinfull::ChemicalTerm::name},
     {'X', Spinfull::RashbaXTerm::name},
     {'Y', Spinfull::RashbaYTerm::name},
+    {'Z', Spinfull::RashbaZTerm::name},
     {'x', Spinfull::ZeemanXTerm::name},
     {'y', Spinfull::ZeemanYTerm::name},
     {'z', Spinfull::ZeemanZTerm::name}};

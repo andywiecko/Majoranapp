@@ -9,11 +9,15 @@
 #include "SpinfullFiller/ChemicalTerm.hpp"
 #include "SpinfullFiller/KineticTerm.hpp"
 #include "SpinfullFiller/ProxTerm.hpp"
+// - rashba
 #include "SpinfullFiller/RashbaXTerm.hpp"
 #include "SpinfullFiller/RashbaYTerm.hpp"
+#include "SpinfullFiller/RashbaZTerm.hpp"
+// - zeeman
 #include "SpinfullFiller/ZeemanXTerm.hpp"
 #include "SpinfullFiller/ZeemanYTerm.hpp"
 #include "SpinfullFiller/ZeemanZTerm.hpp"
+
 // spinless
 #include "SpinlessFiller/ChemicalTerm.hpp"
 #include "SpinlessFiller/KineticTerm.hpp"
