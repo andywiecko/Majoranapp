@@ -20,9 +20,9 @@
  *      - Spinfull::RashbaYTerm
  * - Local terms:
  *      - Spinfull::ProxTerm
- *      - Spinfull::ZeemanTerm
  *      - Spinfull::ChemicalTerm
- *      - Spinfull::SpinFlipTerm
+ *      - Spinfull::ZeemanXTerm
+ *      - Spinfull::ZeemanZTerm
  */
 class SpinfullUniform2D
 {
@@ -41,9 +41,9 @@ public:
         for (int i = 0; i < N; i++)
         {
             Filler<Spinfull::ProxTerm>::Fill(ham, parameters, i);
-            Filler<Spinfull::ZeemanTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanZTerm>::Fill(ham, parameters, i);
             Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
-            Filler<Spinfull::SpinFlipTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanXTerm>::Fill(ham, parameters, i);
         }
 
         // x-direction links

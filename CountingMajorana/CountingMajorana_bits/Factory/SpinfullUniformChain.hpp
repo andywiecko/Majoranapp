@@ -19,7 +19,7 @@
  *      - Spinfull::RashbaYTerm
  * - Local terms:
  *      - Spinfull::ProxTerm
- *      - Spinfull::ZeemanTerm
+ *      - Spinfull::ZeemanZTerm
  *      - Spinfull::ChemicalTerm
  */
 class SpinfullUniformChain
@@ -40,7 +40,7 @@ public:
         for (int i = 0; i < L; i++)
         {
             Filler<Spinfull::ProxTerm>::Fill(ham, parameters, i);
-            Filler<Spinfull::ZeemanTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanZTerm>::Fill(ham, parameters, i);
             Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
         }
 

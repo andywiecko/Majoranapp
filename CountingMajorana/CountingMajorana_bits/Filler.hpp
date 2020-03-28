@@ -11,8 +11,9 @@
 #include "SpinfullFiller/ProxTerm.hpp"
 #include "SpinfullFiller/RashbaXTerm.hpp"
 #include "SpinfullFiller/RashbaYTerm.hpp"
-#include "SpinfullFiller/ZeemanTerm.hpp"
-#include "SpinfullFiller/SpinFlipTerm.hpp"
+#include "SpinfullFiller/ZeemanXTerm.hpp"
+#include "SpinfullFiller/ZeemanYTerm.hpp"
+#include "SpinfullFiller/ZeemanZTerm.hpp"
 // spinless
 #include "SpinlessFiller/ChemicalTerm.hpp"
 #include "SpinlessFiller/KineticTerm.hpp"
@@ -27,8 +28,8 @@
  *      - Spinfull::RashbaXTerm \f$\alpha_{ij}^x\f$
  *      - Spinfull::RashbaYTerm \f$\alpha_{ij}^y\f$
  *      - Spinfull::ProxTerm \f$\Delta_i \f$
- *      - Spinfull::SpinFlipTerm  \f$f_i\f$
- *      - Spinfull::ZeemanTerm \f$ V_i^Z \f$
+ *      - Spinfull::ZeemanXTerm  \f$f_i\f$
+ *      - Spinfull::ZeemanZTerm \f$ V_i^Z \f$
  *      - Spinfull::ChemicalTerm \f$ \mu_i \f$
  * 
  *  - Spinless (deg = 2) aka Kitaev type model
