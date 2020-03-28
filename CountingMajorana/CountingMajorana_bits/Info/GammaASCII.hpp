@@ -21,6 +21,21 @@ public:
         return gamma+down;
     }
 
+    static std::string Gamma(int deg)
+    {
+        switch (deg)
+        {
+            case 0:
+                return GammaUp();
+                break;
+            case 1:
+                return GammaDown();
+                break;
+            default:
+                return "?";
+        }
+    }
+
 };
 
 const std::string GammaASCII::gamma{"γ"};

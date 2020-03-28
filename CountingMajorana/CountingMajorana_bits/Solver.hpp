@@ -63,7 +63,7 @@ public:
         }
 
         if(showEigenvalues)
-            eigval.print("# == eigs ==");
+            eigval.print("# === λ ===");
         if(showEigenvectors)
         {
             arma::mat vectors = join_horiz(eigvec.col(0),eigvec.col(1));

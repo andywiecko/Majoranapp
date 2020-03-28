@@ -72,11 +72,11 @@ public:
         int rows = vectors.n_rows;
         int cols = vectors.n_cols;
 
-        std::cout << "#";
+        std::cout << "# x y ";
         for (int col = 0; col < cols; col++)
             for (int _deg = 0; _deg < deg / 2; _deg++)
-                std::cout << " g+(" << col << ",s=" << _deg << ")"
-                          << " g-(" << col << ",s=" << _deg << ")";
+                std::cout << Info::Gamma(_deg) << "+(" << col << ") "
+                          << Info::Gamma(_deg) << "-(" << col << ") ";
         std::cout << std::endl;
 
         for (int row = 0, x = 0, y = 0; row < rows; row += deg, x++)
