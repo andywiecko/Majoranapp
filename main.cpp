@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
 		Solver::tol = 0.005; // tolerance of convergance
 		Solver::noe = 30;	 // number of eigenvalues
-		Solver::showEigenvectors = true;
+		Solver::showEigenvectors = false;
 		Solver::Diagonalize(ham);
 	}
 	// parsed from JSON

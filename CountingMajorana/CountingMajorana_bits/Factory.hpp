@@ -6,7 +6,10 @@
 #include "Dimensions.hpp"
 
 // implemented geometries and stuff
+// - Spinless
 #include "Factory/SpinlessUniformChain.hpp"
+#include "Factory/SpinlessUniform2D.hpp"
+// - Spinfull
 #include "Factory/SpinfullUniformChain.hpp"
 #include "Factory/SpinfullUniform2D.hpp"
 #include "Factory/SpinfullUniform3D.hpp"

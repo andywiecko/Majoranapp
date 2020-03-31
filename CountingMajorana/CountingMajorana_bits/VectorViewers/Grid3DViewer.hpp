@@ -45,7 +45,7 @@ public:
         
         for (int row = 0, site = 0,x,y,z; row < rows; row += deg, site++)
         {
-            ToCoord(site, x, y, z, VectorViewer::length, VectorViewer::height);
+            ToCoord(site, x, y, z, VectorViewer::length, VectorViewer::width);
 
             std::cout << x << " " << y << " " << z << " ";
             for (int col = 0; col < cols; col++)

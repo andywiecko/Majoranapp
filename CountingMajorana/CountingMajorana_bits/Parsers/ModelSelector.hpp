@@ -37,12 +37,16 @@ public:
         case str2int("SpinfullUniformChain"):
             return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
 
+        case str2int("SpinlessUniform2D"):
+            VectorViewer::View = &SpinlessUniform2D::View;
+            return Factory<SpinlessUniform2D>::Generate<T>(dimensions, parameters);
+
         case str2int("SpinlessUniformChain"):
             return Factory<SpinlessUniformChain>::Generate<T>(dimensions, parameters);
 
         default:
-            Info::Warning("Warning, unrecognized model and/or matrix type: ",ModelSelector::GetSelected());
-            Info::Warning("Running with default: ", "SpinfullUniformChain @ "+selectedMatrixType);
+            Info::Warning("Warning, unrecognized model and/or matrix type: ", ModelSelector::GetSelected());
+            Info::Warning("Running with default: ", "SpinfullUniformChain @ " + selectedMatrixType);
             return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
         }
     }

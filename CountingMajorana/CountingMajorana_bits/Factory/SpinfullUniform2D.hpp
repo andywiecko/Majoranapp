@@ -43,9 +43,10 @@ public:
         for (int i = 0; i < N; i++)
         {
             Filler<Spinfull::ProxTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanXTerm>::Fill(ham, parameters, i);
+            Filler<Spinfull::ZeemanYTerm>::Fill(ham, parameters, i);
             Filler<Spinfull::ZeemanZTerm>::Fill(ham, parameters, i);
             Filler<Spinfull::ChemicalTerm>::Fill(ham, parameters, i);
-            Filler<Spinfull::ZeemanXTerm>::Fill(ham, parameters, i);
         }
 
         // x-direction links
