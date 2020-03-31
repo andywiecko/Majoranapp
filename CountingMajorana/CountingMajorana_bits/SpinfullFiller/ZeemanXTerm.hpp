@@ -1,5 +1,5 @@
-#ifndef SPINFULLFILLER_SPINFLIPTERM_HPP
-#define SPINFULLFILLER_SPINFLIPTERM_HPP
+#ifndef SPINFULLFILLER_ZEEMANXTERM_HPP
+#define SPINFULLFILLER_ZEEMANXTERM_HPP
 
 #include "../Hamiltonian.hpp"
 #include "../EnumGamma.hpp"
@@ -8,21 +8,22 @@ namespace Spinfull
 {
 
 /**
- * @brief proximity term
+ * @brief Zeeman in X (spin flip) term 
  * \f[
- * \hat H_{\mathrm{flip}} = 
- * \sum_{i}f_{i}\left(
+ * \hat H_{\mathrm{Zeeman}\, x} = 
+ * \sum_{i} \sum_{\sigma\sigma'} V_{i}^X c_{i\sigma}^\dagger (\sigma^x)_{\sigma\sigma'} c_{i\sigma'} = 
+ * \sum_{i}V_{i}^X\left(
  * c_{i\uparrow}^\dagger c_{i\downarrow}
  * +\mathrm{h.c.}\right)=
  * -i\sum_{i}
- * \frac{f_{i}}{2}\left(
+ * \frac{V_{i}^X}{2}\left(
  * \gamma_{i\uparrow}^+\gamma_{i\downarrow}^-
  * +\gamma_{i\downarrow}^+ \gamma_{i\uparrow}^-
  * \right)
  * \f]
  *
  */
-class SpinFlipTerm
+class ZeemanXTerm
 {
 public:
     /**
@@ -42,7 +43,7 @@ public:
     static const std::string name;
 };
 
-const std::string SpinFlipTerm::name{"spin_flip"};
+const std::string ZeemanXTerm::name{"zeemanX"};
 
 }
 

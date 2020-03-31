@@ -8,6 +8,7 @@
 #include "../Misc.hpp"
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
+#include "../VectorViewer.hpp"
 
 class ModelSelector
 {
@@ -25,18 +26,27 @@ public:
 
         switch (str2int(selectedModel.c_str()))
         {
+        case str2int("SpinfullUniform3D"):
+            VectorViewer::View = &SpinfullUniform3D::View;
+            return Factory<SpinfullUniform3D>::Generate<T>(dimensions, parameters);
+
         case str2int("SpinfullUniform2D"):
+            VectorViewer::View = &SpinfullUniform2D::View;
             return Factory<SpinfullUniform2D>::Generate<T>(dimensions, parameters);
 
         case str2int("SpinfullUniformChain"):
             return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
 
+        case str2int("SpinlessUniform2D"):
+            VectorViewer::View = &SpinlessUniform2D::View;
+            return Factory<SpinlessUniform2D>::Generate<T>(dimensions, parameters);
+
         case str2int("SpinlessUniformChain"):
             return Factory<SpinlessUniformChain>::Generate<T>(dimensions, parameters);
 
         default:
-            Info::Warning("Warning, unrecognized model and/or matrix type: ",ModelSelector::GetSelected());
-            Info::Warning("Running with default: ", "SpinfullUniformChain @ "+selectedMatrixType);
+            Info::Warning("Warning, unrecognized model and/or matrix type: ", ModelSelector::GetSelected());
+            Info::Warning("Running with default: ", "SpinfullUniformChain @ " + selectedMatrixType);
             return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
         }
     }

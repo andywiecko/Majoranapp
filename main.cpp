@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
 		 * support for:
 		 * - SpinfullUniformChain (Length)
 		 * - SpinlessUniformChain (Length)
-	 	* - SpinfullUniform2D    (Length, Height)
-	 	*/
+	 	 * - SpinfullUniform2D    (Length, Width)
+	 	 */
 		using geometry = SpinfullUniform2D;
 
 		auto ham = Factory<geometry>::Generate<matrixType>(dimensions, parameters);
