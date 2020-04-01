@@ -5,6 +5,7 @@
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
+#include "../Info.hpp"
 
 /**
  * @brief Spinfull uniform 1D chain with open boundary conditions
@@ -30,6 +31,12 @@ public:
     {
         int deg = 4;
         int L = dimensions.GetLength();
+
+        // check width and height for warning
+        int W = dimensions.GetWidth();
+        int H = dimensions.GetHeight();
+        Info::DimensionsWarningOnly1D(L,W,H);
+
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {

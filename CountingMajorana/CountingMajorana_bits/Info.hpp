@@ -6,6 +6,7 @@
 #include "Info/GammaASCII.hpp"
 #include "Info/Version.hpp"
 #include "Info/Colors.hpp"
+#include "Info/DimensionsWarning.hpp"
 
 /**
  * @brief misc class containing all stuff related with cout
@@ -15,7 +16,8 @@ class Info :
     public ShowMapInfo,
     public GammaASCII,
     public VersionInfo,
-    public ColorsInfo
+    public ColorsInfo,
+    public DimensionsWarningInfo
 {
 
 };

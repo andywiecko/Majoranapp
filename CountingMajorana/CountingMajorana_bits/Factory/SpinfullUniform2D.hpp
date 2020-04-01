@@ -5,7 +5,7 @@
 #include "../Parameters.hpp"
 #include "../Dimensions.hpp"
 #include "../Filler.hpp"
-
+#include "../Info.hpp"
 #include "../VectorViewers/Grid2DViewer.hpp"
 
 /**
@@ -35,6 +35,11 @@ public:
         int deg = 4;
         int length = dimensions.GetLength();
         int width = dimensions.GetWidth();
+
+        // check height for warning
+        int height = dimensions.GetHeight();
+        Info::DimensionsWarningOnly2D(length, width, height);
+
         int N = length * width;
 
         Hamiltonian<T> ham(N, deg);
@@ -68,10 +73,10 @@ public:
         // y-direction links
         for (int x = 0; x < length; x++)
         {
-            for (int y = 0; y < width-1; y++)
+            for (int y = 0; y < width - 1; y++)
             {
                 int from = y * length + x;
-                int to = (y+1) * length + x;
+                int to = (y + 1) * length + x;
                 //std::cout << "(" << from << ", " << to << ")" << std::endl;
                 Filler<Spinfull::KineticTerm>::Fill(ham, parameters, from, to);
                 Filler<Spinfull::RashbaXTerm>::Fill(ham, parameters, from, to);

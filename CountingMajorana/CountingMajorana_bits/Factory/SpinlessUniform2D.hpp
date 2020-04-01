@@ -9,16 +9,17 @@
 #include "../VectorViewers/Grid2DViewer.hpp"
 
 /**
- * @brief Spinless uniform 1D chain with open boundary conditions
+ * @brief Spinless uniform 2D plaquette with open boundary conditions
  * 
  * Dimensions:
  * - Length (L)
+ * - Width (W)
  * 
  * Parameters:
  * - Non-local terms:
  *      - Spinless::KineticTerm
- *      - Spinless::ProxTerm
-  * - Local terms:
+ *      - Spinless::ProxTerm (phase in X: 0.0, phase in Y: -½π)
+ * - Local terms:
  *      - Spinless::ChemicalTerm
  */
 class SpinlessUniform2D : public Grid2DViewer
