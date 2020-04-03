@@ -4,8 +4,6 @@
 #include <unistd.h>
 #include <iostream>
 #include "../QuantumSystem.hpp"
-#include "../QuantumSystem/Parameters.hpp"
-#include "../QuantumSystem/Dimensions.hpp"
 #include "KeyBindings.hpp"
 
 #include "InputScriptParser.hpp"
@@ -29,16 +27,6 @@ private:
 
 public:
     QuantumSystem quantumSystem;
-
-    /**
-     * @brief parsed parameters
-     */
-    //    Parameters parameters;
-
-    /**
-     * @brief parsed parameters
-     */
-    //Dimensions dimensions;
 
     /**
      * @brief construct a new Argv Parser object 

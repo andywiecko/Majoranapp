@@ -5,6 +5,10 @@
 #include "QuantumSystem/Dimensions.hpp"
 #include "QuantumSystem/Connections.hpp"
 
+/**
+ * @brief class containing all information about quantum system,
+ * which is needed for hamiltonian construction 
+ */
 class QuantumSystem
 {
 public:

@@ -23,7 +23,7 @@ public:
 
     static ViewerFunction View;
 
-    static void SetDimensions(Dimensions dimensions)
+    static void SetDimensions(Dimensions &dimensions)
     {
         height = dimensions.GetHeight();
         length = dimensions.GetLength();
