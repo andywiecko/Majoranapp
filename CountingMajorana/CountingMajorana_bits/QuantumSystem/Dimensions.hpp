@@ -1,5 +1,5 @@
-#ifndef DIMENSIONS_HPP
-#define DIMENSIONS_HPP
+#ifndef QUANTUMSYSTEM_DIMENSIONS_HPP
+#define QUANTUMSYSTEM_DIMENSIONS_HPP
 
 #include <string>
 #include <map>

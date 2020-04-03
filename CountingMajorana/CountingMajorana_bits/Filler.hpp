@@ -1,7 +1,7 @@
 #ifndef SPINFULLFILLER_HPP
 #define SPINFULLFILLER_HPP
 
-#include "Parameters.hpp"
+#include "QuantumSystem/Parameters.hpp"
 #include "EnumGamma.hpp"
 #include "Hamiltonian.hpp"
 

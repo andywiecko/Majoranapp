@@ -4,7 +4,7 @@
 #include <functional>
 
 #include "Info.hpp"
-#include "Dimensions.hpp"
+#include "QuantumSystem/Dimensions.hpp"
 #include "VectorViewers/DefaultViewer.hpp"
 
 

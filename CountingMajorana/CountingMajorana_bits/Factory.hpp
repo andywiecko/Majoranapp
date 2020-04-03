@@ -2,8 +2,9 @@
 #define FACTORY_HPP
 
 #include "Hamiltonian.hpp"
-#include "Parameters.hpp"
-#include "Dimensions.hpp"
+#include "QuantumSystem.hpp"
+#include "QuantumSystem/Parameters.hpp"
+#include "QuantumSystem/Dimensions.hpp"
 
 // implemented geometries and stuff
 // - Spinless
@@ -33,9 +34,9 @@ public:
      * @return Hamiltonian<T> 
      */
     template <class T,typename ... Targs>
-    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters, Targs... Fargs)
+    static Hamiltonian<T> Generate(QuantumSystem &quantumSystem, Targs... Fargs)
     {
-        return O::template Generate<T>(dimensions, parameters, Fargs...);
+        return O::template Generate<T>(quantumSystem, Fargs...);
     }
 };
 

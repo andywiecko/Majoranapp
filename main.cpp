@@ -6,8 +6,7 @@ int main(int argc, char *argv[])
 	if (argvParser.Parse(argc, argv))
 		return 0;
 
-	Dimensions dimensions = argvParser.dimensions;
-	Parameters parameters = argvParser.parameters;
+	QuantumSystem &quantumSystem = argvParser.quantumSystem;
 
 	if (ModelSelector::GetSelected() == " @ ")
 	{
@@ -26,7 +25,7 @@ int main(int argc, char *argv[])
 	 	 */
 		using geometry = SpinfullUniform2D;
 
-		auto ham = Factory<geometry>::Generate<matrixType>(dimensions, parameters);
+		auto ham = Factory<geometry>::Generate<matrixType>(quantumSystem);
 
 		Solver::tol = 0.005; // tolerance of convergance
 		Solver::noe = 30;	 // number of eigenvalues
@@ -36,12 +35,12 @@ int main(int argc, char *argv[])
 	// parsed from JSON
 	else if (ModelSelector::SparseSelected())
 	{
-		auto ham = ModelSelector::SelectSparse(dimensions, parameters);
+		auto ham = ModelSelector::SelectSparse(quantumSystem);
 		Solver::Diagonalize(ham);
 	}
 	else if (ModelSelector::DenseSelected())
 	{
-		auto ham = ModelSelector::SelectDense(dimensions, parameters);
+		auto ham = ModelSelector::SelectDense(quantumSystem);
 		Solver::Diagonalize(ham);
 	}
 	else

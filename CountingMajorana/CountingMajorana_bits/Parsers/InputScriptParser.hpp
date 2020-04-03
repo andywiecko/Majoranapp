@@ -7,10 +7,12 @@
 #include <nlohmann/json.hpp>
 
 #include "../Misc.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem/Parameters.hpp"
+#include "../QuantumSystem/Dimensions.hpp"
 #include "../Solver.hpp"
 #include "ModelSelector.hpp"
+
+#include "ConnectionsParser.hpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -65,10 +67,6 @@ private:
         }
     }
 
-    static void ModelSelector(std::string modelName)
-    {
-    }
-
 public:
     typedef int type;
     static void Parse(std::string filename,
@@ -90,6 +88,11 @@ public:
         ParseMap(inputScript["parameters"], parameters.map);
         ParseMap(inputScript["dimensions"], dimensions.map);
         ParseSolverOptions(inputScript["solver options"]);
+
+        //parsing connections
+        ParametersConnections parConn;
+        parConn = ConnectionsParser::Parse(inputScript["connections"],parameters.map);
+
     }
 };
 

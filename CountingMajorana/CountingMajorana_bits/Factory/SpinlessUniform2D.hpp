@@ -2,8 +2,7 @@
 #define FACTORY_SPINLESSUNIFORMC2D_HPP
 
 #include "../Hamiltonian.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
 #include "../Filler.hpp"
 
 #include "../VectorViewers/Grid2DViewer.hpp"
@@ -26,8 +25,11 @@ class SpinlessUniform2D : public Grid2DViewer
 {
 public:
     template <class T>
-    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
+    static Hamiltonian<T> Generate(QuantumSystem &quantumSystem)
     {
+        Dimensions &dimensions = quantumSystem.dimensions;
+        Parameters &parameters = quantumSystem.parameters;
+
         int deg = 2;
         double phaseX = -0.5 * M_PI;
         double phaseY = 0.0;

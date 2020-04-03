@@ -3,8 +3,9 @@
 
 #include <unistd.h>
 #include <iostream>
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
+#include "../QuantumSystem/Parameters.hpp"
+#include "../QuantumSystem/Dimensions.hpp"
 #include "KeyBindings.hpp"
 
 #include "InputScriptParser.hpp"
@@ -27,16 +28,17 @@ private:
     bool help = false;
 
 public:
+    QuantumSystem quantumSystem;
 
     /**
      * @brief parsed parameters
      */
-    Parameters parameters;
+    //    Parameters parameters;
 
     /**
      * @brief parsed parameters
      */
-    Dimensions dimensions;
+    //Dimensions dimensions;
 
     /**
      * @brief construct a new Argv Parser object 
@@ -45,8 +47,8 @@ public:
     {
         Info::Line();
         Info::ShowVersion();
-        parameters.map[Spinfull::KineticTerm::name] = 1.0;
-        parameters.map[Spinfull::ProxTerm::name] = 1.0;
+        quantumSystem.parameters.map[Spinfull::KineticTerm::name] = 1.0;
+        quantumSystem.parameters.map[Spinfull::ProxTerm::name] = 1.0;
         //dimensions.map[Dimensions::lengthName] = 10;
     }
 
@@ -59,10 +61,10 @@ public:
         Info::Comment(ModelSelector::GetSelected());
         Info::Line();
         Info::Title("Dimensions");
-        Info::ShowMapCommonValue(KeyBindings::mapDimensions, dimensions.map);
+        Info::ShowMapCommonValue(KeyBindings::mapDimensions, quantumSystem.dimensions.map);
         Info::Line();
         Info::Title("Parameters");
-        Info::ShowMapCommonValue(KeyBindings::mapParameters, parameters.map);
+        Info::ShowMapCommonValue(KeyBindings::mapParameters, quantumSystem.parameters.map);
         Info::Line();
     }
 
@@ -81,55 +83,58 @@ public:
         optstringKeys += ":vhf:";
         //std::cout << optstringKeys <<std::endl;
         const char *optstring = optstringKeys.c_str();
-        
 
         while ((option = getopt(argc, argv, optstring)) != -1)
         {
             if (KeyBindings::mapDimensions.count(option) > 0)
-        	{
+            {
                 std::string name{KeyBindings::mapDimensions.at(option)};
-                this->dimensions.map[name] = std::atof(optarg);
+                quantumSystem.dimensions.map[name] = std::atof(optarg);
                 continue;
             }
 
             if (KeyBindings::mapParameters.count(option) > 0)
-        	{
+            {
                 std::string name{KeyBindings::mapParameters.at(option)};
-                this->parameters.map[name] = std::atof(optarg);
+                quantumSystem.parameters.map[name] = std::atof(optarg);
                 continue;
             }
 
-            if(option == 'v')
+            if (option == 'v')
             {
                 this->verbose = true;
                 continue;
             }
 
-            if(option == 'h')
+            if (option == 'h')
             {
                 this->help = true;
                 continue;
             }
 
-            if(option == 'f')
+            if (option == 'f')
             {
                 std::string filename = optarg;
-                InputScriptParser::Parse(filename, parameters, dimensions);
+                InputScriptParser::Parse(filename,
+                                         quantumSystem.parameters,
+                                         quantumSystem.dimensions);
                 continue;
             }
 
-            if(option == ':')
+            if (option == ':')
             {
                 std::cout << "option requires argument\n";
                 returnCode = 1;
                 continue;
             }
 
-            if(option == '?'){;}
-            
+            if (option == '?')
+            {
+                ;
+            }
+
             std::cout << "unknown option '" << char(optopt) << "'\n";
             returnCode = 1;
-                    
         }
 
         for (; optind < argc; ++optind)
@@ -144,7 +149,7 @@ public:
             return 1;
         }
 
-        VectorViewer::SetDimensions(dimensions);
+        VectorViewer::SetDimensions(quantumSystem.dimensions);
 
         return returnCode;
     }
