@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	{
 		auto ham = ModelSelector::SelectSparse(quantumSystem);
 		Solver::Diagonalize(ham);
-		//ham.Print()
+		//ham.Print();
 	}
 	else if (ModelSelector::DenseSelected())
 	{

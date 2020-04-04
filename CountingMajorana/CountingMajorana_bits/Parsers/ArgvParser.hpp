@@ -54,6 +54,9 @@ public:
         Info::Title("Parameters");
         Info::ShowMapCommonValue(KeyBindings::mapParameters, quantumSystem.parameters.map);
         Info::Line();
+        Info::Title("Connections");
+        quantumSystem.parametersConnections.Print();
+        Info::Line();
     }
 
     /**

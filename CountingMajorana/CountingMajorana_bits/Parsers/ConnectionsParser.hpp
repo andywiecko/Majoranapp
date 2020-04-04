@@ -60,7 +60,7 @@ public:
             double defaultValue = parameters[key];
             parConn.map[key] = GetAllConnections(parameterConnections, defaultValue);
         }
-        parConn.Print();
+        
         return parConn;
     }
 };

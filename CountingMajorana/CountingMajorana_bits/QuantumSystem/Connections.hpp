@@ -23,16 +23,16 @@ public:
         // display parsed values
         for (auto item : this->map)
         {
-            std::cout << "# " << item.first << ": ";
+            std::cout << "# " << item.first << ":\n";
             for (auto conn : item.second.map)
             {
-                std::cout << "[ ";
+                std::cout << "#   ( ";
                 for (auto el : conn.first)
                     std::cout << el << " ";
-                std::cout << "] : ";
-                std::cout << conn.second << ", ";
+                std::cout << ") : ";
+                std::cout << conn.second << "\n";
             }
-            std::cout << std::endl;
+            
         }
     }
 };
