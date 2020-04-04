@@ -71,11 +71,11 @@ private:
 public:
     typedef int type;
     static void Parse(std::string filename,
-                      QuantumSystem &quantumSystem
-                      )
+                      QuantumSystem &quantumSystem)
     {
-        Parameters & parameters = quantumSystem.parameters;
-        Dimensions & dimensions = quantumSystem.dimensions;
+        Parameters &parameters = quantumSystem.parameters;
+        Dimensions &dimensions = quantumSystem.dimensions;
+        ParametersConnections &parametersConnections = quantumSystem.parametersConnections;
 
         std::ifstream inputScriptFile{filename};
         json inputScript;
@@ -93,9 +93,7 @@ public:
         ParseSolverOptions(inputScript["solver options"]);
 
         //parsing connections
-        ParametersConnections parConn;
-        parConn = ConnectionsParser::Parse(inputScript["connections"],parameters.map);
-
+        parametersConnections = ConnectionsParser::Parse(inputScript["connections"], parameters.map);
     }
 };
 

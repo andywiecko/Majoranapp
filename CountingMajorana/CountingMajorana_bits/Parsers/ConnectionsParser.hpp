@@ -60,22 +60,7 @@ public:
             double defaultValue = parameters[key];
             parConn.map[key] = GetAllConnections(parameterConnections, defaultValue);
         }
-
-        // display parsed values
-        for (auto item : parConn.map)
-        {
-            std::cout << "# " << item.first << ": ";
-            for (auto conn : item.second.map)
-            {
-                std::cout << "[ ";
-                for (auto el : conn.first)
-                    std::cout << el << " ";
-                std::cout << "] : ";
-                std::cout << conn.second << ", ";
-            }
-            std::cout << std::endl;
-        }
-
+        parConn.Print();
         return parConn;
     }
 };

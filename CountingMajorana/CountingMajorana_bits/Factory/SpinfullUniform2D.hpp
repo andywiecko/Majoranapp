@@ -7,6 +7,8 @@
 #include "../Info.hpp"
 #include "../VectorViewers/Grid2DViewer.hpp"
 
+#include "../ConnectionsFiller.hpp"
+
 /**
  * @brief Spinfull 2D plaquette with open boundary conditions
  * 
@@ -85,6 +87,8 @@ public:
                 //Filler<Spinfull::RashbaYTerm>::Fill(ham, parameters, from, to);
             }
         }
+
+        ConnectionsFiller::Spinfull(ham,quantumSystem.parametersConnections);
 
         return ham;
     }
