@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 
 #include "../Misc.hpp"
+#include "../QuantumSystem.hpp"
 #include "../QuantumSystem/Parameters.hpp"
 #include "../QuantumSystem/Dimensions.hpp"
 #include "../Solver.hpp"
@@ -70,9 +71,11 @@ private:
 public:
     typedef int type;
     static void Parse(std::string filename,
-                      Parameters &parameters,
-                      Dimensions &dimensions)
+                      QuantumSystem &quantumSystem
+                      )
     {
+        Parameters & parameters = quantumSystem.parameters;
+        Dimensions & dimensions = quantumSystem.dimensions;
 
         std::ifstream inputScriptFile{filename};
         json inputScript;

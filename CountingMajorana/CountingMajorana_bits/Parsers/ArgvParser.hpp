@@ -104,8 +104,7 @@ public:
             {
                 std::string filename = optarg;
                 InputScriptParser::Parse(filename,
-                                         quantumSystem.parameters,
-                                         quantumSystem.dimensions);
+                                         quantumSystem);
                 continue;
             }
 
