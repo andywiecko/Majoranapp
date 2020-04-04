@@ -41,6 +41,7 @@ public:
         ham.InsertBlock(Gamma::UpMinus, i, Gamma::DownMinus, i, 0.5 * zeemany);
     }
     static const std::string name;
+    static constexpr size_t locality{1};
 };
 
 const std::string ZeemanYTerm::name{"zeemanY"};

@@ -38,12 +38,18 @@ public:
         case str2int("SpinfullUniformChain"):
             return Factory<SpinfullUniformChain>::Generate<T>(quantumSystem);
 
+        case str2int("SpinfullUserDefined"):
+            return Factory<SpinfullUserDefined>::Generate<T>(quantumSystem);
+
         case str2int("SpinlessUniform2D"):
             VectorViewer::View = &SpinlessUniform2D::View;
             return Factory<SpinlessUniform2D>::Generate<T>(quantumSystem);
 
         case str2int("SpinlessUniformChain"):
             return Factory<SpinlessUniformChain>::Generate<T>(quantumSystem);
+
+        case str2int("SpinlessUserDefined"):
+            return Factory<SpinlessUserDefined>::Generate<T>(quantumSystem);
 
         default:
             Info::Warning("Warning, unrecognized model and/or matrix type: ", ModelSelector::GetSelected());

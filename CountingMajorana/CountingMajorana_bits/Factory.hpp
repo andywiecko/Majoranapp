@@ -10,10 +10,13 @@
 // - Spinless
 #include "Factory/SpinlessUniformChain.hpp"
 #include "Factory/SpinlessUniform2D.hpp"
+#include "Factory/SpinlessUserDefined.hpp"
+
 // - Spinfull
 #include "Factory/SpinfullUniformChain.hpp"
 #include "Factory/SpinfullUniform2D.hpp"
 #include "Factory/SpinfullUniform3D.hpp"
+#include "Factory/SpinfullUserDefined.hpp"
 
 /**
  * @brief class which produces stuff

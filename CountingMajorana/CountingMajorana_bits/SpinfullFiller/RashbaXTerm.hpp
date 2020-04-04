@@ -47,6 +47,7 @@ public:
         ham.InsertBlock(Gamma::DownMinus, i, Gamma::UpMinus, j, +0.5 * rashbaX);
     }
     static const std::string name;
+    static constexpr size_t locality{2};
 };
 
 const std::string RashbaXTerm::name{"rashbaX"};

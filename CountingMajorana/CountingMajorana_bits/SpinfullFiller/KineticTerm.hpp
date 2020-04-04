@@ -42,6 +42,7 @@ public:
         ham.InsertBlock(Gamma::DownPlus, j, Gamma::DownMinus, i, -0.5 * t_integral);
     }
     static const std::string name;
+    static constexpr size_t locality{2};
 };
 
 const std::string KineticTerm::name{"t_integral"};

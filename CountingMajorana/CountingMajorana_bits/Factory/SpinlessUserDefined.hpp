@@ -1,5 +1,5 @@
-#ifndef FACTORY_SPINFULLUSERDEFINED_HPP
-#define FACTORY_SPINFULLUSERDEFINED_HPP
+#ifndef FACTORY_SPINLESSUSERDEFINED_HPP
+#define FACTORY_SPINLESSUSERDEFINED_HPP
 
 #include "../Hamiltonian.hpp"
 #include "../QuantumSystem.hpp"
@@ -7,7 +7,7 @@
 #include "../Info.hpp"
 #include "../ConnectionsFiller.hpp"
 
-class SpinfullUserDefined
+class SpinlessUserDefined
 {
     public:
     template <class T>
@@ -15,7 +15,7 @@ class SpinfullUserDefined
     {
         Dimensions &dimensions = quantumSystem.dimensions;
         
-        int deg = 4;
+        int deg = 2;
         int length = dimensions.GetLength();
 
         // check height for warning
@@ -27,7 +27,7 @@ class SpinfullUserDefined
 
         Hamiltonian<T> ham(N, deg);
 
-        ConnectionsFiller::Spinfull(ham,quantumSystem.parametersConnections);
+        ConnectionsFiller::Spinless(ham,quantumSystem.parametersConnections);
 
         return ham;
     }
