@@ -51,6 +51,7 @@ public:
     template <class T>
     static void Diagonalize(Hamiltonian<T> &ham)
     {
+        Info::LogBegining("Solving eigen-equation...");
         size_t size = ham.elements.n_cols;
         T &M = ham.elements;
         T ATA = -(M - M.t()) * (M - M.t());
@@ -67,12 +68,14 @@ public:
             arma::eigs_sym(eigval, eigvec, ATA, k, target.c_str(), tol);
         }
 
-        if(showEigenvalues)
+        Info::LogAccomplished();
+
+        if (showEigenvalues)
             eigval.print("# === λ ===");
-        if(showEigenvectors)
+        if (showEigenvectors)
         {
             //arma::mat vectors = join_horiz(eigvec.col(0),eigvec.col(1));
-            arma::mat vectors = eigvec.cols(0,nov < size ? nov-1 : size-1);
+            arma::mat vectors = eigvec.cols(0, nov < size ? nov - 1 : size - 1);
             VectorViewer::View(vectors, ham.deg);
         }
     }

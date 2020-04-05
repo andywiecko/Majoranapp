@@ -20,6 +20,15 @@ public:
     {
         return color + text + Color::normal;
     }
+
+    static std::string StartColor(std::string color)
+    {
+        return color;
+    }
+    static std::string StopColor()
+    {
+        return Color::normal;
+    }
 };
 
 const std::string Color::green{"\033[0;32m"};

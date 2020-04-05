@@ -73,6 +73,7 @@ public:
     static void Parse(std::string filename,
                       QuantumSystem &quantumSystem)
     {
+        Info::LogBegining("Parsing JSON input script...");
         Parameters &parameters = quantumSystem.parameters;
         Dimensions &dimensions = quantumSystem.dimensions;
         ParametersConnections &parametersConnections = quantumSystem.parametersConnections;
@@ -94,6 +95,7 @@ public:
 
         //parsing connections
         parametersConnections = ConnectionsParser::Parse(inputScript["connections"], parameters.map);
+        Info::LogAccomplished();
     }
 };
 

@@ -15,11 +15,6 @@ class ArgvParser
 {
 
 private:
-    /*
-     * @brief increase verbosity of the output (flag)
-     */
-    bool verbose = false;
-
     /**
      * @brief show help (flag)
      */
@@ -93,7 +88,7 @@ public:
 
             if (option == 'v')
             {
-                this->verbose = true;
+                Info::verbose = true;
                 continue;
             }
 
@@ -130,7 +125,7 @@ public:
         for (; optind < argc; ++optind)
             std::cout << "argv[" << optind << "]='" << argv[optind] << "'\n";
 
-        if (verbose)
+        if (Info::verbose)
             this->Info();
 
         if (help)

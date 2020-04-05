@@ -7,6 +7,7 @@
 #include "Info/Version.hpp"
 #include "Info/Colors.hpp"
 #include "Info/DimensionsWarning.hpp"
+#include "Info/Time.hpp"
 
 /**
  * @brief misc class containing all stuff related with cout
@@ -17,9 +18,12 @@ class Info :
     public GammaASCII,
     public VersionInfo,
     public ColorsInfo,
-    public DimensionsWarningInfo
+    public DimensionsWarningInfo,
+    virtual public TimeInfo
 {
 
 };
+
+
 
 #endif
