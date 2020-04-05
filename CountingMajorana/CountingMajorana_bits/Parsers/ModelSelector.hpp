@@ -11,6 +11,9 @@
 #include "../QuantumSystem/Dimensions.hpp"
 #include "../VectorViewer.hpp"
 
+/**
+ * @brief selecting model through name
+ */
 class ModelSelector
 {
     friend class InputScriptParser;

@@ -7,6 +7,10 @@
 #include "../Info.hpp"
 #include "../ConnectionsFiller.hpp"
 
+/**
+ * @brief Spinless User Defined Hamiltonian
+ * - All Spinless terms are supported
+ */
 class SpinlessUserDefined
 {
     public:

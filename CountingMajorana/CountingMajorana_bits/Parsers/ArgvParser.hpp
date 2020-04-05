@@ -20,9 +20,15 @@ private:
      */
     bool help = false;
 
+    /**
+     * @brief quiet mode (flag)
+     */
     bool quiet = false;
 
 public:
+    /**
+     * @brief all information about QuantumSystem parsed from argv and/or JSON inputscript
+     */
     QuantumSystem quantumSystem;
 
     /**
@@ -54,7 +60,7 @@ public:
     }
 
     /**
-     * @brief 
+     * @brief parsing argv
      * 
      * @param argc 
      * @param argv 
@@ -65,7 +71,7 @@ public:
         int option;
         int returnCode = 0;
         std::string optstringKeys = KeyBindings::GetOptstring();
-        optstringKeys += ":vqhf:";
+        optstringKeys += ":vqhf:"; // TODO move to system key bindings
         const char *optstring = optstringKeys.c_str();
 
         while ((option = getopt(argc, argv, optstring)) != -1)

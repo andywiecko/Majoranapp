@@ -18,10 +18,20 @@
 // for convenience
 using json = nlohmann::json;
 
+/**
+ * @brief Parsing JSON input script
+ */
 class InputScriptParser
 {
 
 private:
+    /**
+     * @brief unpacking json into map
+     * 
+     * @tparam T type map
+     * @param jsonMap 
+     * @param map 
+     */
     template <class T>
     static void ParseMap(json &jsonMap, T &map)
     {
@@ -34,6 +44,11 @@ private:
         }
     }
 
+    /**
+     * @brief Parsing Solver options (TODO move to separate class)
+     * 
+     * @param solverOptions 
+     */
     static void ParseSolverOptions(json &solverOptions)
     {
         for (auto it : json::iterator_wrapper(solverOptions))
@@ -69,7 +84,13 @@ private:
     }
 
 public:
-    typedef int type;
+    //typedef int type;
+    /**
+     * @brief parse JSON file into QuantumSystem object
+     * 
+     * @param filename JSON file filename
+     * @param quantumSystem 
+     */
     static void Parse(std::string filename,
                       QuantumSystem &quantumSystem)
     {

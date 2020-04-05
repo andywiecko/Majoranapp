@@ -7,9 +7,20 @@ using json = nlohmann::json;
 #include "../QuantumSystem/Parameters.hpp"
 #include "../QuantumSystem/Connections.hpp"
 
+/**
+ * @brief parsing connections from JSON file
+ * 
+ */
 class ConnectionsParser
 {
 private:
+    /**
+     * @brief checks if one of the item in json is an array
+     * 
+     * @param connection json object
+     * @return true array item exists
+     * @return false array item does not exist
+     */
     static bool HasArray(json &connection)
     {
         for (auto element : connection)
@@ -20,8 +31,16 @@ private:
         return false;
     }
 
+    /**
+     * @brief Get the Connection object
+     * 
+     * @param jsonConnection json object to unpack
+     * @param connection parsed Connection
+     * @param value parsed value
+     */
     static void GetConnection(json &jsonConnection, Connection &connection, double &value)
     {
+        // value and array has been provided
         if (HasArray(jsonConnection))
             for (auto el : jsonConnection)
             {
@@ -31,11 +50,19 @@ private:
                 else if (el.is_number_float())
                     value = el.get<double>();
             }
+        // no value has been provided, provided numbers are sites coordinates
         else
             connection = jsonConnection.get<Connection>();
     }
 
-    static Connections GetAllConnections(json &parameterConnections,double defaultValue)
+    /**
+     * @brief Get the all Connections objects from json object
+     * 
+     * @param parameterConnections json object to parse
+     * @param defaultValue default value of the connection
+     * @return Connections 
+     */
+    static Connections GetAllConnections(json &parameterConnections, double defaultValue)
     {
         Connections connections;
         for (auto jsonConnection : parameterConnections)
@@ -49,6 +76,14 @@ private:
     }
 
 public:
+    /**
+     * @brief Parsing json object to ParametersConnetions
+     * 
+     * @tparam T 
+     * @param jsonConnections 
+     * @param parameters 
+     * @return ParametersConnections 
+     */
     template <class T>
     static ParametersConnections Parse(json &jsonConnections, T &parameters)
     {
@@ -60,7 +95,7 @@ public:
             double defaultValue = parameters[key];
             parConn.map[key] = GetAllConnections(parameterConnections, defaultValue);
         }
-        
+
         return parConn;
     }
 };

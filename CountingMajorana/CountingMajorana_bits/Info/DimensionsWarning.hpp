@@ -3,9 +3,19 @@
 
 #include "Basics.hpp"
 
+/**
+ * @brief A few warnings for parsed dimensions
+ */
 class DimensionsWarningInfo
 {
 public:
+    /**
+     * @brief checks if height and width are equal 0
+     * 
+     * @param length 
+     * @param width 
+     * @param height 
+     */
     static void DimensionsWarningOnly1D(int length, int width, int height)
     {
         if (width > 1 or height > 1)
@@ -15,6 +25,13 @@ public:
         }
     }
 
+    /**
+     * @brief checks if height is equal 0
+     * 
+     * @param length 
+     * @param width 
+     * @param height 
+     */
     static void DimensionsWarningOnly2D(int length, int width, int height)
     {
         if (height > 1)

@@ -7,6 +7,10 @@
 #include "../Info.hpp"
 #include "../ConnectionsFiller.hpp"
 
+/**
+ * @brief Spinfull User Defined Hamiltonian
+ * - All Spinfull terms are supported
+ */
 class SpinfullUserDefined
 {
     public:

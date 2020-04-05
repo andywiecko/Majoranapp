@@ -88,8 +88,6 @@ public:
             }
         }
 
-        ConnectionsFiller::Spinfull(ham,quantumSystem.parametersConnections);
-
         return ham;
     }
 };
