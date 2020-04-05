@@ -20,6 +20,8 @@ private:
      */
     bool help = false;
 
+    bool quiet = false;
+
 public:
     QuantumSystem quantumSystem;
 
@@ -28,11 +30,8 @@ public:
      */
     ArgvParser()
     {
-        Info::Line();
-        Info::ShowVersion();
         quantumSystem.parameters.map[Spinfull::KineticTerm::name] = 1.0;
         quantumSystem.parameters.map[Spinfull::ProxTerm::name] = 1.0;
-        //dimensions.map[Dimensions::lengthName] = 10;
     }
 
     /**
@@ -66,8 +65,7 @@ public:
         int option;
         int returnCode = 0;
         std::string optstringKeys = KeyBindings::GetOptstring();
-        optstringKeys += ":vhf:";
-        //std::cout << optstringKeys <<std::endl;
+        optstringKeys += ":vqhf:";
         const char *optstring = optstringKeys.c_str();
 
         while ((option = getopt(argc, argv, optstring)) != -1)
@@ -86,6 +84,12 @@ public:
                 continue;
             }
 
+            if (option == 'q')
+            {
+                quiet = true;
+                continue;
+            }
+
             if (option == 'v')
             {
                 Info::verbose = true;
@@ -94,7 +98,7 @@ public:
 
             if (option == 'h')
             {
-                this->help = true;
+                help = true;
                 continue;
             }
 
@@ -124,6 +128,13 @@ public:
 
         for (; optind < argc; ++optind)
             std::cout << "argv[" << optind << "]='" << argv[optind] << "'\n";
+
+        if (not quiet)
+        {
+            Info::Line();
+            Info::ShowVersion();
+        }
+
 
         if (Info::verbose)
             this->Info();

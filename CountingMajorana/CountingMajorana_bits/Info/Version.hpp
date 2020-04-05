@@ -10,7 +10,7 @@ class VersionInfo
     static const std::string libname;
     static const std::string vername;
     static const int major{0};
-    static const int minor{150};
+    static const int minor{200};
     static const int patch{0};
 
     static arma::arma_version armaVersion;
