@@ -46,6 +46,7 @@ public:
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::DownPlus, j, -0.5 * rashbaZ);
         ham.InsertBlock(Gamma::DownMinus, i, Gamma::DownMinus, j, -0.5 * rashbaZ);
     }
+    
     static const std::string name;
     static constexpr size_t locality{2};
 };

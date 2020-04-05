@@ -6,9 +6,20 @@
 #include "Misc.hpp"
 #include "Filler.hpp"
 
+/**
+ * @brief class for filling Hamiltonian matrix elements from ParametersConnections
+ */
 class ConnectionsFiller
 {
 private:
+    /**
+     * @brief Repacking local (1-site) term O
+     * 
+     * @tparam T
+     * @tparam O 
+     * @param hamiltonian 
+     * @param connections 
+     */
     template <class T, class O>
     static void LocalConnectionRepacking(Hamiltonian<T> &hamiltonian,
                                          Connections &connections)
@@ -21,6 +32,14 @@ private:
         }
     }
 
+    /**
+     * @brief Repacking non-local (2-sites) term O
+     * 
+     * @tparam T 
+     * @tparam O 
+     * @param hamiltonian 
+     * @param connections 
+     */
     template <class T, class O>
     static void NonLocalConnectionRepacking(Hamiltonian<T> &hamiltonian,
                                             Connections &connections)
@@ -34,7 +53,15 @@ private:
         }
     }
 
-    // untempletize size_t sites -> move it to terms definition
+    /**
+     * @brief Repacking all terms (local and non-local)
+     * 
+     * @tparam T 
+     * @tparam O 
+     * @param hamiltonian 
+     * @param connections 
+     * @param name 
+     */
     template <class T, class O>
     static void ConnectionsRepacking(Hamiltonian<T> &hamiltonian,
                                      Connections &connections,
@@ -53,6 +80,14 @@ private:
         }
     }
 
+    /**
+     * @brief List of all Spinfull terms which are avaliable from ParametersConnections
+     * 
+     * @tparam T 
+     * @param hamiltonian 
+     * @param connections 
+     * @param name 
+     */
     template <class T>
     static void SpinfullSwitch(Hamiltonian<T> &hamiltonian,
                                Connections &connections,
@@ -69,6 +104,14 @@ private:
         ConnectionsRepacking<T, Spinfull::RashbaZTerm>(hamiltonian, connections, name);
     }
 
+    /**
+     * @brief List of all Spinless terms which are avaliable from ParametersConnections
+     * 
+     * @tparam T 
+     * @param hamiltonian 
+     * @param connections 
+     * @param name 
+     */
     template <class T>
     static void SpinlessSwitch(Hamiltonian<T> &hamiltonian,
                                Connections &connections,
@@ -80,6 +123,13 @@ private:
     }
 
 public:
+    /**
+     * @brief constructing Spinfull terms from ParametersConnections
+     * 
+     * @tparam T 
+     * @param hamiltonian 
+     * @param parameterConnections 
+     */
     template <class T>
     static void Spinfull(Hamiltonian<T> &hamiltonian,
                          ParametersConnections &parameterConnections)
@@ -90,6 +140,13 @@ public:
         }
     }
 
+    /**
+     * @brief constructing Spinless terms from ParametersConnections
+     * 
+     * @tparam T 
+     * @param hamiltonian 
+     * @param parameterConnections 
+     */
     template <class T>
     static void Spinless(Hamiltonian<T> &hamiltonian,
                          ParametersConnections &parameterConnections)

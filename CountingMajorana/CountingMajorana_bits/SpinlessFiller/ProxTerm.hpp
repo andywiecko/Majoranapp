@@ -46,6 +46,7 @@ public:
         ham.InsertBlock(Gamma::UpPlus, j, Gamma::UpMinus, i, -0.5 * delta * std::cos(phase));
         ham.InsertBlock(Gamma::UpMinus, i, Gamma::UpMinus, j, -0.5 * delta * std::sin(phase));
     }
+    
     static const std::string name;
     static constexpr size_t locality{2};
 };

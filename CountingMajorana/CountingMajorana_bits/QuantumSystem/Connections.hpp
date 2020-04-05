@@ -5,19 +5,30 @@
 #include <vector>
 #include <string>
 
+/**
+ * @brief container for sites numbers
+ */
 using Connection = std::vector<int>;
 
+/**
+ * @brief map of Connection and values (double)
+ */
 class Connections
 {
 public:
     std::map<Connection, double> map;
 };
 
+/**
+ * @brief map of Parameter name and Connections
+ * 
+ */
 class ParametersConnections
 {
 public:
     std::map<std::string, Connections> map;
 
+    //TODO move to Info
     void Print()
     {
         // display parsed values

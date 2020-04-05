@@ -10,7 +10,7 @@
 #include "Info/Time.hpp"
 
 /**
- * @brief misc class containing all stuff related with cout
+ * @brief misc class containing all stuff related with cout, clog
  */
 class Info : 
     public BasicsInfo,
@@ -19,7 +19,7 @@ class Info :
     public VersionInfo,
     public ColorsInfo,
     public DimensionsWarningInfo,
-    virtual public TimeInfo
+    public TimeInfo
 {
 
 };

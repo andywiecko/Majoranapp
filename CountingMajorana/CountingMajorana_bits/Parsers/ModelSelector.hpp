@@ -71,16 +71,33 @@ public:
         return selectedMatrixType == "dense";
     }
 
+    /**
+     * @brief arma::sp_mat template specialization
+     * 
+     * @param quantumSystem 
+     * @return auto 
+     */
     static auto SelectSparse(QuantumSystem &quantumSystem)
     {
         return SelectModel<arma::sp_mat>(quantumSystem);
     }
 
+    /**
+     * @brief arma::mat template specialization
+     * 
+     * @param quantumSystem 
+     * @return auto 
+     */
     static auto SelectDense(QuantumSystem &quantumSystem)
     {
         return SelectModel<arma::mat>(quantumSystem);
     }
 
+    /**
+     * @brief Get the Selected object 
+     * 
+     * @return std::string containing selected model name and data type (sparse/dense)
+     */
     static std::string GetSelected()
     {
         return selectedModel + " @ " + selectedMatrixType;

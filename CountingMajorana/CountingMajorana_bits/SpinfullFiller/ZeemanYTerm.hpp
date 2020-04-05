@@ -40,6 +40,7 @@ public:
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::DownPlus, i, 0.5 * zeemany);
         ham.InsertBlock(Gamma::UpMinus, i, Gamma::DownMinus, i, 0.5 * zeemany);
     }
+    
     static const std::string name;
     static constexpr size_t locality{1};
 };
