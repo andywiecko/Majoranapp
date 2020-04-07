@@ -1,5 +1,5 @@
-#ifndef PARAMETERS_HPP
-#define PARAMETERS_HPP
+#ifndef QUANTUMSYSTEM_PARAMETERS_HPP
+#define QUANTUMSYSTEM_PARAMETERS_HPP
 
 #include <string>
 #include <map>

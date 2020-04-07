@@ -6,10 +6,14 @@
 
 #include "../Factory.hpp"
 #include "../Misc.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
+#include "../QuantumSystem/Parameters.hpp"
+#include "../QuantumSystem/Dimensions.hpp"
 #include "../VectorViewer.hpp"
 
+/**
+ * @brief selecting model through name
+ */
 class ModelSelector
 {
     friend class InputScriptParser;
@@ -21,33 +25,39 @@ private:
 
 public:
     template <class T>
-    static auto SelectModel(Dimensions &dimensions, Parameters &parameters)
+    static auto SelectModel(QuantumSystem &quantumSystem)
     {
 
         switch (str2int(selectedModel.c_str()))
         {
         case str2int("SpinfullUniform3D"):
             VectorViewer::View = &SpinfullUniform3D::View;
-            return Factory<SpinfullUniform3D>::Generate<T>(dimensions, parameters);
+            return Factory<SpinfullUniform3D>::Generate<T>(quantumSystem);
 
         case str2int("SpinfullUniform2D"):
             VectorViewer::View = &SpinfullUniform2D::View;
-            return Factory<SpinfullUniform2D>::Generate<T>(dimensions, parameters);
+            return Factory<SpinfullUniform2D>::Generate<T>(quantumSystem);
 
         case str2int("SpinfullUniformChain"):
-            return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
+            return Factory<SpinfullUniformChain>::Generate<T>(quantumSystem);
+
+        case str2int("SpinfullUserDefined"):
+            return Factory<SpinfullUserDefined>::Generate<T>(quantumSystem);
 
         case str2int("SpinlessUniform2D"):
             VectorViewer::View = &SpinlessUniform2D::View;
-            return Factory<SpinlessUniform2D>::Generate<T>(dimensions, parameters);
+            return Factory<SpinlessUniform2D>::Generate<T>(quantumSystem);
 
         case str2int("SpinlessUniformChain"):
-            return Factory<SpinlessUniformChain>::Generate<T>(dimensions, parameters);
+            return Factory<SpinlessUniformChain>::Generate<T>(quantumSystem);
+
+        case str2int("SpinlessUserDefined"):
+            return Factory<SpinlessUserDefined>::Generate<T>(quantumSystem);
 
         default:
             Info::Warning("Warning, unrecognized model and/or matrix type: ", ModelSelector::GetSelected());
             Info::Warning("Running with default: ", "SpinfullUniformChain @ " + selectedMatrixType);
-            return Factory<SpinfullUniformChain>::Generate<T>(dimensions, parameters);
+            return Factory<SpinfullUniformChain>::Generate<T>(quantumSystem);
         }
     }
 
@@ -61,16 +71,33 @@ public:
         return selectedMatrixType == "dense";
     }
 
-    static auto SelectSparse(Dimensions &dimensions, Parameters &parameters)
+    /**
+     * @brief arma::sp_mat template specialization
+     * 
+     * @param quantumSystem 
+     * @return auto 
+     */
+    static auto SelectSparse(QuantumSystem &quantumSystem)
     {
-        return SelectModel<arma::sp_mat>(dimensions, parameters);
+        return SelectModel<arma::sp_mat>(quantumSystem);
     }
 
-    static auto SelectDense(Dimensions &dimensions, Parameters &parameters)
+    /**
+     * @brief arma::mat template specialization
+     * 
+     * @param quantumSystem 
+     * @return auto 
+     */
+    static auto SelectDense(QuantumSystem &quantumSystem)
     {
-        return SelectModel<arma::mat>(dimensions, parameters);
+        return SelectModel<arma::mat>(quantumSystem);
     }
 
+    /**
+     * @brief Get the Selected object 
+     * 
+     * @return std::string containing selected model name and data type (sparse/dense)
+     */
     static std::string GetSelected()
     {
         return selectedModel + " @ " + selectedMatrixType;

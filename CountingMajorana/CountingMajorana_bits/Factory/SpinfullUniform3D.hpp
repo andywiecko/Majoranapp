@@ -2,8 +2,7 @@
 #define FACTORY_SPINFULLUNIFORM3D_HPP
 
 #include "../Hamiltonian.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
 #include "../Filler.hpp"
 #include "../VectorViewers/Grid3DViewer.hpp"
 
@@ -32,8 +31,11 @@ class SpinfullUniform3D : public Grid3DViewer
 {
 public:
     template <class T>
-    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
+    static Hamiltonian<T> Generate(QuantumSystem &quantumSystem)
     {
+        Dimensions &dimensions = quantumSystem.dimensions;
+        Parameters &parameters = quantumSystem.parameters;
+
         int deg = 4;
         int length = dimensions.GetLength();
         int width = dimensions.GetWidth();

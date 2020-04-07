@@ -2,9 +2,9 @@
 #define FACTORY_SPINFULLUNIFORMCHAIN_HPP
 
 #include "../Hamiltonian.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
 #include "../Filler.hpp"
+#include "../Info.hpp"
 
 /**
  * @brief Spinfull uniform 1D chain with open boundary conditions
@@ -26,10 +26,19 @@ class SpinfullUniformChain
 {
 public:
     template <class T>
-    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
+    static Hamiltonian<T> Generate(QuantumSystem &quantumSystem)
     {
+        Dimensions &dimensions = quantumSystem.dimensions;
+        Parameters &parameters = quantumSystem.parameters;
+
         int deg = 4;
         int L = dimensions.GetLength();
+
+        // check width and height for warning
+        int W = dimensions.GetWidth();
+        int H = dimensions.GetHeight();
+        Info::DimensionsWarningOnly1D(L,W,H);
+
         Hamiltonian<T> ham(L, deg);
         for (int i = 0; i < L - 1; i++)
         {

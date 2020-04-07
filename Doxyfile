@@ -748,8 +748,10 @@ INPUT                  = CountingMajorana/ \
                          CountingMajorana/CountingMajorana_bits/Factory/ \
                          CountingMajorana/CountingMajorana_bits/Info/ \
                          CountingMajorana/CountingMajorana_bits/Parsers/ \
+                         CountingMajorana/CountingMajorana_bits/QuantumSystems/ \
                          CountingMajorana/CountingMajorana_bits/SpinlessFiller/ \
                          CountingMajorana/CountingMajorana_bits/SpinfullFiller/ \
+                         CountingMajorana/CountingMajorana_bits/VectorViewers/ \
                          main.cpp \
                          README.md \
                          LICENSE.md \

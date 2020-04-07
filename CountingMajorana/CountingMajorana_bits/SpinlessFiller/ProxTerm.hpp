@@ -39,14 +39,16 @@ public:
      * @param phase superconducting phase value \f$\phi_{ij}\f$
      */
     template <class T>
-    static void Fill(Hamiltonian<T> &ham, double delta, int i, int j, double phase)
+    static void Fill(Hamiltonian<T> &ham, double delta, int i, int j, double phase = 0.0)
     {
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpPlus, j, 0.5 * delta * std::sin(phase));
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpMinus, j, 0.5 * delta * std::cos(phase));
         ham.InsertBlock(Gamma::UpPlus, j, Gamma::UpMinus, i, -0.5 * delta * std::cos(phase));
         ham.InsertBlock(Gamma::UpMinus, i, Gamma::UpMinus, j, -0.5 * delta * std::sin(phase));
     }
+    
     static const std::string name;
+    static constexpr size_t locality{2};
 };
 
 const std::string ProxTerm::name{Spinfull::ProxTerm::name};

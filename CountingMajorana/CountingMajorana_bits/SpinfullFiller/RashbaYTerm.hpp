@@ -46,7 +46,9 @@ public:
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::UpMinus, j, +0.5 * rashbaY);
         ham.InsertBlock(Gamma::UpPlus, j, Gamma::DownMinus, i, +0.5 * rashbaY);
     }
+    
     static const std::string name;
+    static constexpr size_t locality{2};
 };
 
 const std::string RashbaYTerm::name{"rashbaY"};

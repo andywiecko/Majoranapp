@@ -7,18 +7,31 @@
 #include <nlohmann/json.hpp>
 
 #include "../Misc.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
+#include "../QuantumSystem/Parameters.hpp"
+#include "../QuantumSystem/Dimensions.hpp"
 #include "../Solver.hpp"
 #include "ModelSelector.hpp"
+
+#include "ConnectionsParser.hpp"
 
 // for convenience
 using json = nlohmann::json;
 
+/**
+ * @brief Parsing JSON input script
+ */
 class InputScriptParser
 {
 
 private:
+    /**
+     * @brief unpacking json into map
+     * 
+     * @tparam T type map
+     * @param jsonMap 
+     * @param map 
+     */
     template <class T>
     static void ParseMap(json &jsonMap, T &map)
     {
@@ -31,6 +44,11 @@ private:
         }
     }
 
+    /**
+     * @brief Parsing Solver options (TODO move to separate class)
+     * 
+     * @param solverOptions 
+     */
     static void ParseSolverOptions(json &solverOptions)
     {
         for (auto it : json::iterator_wrapper(solverOptions))
@@ -65,16 +83,21 @@ private:
         }
     }
 
-    static void ModelSelector(std::string modelName)
-    {
-    }
-
 public:
-    typedef int type;
+    //typedef int type;
+    /**
+     * @brief parse JSON file into QuantumSystem object
+     * 
+     * @param filename JSON file filename
+     * @param quantumSystem 
+     */
     static void Parse(std::string filename,
-                      Parameters &parameters,
-                      Dimensions &dimensions)
+                      QuantumSystem &quantumSystem)
     {
+        Info::LogBegining("Parsing JSON input script...");
+        Parameters &parameters = quantumSystem.parameters;
+        Dimensions &dimensions = quantumSystem.dimensions;
+        ParametersConnections &parametersConnections = quantumSystem.parametersConnections;
 
         std::ifstream inputScriptFile{filename};
         json inputScript;
@@ -90,6 +113,10 @@ public:
         ParseMap(inputScript["parameters"], parameters.map);
         ParseMap(inputScript["dimensions"], dimensions.map);
         ParseSolverOptions(inputScript["solver options"]);
+
+        //parsing connections
+        parametersConnections = ConnectionsParser::Parse(inputScript["connections"], parameters.map);
+        Info::LogAccomplished();
     }
 };
 

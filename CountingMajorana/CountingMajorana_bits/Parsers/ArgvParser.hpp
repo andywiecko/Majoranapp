@@ -3,8 +3,7 @@
 
 #include <unistd.h>
 #include <iostream>
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
 #include "KeyBindings.hpp"
 
 #include "InputScriptParser.hpp"
@@ -16,38 +15,29 @@ class ArgvParser
 {
 
 private:
-    /*
-     * @brief increase verbosity of the output (flag)
-     */
-    bool verbose = false;
-
     /**
      * @brief show help (flag)
      */
     bool help = false;
 
+    /**
+     * @brief quiet mode (flag)
+     */
+    bool quiet = false;
+
 public:
-
     /**
-     * @brief parsed parameters
+     * @brief all information about QuantumSystem parsed from argv and/or JSON inputscript
      */
-    Parameters parameters;
-
-    /**
-     * @brief parsed parameters
-     */
-    Dimensions dimensions;
+    QuantumSystem quantumSystem;
 
     /**
      * @brief construct a new Argv Parser object 
      */
     ArgvParser()
     {
-        Info::Line();
-        Info::ShowVersion();
-        parameters.map[Spinfull::KineticTerm::name] = 1.0;
-        parameters.map[Spinfull::ProxTerm::name] = 1.0;
-        //dimensions.map[Dimensions::lengthName] = 10;
+        quantumSystem.parameters.map[Spinfull::KineticTerm::name] = 1.0;
+        quantumSystem.parameters.map[Spinfull::ProxTerm::name] = 1.0;
     }
 
     /**
@@ -59,15 +49,18 @@ public:
         Info::Comment(ModelSelector::GetSelected());
         Info::Line();
         Info::Title("Dimensions");
-        Info::ShowMapCommonValue(KeyBindings::mapDimensions, dimensions.map);
+        Info::ShowMapCommonValue(KeyBindings::mapDimensions, quantumSystem.dimensions.map);
         Info::Line();
         Info::Title("Parameters");
-        Info::ShowMapCommonValue(KeyBindings::mapParameters, parameters.map);
+        Info::ShowMapCommonValue(KeyBindings::mapParameters, quantumSystem.parameters.map);
+        Info::Line();
+        Info::Title("Connections");
+        quantumSystem.parametersConnections.Print();
         Info::Line();
     }
 
     /**
-     * @brief 
+     * @brief parsing argv
      * 
      * @param argc 
      * @param argv 
@@ -78,64 +71,78 @@ public:
         int option;
         int returnCode = 0;
         std::string optstringKeys = KeyBindings::GetOptstring();
-        optstringKeys += ":vhf:";
-        //std::cout << optstringKeys <<std::endl;
+        optstringKeys += ":vqhf:"; // TODO move to system key bindings
         const char *optstring = optstringKeys.c_str();
-        
 
         while ((option = getopt(argc, argv, optstring)) != -1)
         {
             if (KeyBindings::mapDimensions.count(option) > 0)
-        	{
+            {
                 std::string name{KeyBindings::mapDimensions.at(option)};
-                this->dimensions.map[name] = std::atof(optarg);
+                quantumSystem.dimensions.map[name] = std::atof(optarg);
                 continue;
             }
 
             if (KeyBindings::mapParameters.count(option) > 0)
-        	{
+            {
                 std::string name{KeyBindings::mapParameters.at(option)};
-                this->parameters.map[name] = std::atof(optarg);
+                quantumSystem.parameters.map[name] = std::atof(optarg);
                 continue;
             }
 
-            if(option == 'v')
+            if (option == 'q')
             {
-                this->verbose = true;
+                quiet = true;
                 continue;
             }
 
-            if(option == 'h')
+            if (option == 'v')
             {
-                this->help = true;
+                Info::verbose = true;
                 continue;
             }
 
-            if(option == 'f')
+            if (option == 'h')
+            {
+                help = true;
+                continue;
+            }
+
+            if (option == 'f')
             {
                 std::string filename = optarg;
-                InputScriptParser::Parse(filename, parameters, dimensions);
+                InputScriptParser::Parse(filename,
+                                         quantumSystem);
                 continue;
             }
 
-            if(option == ':')
+            if (option == ':')
             {
                 std::cout << "option requires argument\n";
                 returnCode = 1;
                 continue;
             }
 
-            if(option == '?'){;}
-            
+            if (option == '?')
+            {
+                ;
+            }
+
             std::cout << "unknown option '" << char(optopt) << "'\n";
             returnCode = 1;
-                    
         }
 
         for (; optind < argc; ++optind)
             std::cout << "argv[" << optind << "]='" << argv[optind] << "'\n";
 
-        if (verbose)
+        if (not quiet)
+        {
+            Info::Line();
+            Info::ShowVersion();
+        }
+
+
+        if (Info::verbose)
             this->Info();
 
         if (help)
@@ -144,7 +151,7 @@ public:
             return 1;
         }
 
-        VectorViewer::SetDimensions(dimensions);
+        VectorViewer::SetDimensions(quantumSystem.dimensions);
 
         return returnCode;
     }

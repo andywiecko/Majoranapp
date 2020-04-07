@@ -1,7 +1,7 @@
 #ifndef SPINFULLFILLER_HPP
 #define SPINFULLFILLER_HPP
 
-#include "Parameters.hpp"
+#include "QuantumSystem/Parameters.hpp"
 #include "EnumGamma.hpp"
 #include "Hamiltonian.hpp"
 
@@ -31,8 +31,10 @@
  *      - Spinfull::KineticTerm \f$t_{ij}\f$
  *      - Spinfull::RashbaXTerm \f$\alpha_{ij}^x\f$
  *      - Spinfull::RashbaYTerm \f$\alpha_{ij}^y\f$
+ *      - Spinfull::RashbaZTerm \f$\alpha_{ij}^z\f$
  *      - Spinfull::ProxTerm \f$\Delta_i \f$
- *      - Spinfull::ZeemanXTerm  \f$f_i\f$
+ *      - Spinfull::ZeemanXTerm  \f$V_i^X\f$
+ *      - Spinfull::ZeemanYTerm  \f$V_i^Y\f$
  *      - Spinfull::ZeemanZTerm \f$ V_i^Z \f$
  *      - Spinfull::ChemicalTerm \f$ \mu_i \f$
  * 

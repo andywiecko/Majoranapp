@@ -13,7 +13,7 @@ template <class T>
 class Hamiltonian
 {
 
-friend class Solver;
+   friend class Solver;
 
 private:
    /**

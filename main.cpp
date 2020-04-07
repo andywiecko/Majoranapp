@@ -2,33 +2,25 @@
 
 int main(int argc, char *argv[])
 {
+	Info::StartClock();
 	ArgvParser argvParser;
 	if (argvParser.Parse(argc, argv))
 		return 0;
 
-	Dimensions dimensions = argvParser.dimensions;
-	Parameters parameters = argvParser.parameters;
+	QuantumSystem &quantumSystem = argvParser.quantumSystem;
 
 	if (ModelSelector::GetSelected() == " @ ")
 	{
-		/**
-		 * @brief matrix typedef:
-		 * support for: arma::mat, arma::sp_mat
-		 */
-		using matrixType = arma::sp_mat;
 
-		/**
-		 * @brief geometry and model type
-		 * support for:
-		 * - SpinfullUniformChain (Length)
-		 * - SpinlessUniformChain (Length)
-	 	 * - SpinfullUniform2D    (Length, Width)
-	 	 */
+		using matrixType = arma::sp_mat;
 		using geometry = SpinfullUniform2D;
 
-		auto ham = Factory<geometry>::Generate<matrixType>(dimensions, parameters);
+		// [!] TODO hide logging in the Factory
+		Info::LogBegining("Producing Hamiltonian...");
+		auto ham = Factory<geometry>::Generate<matrixType>(quantumSystem);
+		Info::LogAccomplished();
 
-		Solver::tol = 0.005; // tolerance of convergance
+		Solver::tol = 0.005; // tolerance of convergence
 		Solver::noe = 30;	 // number of eigenvalues
 		Solver::showEigenvectors = false;
 		Solver::Diagonalize(ham);
@@ -36,13 +28,21 @@ int main(int argc, char *argv[])
 	// parsed from JSON
 	else if (ModelSelector::SparseSelected())
 	{
-		auto ham = ModelSelector::SelectSparse(dimensions, parameters);
+		Info::LogBegining("Producing Hamiltonian...");
+		auto ham = ModelSelector::SelectSparse(quantumSystem);
+		Info::LogAccomplished();
+
 		Solver::Diagonalize(ham);
+		//ham.Print();
 	}
 	else if (ModelSelector::DenseSelected())
 	{
-		auto ham = ModelSelector::SelectDense(dimensions, parameters);
+		Info::LogBegining("Producing Hamiltonian...");
+		auto ham = ModelSelector::SelectDense(quantumSystem);
+		Info::LogAccomplished();
+
 		Solver::Diagonalize(ham);
+		//ham.Print();
 	}
 	else
 	{

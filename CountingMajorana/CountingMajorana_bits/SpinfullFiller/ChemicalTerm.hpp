@@ -36,7 +36,9 @@ public:
         ham.InsertBlock(Gamma::UpPlus, i, Gamma::UpMinus, i, -0.5 * mu);
         ham.InsertBlock(Gamma::DownPlus, i, Gamma::DownMinus, i, -0.5 * mu);
     }
+    
     static const std::string name;
+    static constexpr size_t locality{1};
 };
 
 const std::string ChemicalTerm::name{"mu_potential"};

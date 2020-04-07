@@ -8,12 +8,24 @@
 #include "../Info.hpp"
 #include "../Filler.hpp"
 
+/**
+ * @brief Key bindings for char and selected terms, dimensions and TODO system options
+ */
 class KeyBindings
 {
 public:
+    /**
+     * @brief Dimensions translation map
+     */
     static const std::map<char, std::string> mapDimensions;
+    /**
+     * @brief Parameters name translation map
+     */
     static const std::map<char, std::string> mapParameters;
 
+    /**
+     * @brief display all key bindings
+     */
     static void Help()
     {
         std::cout << "# key   name\n";
@@ -22,6 +34,12 @@ public:
 
     }
 
+    /**
+     * @brief Get the Optstring object
+     * optstring for ArgvParser
+     * 
+     * @return std::string 
+     */
     static std::string GetOptstring()
     {
         std::string ret;

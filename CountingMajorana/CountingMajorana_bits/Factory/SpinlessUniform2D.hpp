@@ -2,31 +2,34 @@
 #define FACTORY_SPINLESSUNIFORMC2D_HPP
 
 #include "../Hamiltonian.hpp"
-#include "../Parameters.hpp"
-#include "../Dimensions.hpp"
+#include "../QuantumSystem.hpp"
 #include "../Filler.hpp"
 
 #include "../VectorViewers/Grid2DViewer.hpp"
 
 /**
- * @brief Spinless uniform 1D chain with open boundary conditions
+ * @brief Spinless uniform 2D plaquette with open boundary conditions
  * 
  * Dimensions:
  * - Length (L)
+ * - Width (W)
  * 
  * Parameters:
  * - Non-local terms:
  *      - Spinless::KineticTerm
- *      - Spinless::ProxTerm
-  * - Local terms:
+ *      - Spinless::ProxTerm (phase in X: 0.0, phase in Y: -½π)
+ * - Local terms:
  *      - Spinless::ChemicalTerm
  */
 class SpinlessUniform2D : public Grid2DViewer
 {
 public:
     template <class T>
-    static Hamiltonian<T> Generate(Dimensions &dimensions, Parameters &parameters)
+    static Hamiltonian<T> Generate(QuantumSystem &quantumSystem)
     {
+        Dimensions &dimensions = quantumSystem.dimensions;
+        Parameters &parameters = quantumSystem.parameters;
+
         int deg = 2;
         double phaseX = -0.5 * M_PI;
         double phaseY = 0.0;

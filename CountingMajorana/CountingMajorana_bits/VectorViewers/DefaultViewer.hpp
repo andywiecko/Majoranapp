@@ -7,7 +7,7 @@
 #include "../Info.hpp"
 
 /**
- * @brief  displays vectors unnumbered sites
+ * @brief  displays vectors as unnumbered sites
  */
 class DefaultViewer
 {
