@@ -1,0 +1,21 @@
+{
+  "model name": "SpinlessUniform2D",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 100,
+    "Width": 10
+  },
+  "parameters": {
+    "t_integral": 10.0,
+    "delta": -1.0,
+    "mu_potential": 1.0
+  },
+  "solver options": {
+    "tol": 0.0,
+    "noe": 50,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
+  }
+}

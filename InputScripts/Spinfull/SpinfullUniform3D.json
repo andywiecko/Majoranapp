@@ -1,0 +1,27 @@
+{
+  "model name": "SpinfullUniform3D",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 80,
+    "Width": 3,
+    "Height": 3
+  },
+  "parameters": {
+    "t_integral": 100.0,
+    "delta": 10.0,
+    "rashbaX": 10.0,
+    "rashbaY": -10.0,
+    "rashbaZ": 10.0,
+    "zeemanX": 20.0,
+    "zeemanZ": 0.0,
+    "mu_potential": 400.0
+  },
+  "solver options": {
+    "tol": 0.0,
+    "noe": 50,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "model name": "SpinlessUniformChain",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 1000
+  },
+  "parameters": {
+    "t_integral": 10.0,
+    "delta": -1.0,
+    "mu_potential": 0.0
+  },
+  "solver options": {
+    "tol": 0.0,
+    "noe": 50,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
+  }
+}

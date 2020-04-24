@@ -1,0 +1,24 @@
+{
+  "model name": "SpinfullUniform2D",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 20,
+    "Width": 20
+  },
+  "parameters": {
+    "t_integral": 100.0,
+    "delta": 10.0,
+    "rashbaX": 10.0,
+    "rashbaY": 10.0,
+    "zeemanZ": 20.0,
+    "mu_potential": 0.0
+  },
+  "solver options": {
+    "tol": 0.0,
+    "noe": 50,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
+  }
+}
