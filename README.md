@@ -1,15 +1,15 @@
-# majoranapp
+# Majoranapp
 
 ## Table of contents
 
-- [majoranapp](#majoranapp)
+- [Majoranapp](#majoranapp)
   - [Table of contents](#table-of-contents)
   - [About](#about)
   - [Quick tutorial](#quick-tutorial)
     - [Install](#install)
       - [Installing `Armadillo`](#installing-armadillo)
       - [Installing `nlohmann-json`](#installing-nlohmann-json)
-    - [Compiling `majoranapp`](#compiling-majoranapp)
+    - [Compiling `Majoranapp`](#compiling-majoranapp)
     - [Prepare input script](#prepare-input-script)
     - [Run](#run)
   - [Models](#models)
@@ -27,8 +27,8 @@ The program supports input script in JSON format, see an example below.
 
 #### Installing `Armadillo`
 
-`majoranapp` depends on [`Armadillo`](http://arma.sourceforge.net/) library.
-Before compiling `majoranapp` please follow the instructions for `Armadillo` installation.
+`Majoranapp` depends on [`Armadillo`](http://arma.sourceforge.net/) library.
+Before compiling `Majoranapp` please follow the instructions for `Armadillo` installation.
 Before installing Armadillo, it is recommended to install (at least) the following libraries: 
 [LAPACK](http://www.netlib.org/lapack/),
 [ARPACK](https://www.caam.rice.edu/software/ARPACK/),
@@ -37,7 +37,7 @@ Before installing Armadillo, it is recommended to install (at least) the followi
 
 #### Installing `nlohmann-json`
 
-`majoranapp` supports input scripts for setting system parameters.
+`Majoranapp` supports input scripts for setting system parameters.
 One have to install [nlohmann-json](https://github.com/nlohmann/json).
 It can be install from `github`
 or from package manager
@@ -46,7 +46,7 @@ or from package manager
 sudo apt install nlohmann-json-dev
 ```
 
-### Compiling `majoranapp`
+### Compiling `Majoranapp`
 
 
 
