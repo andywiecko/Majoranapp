@@ -1,4 +1,4 @@
-#include "majoranapp/majoranapp.hpp"
+#include "Majoranapp/Majoranapp.hpp"
 
 int main(int argc, char *argv[])
 {
