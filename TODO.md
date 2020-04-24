@@ -8,6 +8,6 @@
 * ~restore spinless delta term~
 * ~[!] key bindings in argv parser~
 * ~[!] static names in terms~
-* debug
-* info class (gamma ascii for fun)
+* ~info class (gamma ascii for fun)~
+* ~debug~
 * add "system" key description in key bindings
