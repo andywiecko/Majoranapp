@@ -29,6 +29,12 @@
  */
 class SpinfullUniform3D : public Grid3DViewer
 {
+private:
+    static int ToSite(int x, int y, int z, int L, int W)
+    {
+        return x + L * y + L * W * z;
+    }
+
 public:
     template <class T>
     static Hamiltonian<T> Generate(QuantumSystem &quantumSystem)
@@ -107,11 +113,7 @@ public:
         return ham;
     }
 
-private:
-    static int ToSite(int x, int y, int z, int L, int W)
-    {
-        return x + L * y + L * W * z;
-    }
+    static constexpr char name[] = "SpinfullUniform3D";
 };
 
 #endif

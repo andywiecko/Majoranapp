@@ -7,11 +7,13 @@
 #include "../Info.hpp"
 #include "../ConnectionsFiller.hpp"
 
+#include "../VectorViewers/DefaultViewer.hpp"
+
 /**
  * @brief Spinfull User Defined Hamiltonian
  * - All Spinfull terms are supported
  */
-class SpinfullUserDefined
+class SpinfullUserDefined : public DefaultViewer
 {
     public:
     template <class T>
@@ -35,6 +37,9 @@ class SpinfullUserDefined
 
         return ham;
     }
+
+    static constexpr char name[] = "SpinfullUserDefined";
+
 };
 
 #endif

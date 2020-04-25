@@ -90,6 +90,9 @@ public:
 
         return ham;
     }
+
+    static constexpr char name[] = "SpinfullUniform2D";
+
 };
 
 #endif
