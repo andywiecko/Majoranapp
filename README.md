@@ -21,6 +21,10 @@
 Codes for Majorana zero modes identification in non-interacting Kitaev systems.
 The program supports input script in JSON format, see an example below.
 Current version of the program is header-only.
+The program supports Hamiltonian, which can be written in the following form
+
+![hamiltonian](https://latex.codecogs.com/svg.latex?%5Chat%20H%20%3D%20%5Ctext%20i%20%5Csum_%7Bij%7D%20H_%7Bij%7D%20%5Cgamma_i%20%5Cgamma_j)
+
 
 ## Quick tutorial
 
