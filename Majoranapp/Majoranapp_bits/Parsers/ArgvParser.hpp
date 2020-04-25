@@ -5,7 +5,6 @@
 #include <iostream>
 #include "../QuantumSystem.hpp"
 #include "KeyBindings.hpp"
-
 #include "InputScriptParser.hpp"
 
 /**
@@ -71,7 +70,7 @@ public:
         int option;
         int returnCode = 0;
         std::string optstringKeys = KeyBindings::GetOptstring();
-        optstringKeys += ":vqhf:"; // TODO move to system key bindings
+        //optstringKeys += "vqhf:"; // TODO move to system key bindings
         const char *optstring = optstringKeys.c_str();
 
         while ((option = getopt(argc, argv, optstring)) != -1)
@@ -90,25 +89,25 @@ public:
                 continue;
             }
 
-            if (option == 'q')
+            if (option == KeyBindings::QuietKey)
             {
                 quiet = true;
                 continue;
             }
 
-            if (option == 'v')
+            if (option == KeyBindings::VerboseKey)
             {
                 Info::verbose = true;
                 continue;
             }
 
-            if (option == 'h')
+            if (option == KeyBindings::HelpKey)
             {
                 help = true;
                 continue;
             }
 
-            if (option == 'f')
+            if (option == KeyBindings::FilenameKey)
             {
                 std::string filename = optarg;
                 InputScriptParser::Parse(filename,

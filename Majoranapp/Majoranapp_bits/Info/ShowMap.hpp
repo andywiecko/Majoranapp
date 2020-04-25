@@ -1,7 +1,10 @@
 #ifndef INFO_SHOWMAP_HPP
 #define INFO_SHOWMAP_HPP
 
+#include <map>
 #include "Basics.hpp"
+
+#include "../Parsers/SystemOption.hpp"
 
 /**
  * @brief helpers for displaying key bindings maps and others
@@ -20,7 +23,7 @@ public:
     {
         for (auto &[key, name] : map)
         {
-            BasicsInfo::Comment(key,name);
+            BasicsInfo::Comment(key, name);
         }
     }
 
@@ -37,7 +40,7 @@ public:
     {
         for (const auto &item : map1)
         {
-            BasicsInfo::Comment(item.second,map2[item.second]);
+            BasicsInfo::Comment(item.second, map2[item.second]);
         }
     }
 };
