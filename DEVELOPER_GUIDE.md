@@ -4,28 +4,31 @@
 
 - [Developer guide](#developer-guide)
   - [Table of contents](#table-of-contents)
-  - [Adding term](#adding-term)
+  - [Adding new term](#adding-new-term)
     - [Term implementation](#term-implementation)
     - [Include the header](#include-the-header)
     - [Connection repacking](#connection-repacking)
+    - [Term Summary](#term-summary)
+  - [Adding new model](#adding-new-model)
+    - [Implement the model](#implement-the-model)
     - [Models repacking](#models-repacking)
     - [Vector Viewers](#vector-viewers)
-    - [Summary](#summary)
+    - [Model Summary](#model-summary)
 
-## Adding term
+## Adding new term
 
 The program supports Hamiltonian, which can be written in the following form
 
 ![hamiltonian](https://latex.codecogs.com/svg.latex?%5Chat%20H%20%3D%20%5Ctext%20i%20%5Csum_%7Bij%7D%20H_%7Bij%7D%20%5Cgamma_i%20%5Cgamma_j)
 
-One can read more details about algorithm in the [paper][pub].
+The detailed explanation about algorithm can be found in the [paper][pub].
 
 Consider the implementation of `ChemicalTerm`, which describes on-site chemical potential interaction.
 Chemical potential term (for spinfull systems) can be written in the following form
 
 ![chemical](https://latex.codecogs.com/svg.latex?%5Cmu_i%20%28%5Chat%20n_%7Bi%5Cuparrow%7D&plus;%5Chat%20n_%7Bi%5Cdownarrow%7D%29%20%3D%20-%5Ctfrac%7B%5Ctext%20i%5Cmu_i%7D%7B2%7D%28%20%5Cgamma_%7Bi%5Cuparrow%7D%5E&plus;%5Cgamma_%7Bi%5Cuparrow%7D%5E-&plus;%20%5Cgamma_%7Bi%5Cdownarrow%7D%5E&plus;%5Cgamma_%7Bi%5Cdownarrow%7D%5E-%20%29)
 
-Below it will be demonstrated an example how to implement new term.
+Below it will be demonstrated an example (based on `ChemicalTerm`) how to implement new terms.
 
 ### Term implementation
 
@@ -74,7 +77,7 @@ ham.InsertBlock(gamma1, site1, gamma2, site2, value);
 where `gamma1` is the first gamma in the term and `site` is corresponding site number to the `gamma1`.
 `gamma2` and `site2` is the second operator defined in term.
 `value` is potential value of the term excluding imaginary unit i (imaginary unit is implied).
-`gamma1` and `gamma2` are `enum class` for Majorana opreator enumeration
+`gamma1` and `gamma2` are `enum class` for Majorana operator enumeration
 
 ```c++
 enum class Gamma
@@ -86,7 +89,7 @@ enum class Gamma
 };
 ```
 
-This enumeration class is used for enumeration of Hamiltonian's matrix rows and columns numbers.
+This enumeration class is used for enumeration of Hamiltonian's matrix rows and columns.
 
 All implemented terms in the program can be found in
 `Majoranapp/Majoranapp_bits/SpinfullFiller/.`
@@ -109,11 +112,19 @@ To enable user defined connections for new implemented terms to work with JSON s
 Depending on the namespace `Spinfull`, `Spinless` or other, one have to add new term to the corresponding function `static void SpinfullSwitch` or `static void SpinlessSwitch`, by expanding the function with the following code
 
 ```c++
+template <class T>
+static void SpinfullSwitch(
+    Hamiltonian<T> &hamiltonian,
+    Connections &connections,
+    const std::string &name)
+{
 // ...
     ConnectionsRepacking<T, Spinfull::ChemicalTerm>(hamiltonian, connections, name);
 // ...
+}
+```
 
-### Summary
+### Term Summary
 
 To implement new term:
 
@@ -123,11 +134,15 @@ To implement new term:
 3. Update appropriate function in `Majoranapp/Majoranapp_bits/ConnectionsFiller.hpp`;
 4. Recompile.
 
-## Adding model
+## Adding new model
+
+In this part of the tutorial implementation of the new models will be presented based on the `SpinlessUniformChainModel` implementation.
+
+All implemented models can be found in `Majoranapp/Majoranapp_bits/Factory/.`.
 
 ### Implement the model
 
-Consider `SpinlessUniformChainModel`
+Consider `SpinlessUniformChainModel` implementation:
 
 ```c++
 class SpinlessUniformChain
@@ -149,22 +164,112 @@ public:
         Info::DimensionsWarningOnly1D(L,W,H);
 
         Hamiltonian<T> ham(L, deg);
-        for (int i = 0; i < L - 1; i++)
-        {
-            Filler<Spinless::KineticTerm>::Fill(ham, parameters, i, i + 1);
-            Filler<Spinless::ProxTerm>::Fill(ham, parameters, i, i + 1, phase);
-        }
+
+        // local
         for (int i = 0; i < L; i++)
         {
             Filler<Spinless::ChemicalTerm>::Fill(ham, parameters, i);
         }
 
+        // non-local
+        for (int i = 0; i < L - 1; i++)
+        {
+            Filler<Spinless::KineticTerm>::Fill(ham, parameters, i, i + 1);
+            Filler<Spinless::ProxTerm>::Fill(ham, parameters, i, i + 1, phase);
+        }
+
         return ham;
     }
+
+    static constexpr char name[] = "SpinlessUniformChain";
 };
 ```
 
-All implemented models can be found in ``Majoranapp/Majoranapp_bits/Factory/.`
+Each model implementation requires static member function
+
+```c++
+template <class T>
+static Hamiltonian<T> Generate(QuantumSystem &quantumSystem)
+```
+
+and model name
+
+```c++
+static constexpr char  name[]
+```
+
+which is used as a model's ID in JSON script.
+`Generate(...)` function has argument of a type `QuantumSystem`.
+In `QuantumSystem` all information about system is stored (dimensions, parameters, connections etc.).
+The model implementation is straightforward.
+First, all needed dimensions
+
+```c++
+    Dimensions &dimensions = quantumSystem.dimensions;
+```
+
+dimensions
+
+```c++
+    Parameters &parameters = quantumSystem.parameters;
+```
+
+ are caught from `quantumSystem`.
+ Then one needs to import dimensions `int L, W, H`, set the degree of the system `deg`
+
+ ```c++
+    int deg = 2; // spinless system, spinfull = 4
+    double phase = 0.0;
+    int L = dimensions.GetLength();
+
+    // check width and height for warning
+    int W = dimensions.GetWidth();
+    int H = dimensions.GetHeight();
+``
+
+In the implementation we used
+
+```c++
+    Info::DimensionsWarningOnly1D(L,W,H);
+```
+
+such command checks if **only** `L>1`, otherwise an appropriate notification will be display on the screen (note: chain is one dimensional system).
+
+In the next step, user have to specify explicit form of the Hamiltonian, by selecting the terms and connections.
+Then, definition of the Hamiltonian object
+
+```c++
+    Hamiltonian<T> ham(L, deg);
+```
+
+system size (number of sites = `L`) and degree of the system (`deg`) is specified.
+
+`Filler<T>` class is used to fill the Hamiltonian matrix elements, e.g. implementation of the uniform chemical potential interaction(`ChemicalTerm`) can be achieved by the following
+
+```c++
+    // `i` enumerates sites
+    // `L` total number of sites (one-dimensional system)
+    for (int i = 0; i < L; i++)
+    {
+        // Note: first specify namespace `Spinless`
+        //       then the interaction type T
+        Filler<Spinless::ChemicalTerm>::Fill(ham, parameters, i);
+    }
+```
+
+The presented above code snippet corresponds to the following Hamiltonian term
+
+![chemical term](https://latex.codecogs.com/svg.latex?%5Chat%20H_%5Cmu%20%3D%20%5Csum_i%20%5Cmu_i%20%5Chat%20n_i)
+
+In similar way other terms of Hamiltonian, for one-dimensional spinless chain can be adding (particle hopping and proximity effect of the superconductor)
+
+```c++
+    for (int i = 0; i < L - 1; i++)
+    {
+        Filler<Spinless::KineticTerm>::Fill(ham, parameters, i, i + 1);
+        Filler<Spinless::ProxTerm>::Fill(ham, parameters, i, i + 1, phase);
+    }
+```
 
 ### Models repacking
 
@@ -174,7 +279,7 @@ TODO
 
 TODO
 
-### Summary
+### Model Summary
 
 TODO
 
