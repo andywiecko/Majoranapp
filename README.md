@@ -71,23 +71,23 @@ which requires `doxygen`.
 `Majoranapp` handles custom user input scripts, which are stored in JSON format.
 Input scripts have 5 parts (2 of them are nesesery)
 
-- `model name` (mandatory) select model (see [Docs][docs] for details)
-- `matrix type` (mandatory) select matrix data storage type, current two options are available
-  - `dense` (exact diagonalization)
-  - `sparse` (Krylov space based methods)
-- `dimensions` set dimensions of the system
-  - `length`
-  - `width`
-  - `height`
-- `parameters` set system parameters (see [Docs][docs])
-- `connections` set user defined geometries (available for the selected models)
-- `solver options` set eigendecomposition options
-  - `tol` convergence tolerance (lower the better, see [Armadillo][arma] docs)
-  - `noe` number of eigenvalues (sparse)
-  - `nov` number of eigenvectors
-  - `target` eigenvalues (see [Armadillo][arma] docs)
-  - `showEigenvalues` (bool)
-  - `showEigenvectors` (bool) (default)
+- `model name` (mandatory) select model (see [Docs][docs] for details);
+- `matrix type` (mandatory) select matrix data storage type, current two options are available:
+  - `dense` (exact diagonalization);
+  - `sparse` (Krylov space based methods);
+- `dimensions` set dimensions of the system:
+  - `length`;
+  - `width`;
+  - `height`;
+- `parameters` set system parameters (see [Docs][docs]);
+- `connections` set user defined geometries (available for the selected models);
+- `solver options` set eigendecomposition options:
+  - `tol` convergence tolerance (lower the better, see [Armadillo][arma] docs);
+  - `noe` number of eigenvalues (sparse);
+  - `nov` number of eigenvectors;
+  - `target` eigenvalues (see [Armadillo][arma] docs);
+  - `showEigenvalues` (bool, default `true`) display the lambdas, see the [publication][pub] for the details;
+  - `showEigenvectors` (bool, default `false`) display eigenvectors for the corresponding lambdas.
 
 ```json
 {
@@ -194,12 +194,13 @@ Current version support the following models:
 
 Please cite the following papers if you use the program in your research and/or software.
 
-- [arxiv](tutaj kiedyś super link)
+- [arxiv][pub]
 
 ## Contributors
 
 - [Andrzej Więckowski](https://andywiecko.github.io) @ Wrocław University of Science and Technology
-- Michał Kupczyński @ Wrocław University of Science and Technology
+- [Michał Kupczyński](https://scholar.google.com/citations?user=0aTIsJMAAAAJ&hl=en) @ Wrocław University of Science and Technology
 
+[pub]:kiedys_tutaj_fajny_adres
 [arma]:http://arma.sourceforge.net/
 [docs]:https://andywiecko.github.io/Majoranapp/intex.html
