@@ -743,15 +743,15 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = majoranapp/ \
-                         majoranapp/majoranapp_bits/ \
-                         majoranapp/majoranapp_bits/Factory/ \
-                         majoranapp/majoranapp_bits/Info/ \
-                         majoranapp/majoranapp_bits/Parsers/ \
-                         majoranapp/majoranapp_bits/QuantumSystems/ \
-                         majoranapp/majoranapp_bits/SpinlessFiller/ \
-                         majoranapp/majoranapp_bits/SpinfullFiller/ \
-                         majoranapp/majoranapp_bits/VectorViewers/ \
+INPUT                  = Majoranapp/ \
+                         Majoranapp/Majoranapp_bits/ \
+                         Majoranapp/Majoranapp_bits/Factory/ \
+                         Majoranapp/Majoranapp_bits/Info/ \
+                         Majoranapp/Majoranapp_bits/Parsers/ \
+                         Majoranapp/Majoranapp_bits/QuantumSystems/ \
+                         Majoranapp/Majoranapp_bits/SpinlessFiller/ \
+                         Majoranapp/Majoranapp_bits/SpinfullFiller/ \
+                         Majoranapp/Majoranapp_bits/VectorViewers/ \
                          main.cpp \
                          README.md \
                          LICENSE.md \
