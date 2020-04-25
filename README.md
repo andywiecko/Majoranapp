@@ -25,6 +25,9 @@ The program supports Hamiltonian, which can be written in the following form
 
 ![hamiltonian](https://latex.codecogs.com/svg.latex?%5Chat%20H%20%3D%20%5Ctext%20i%20%5Csum_%7Bij%7D%20H_%7Bij%7D%20%5Cgamma_i%20%5Cgamma_j)
 
+where gammas are general Majorana operators.
+The detailed description of the algorithm, which is used for identification of the Majorana zero modes can be found in the [paper][pub].
+
 ## Quick tutorial
 
 ### Install

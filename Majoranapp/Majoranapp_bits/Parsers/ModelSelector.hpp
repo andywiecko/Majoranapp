@@ -27,7 +27,9 @@ public:
     template <class T>
     static auto SelectModel(QuantumSystem &quantumSystem)
     {
-
+        // TODO:
+        // - add ::name to models,
+        // - automate te viewer selector -> templetize the switch
         switch (str2int(selectedModel.c_str()))
         {
         case str2int("SpinfullUniform3D"):
