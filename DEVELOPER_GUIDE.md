@@ -5,10 +5,15 @@
 - [Developer guide](#developer-guide)
   - [Table of contents](#table-of-contents)
   - [Adding term](#adding-term)
-  - [Connection repacking](#connection-repacking)
+    - [Term implementation](#term-implementation)
+    - [Include the header](#include-the-header)
+    - [Connection repacking](#connection-repacking)
+    - [Summary](#summary)
   - [Adding model](#adding-model)
-  - [Models repacking](#models-repacking)
-  - [Vector Viewers](#vector-viewers)
+    - [Implement the model](#implement-the-model)
+    - [Models repacking](#models-repacking)
+    - [Vector Viewers](#vector-viewers)
+    - [Summary](#summary-1)
 
 ## Adding term
 
@@ -22,6 +27,8 @@ Consider the implementation of `ChemicalTerm`, which describes on-site chemical 
 Chemical potential term (for spinfull systems) can be written in the following form
 
 ![chemical](https://latex.codecogs.com/svg.latex?%5Cmu_i%20%28%5Chat%20n_%7Bi%5Cuparrow%7D&plus;%5Chat%20n_%7Bi%5Cdownarrow%7D%29%20%3D%20-%5Ctfrac%7B%5Ctext%20i%5Cmu_i%7D%7B2%7D%28%20%5Cgamma_%7Bi%5Cuparrow%7D%5E&plus;%5Cgamma_%7Bi%5Cuparrow%7D%5E-&plus;%20%5Cgamma_%7Bi%5Cdownarrow%7D%5E&plus;%5Cgamma_%7Bi%5Cdownarrow%7D%5E-%20%29)
+
+### Term implementation
 
 Implementation of `ChemicalTerm` for spinfull systems is attached below
 
@@ -87,11 +94,24 @@ All implemented terms in the program can be found in
 and
 `Majoranapp/Majoranapp_bits/SpinlessFiller/.`.
 
-## Connection repacking
+### Include the header
+
+New terms must be included in `Majoranapp/Majoranapp_bits/Filler.hpp` file.
+
+### Connection repacking
 
 TODO
 
+### Summary
+
+1. create header file of the new term in `Majoranapp/Majoranapp_bits/SpinfullFiller/.`,
+`Majoranapp/Majoranapp_bits/SpinlessFiller/.` or other namespace then `Spinfull`/`Spinless`;
+2. include header in `Filler`: `Majoranapp/Majoranapp_bits/Filler.hpp`;
+3. Connection repacking TODO
+
 ## Adding model
+
+### Implement the model
 
 Consider `SpinlessUniformChainModel`
 
@@ -132,11 +152,15 @@ public:
 
 All implemented models can be found in ``Majoranapp/Majoranapp_bits/Factory/.`
 
-## Models repacking
+### Models repacking
 
 TODO
 
-## Vector Viewers
+### Vector Viewers
+
+TODO
+
+### Summary
 
 TODO
 
