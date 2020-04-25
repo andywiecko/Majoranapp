@@ -11,8 +11,6 @@
     - [Term Summary](#term-summary)
   - [Adding new model](#adding-new-model)
     - [Implement the model](#implement-the-model)
-    - [Models repacking](#models-repacking)
-    - [Vector Viewers](#vector-viewers)
     - [Model Summary](#model-summary)
 
 ## Adding new term
@@ -23,16 +21,16 @@ The program supports Hamiltonian, which can be written in the following form
 
 The detailed explanation about algorithm can be found in the [paper][pub].
 
-Consider the implementation of `ChemicalTerm`, which describes on-site chemical potential interaction.
+Consider the implementation of `Spinfull::ChemicalTerm`, which describes on-site chemical potential interaction.
 Chemical potential term (for spinfull systems) can be written in the following form
 
 ![chemical](https://latex.codecogs.com/svg.latex?%5Cmu_i%20%28%5Chat%20n_%7Bi%5Cuparrow%7D&plus;%5Chat%20n_%7Bi%5Cdownarrow%7D%29%20%3D%20-%5Ctfrac%7B%5Ctext%20i%5Cmu_i%7D%7B2%7D%28%20%5Cgamma_%7Bi%5Cuparrow%7D%5E&plus;%5Cgamma_%7Bi%5Cuparrow%7D%5E-&plus;%20%5Cgamma_%7Bi%5Cdownarrow%7D%5E&plus;%5Cgamma_%7Bi%5Cdownarrow%7D%5E-%20%29)
 
-Below it will be demonstrated an example (based on `ChemicalTerm`) how to implement new terms.
+Below it will be demonstrated an example (based on `Spinfull::ChemicalTerm`) how to implement new terms.
 
 ### Term implementation
 
-Implementation of `ChemicalTerm` for spinfull systems is attached below
+Implementation of `Spinfull::ChemicalTerm` for spinfull systems is attached below
 
 ```c++
 class ChemicalTerm
@@ -145,7 +143,7 @@ All implemented models can be found in `Majoranapp/Majoranapp_bits/Factory/.`.
 Consider `SpinlessUniformChainModel` implementation:
 
 ```c++
-class SpinlessUniformChain
+class SpinlessUniformChain : public DefaultViewer
 {
 public:
     template <class T>
@@ -271,16 +269,46 @@ In similar way other terms of Hamiltonian, for one-dimensional spinless chain ca
     }
 ```
 
-### Models repacking
-
-TODO
+Finally, one have to include new model class in `Majoranapp/Majoranapp_bits/Factory.hpp` header to make it available in the program.
 
 ### Vector Viewers
 
-TODO
+In the previous example, defined class is derived from `public DefaultViewer`.
+By inheritance, author of the model must select `VectorViewer` for the model.
+`VectorViewer` specifies how sites should be displayed in the result, e.g. `Grid2DViewer` will map site number *i* in two dimensional grid layout: *i* ->(*x,y*).
+`VectorViewers`, which are available, can be found in `Majoranapp/Majoranapp_bits/VectorViewers/.`.
+Current version support 3 different `VectorViewers`
+
+- `DefaultViewer`: no mapping, one-dimensional system;
+- `Grid2DViewer`: two-dimensional grid mapping: *i* -> (*x,y*);
+- `Grid3DViewer`: three-dimensional grid mapping: *i* -> (*x,y,z*);
+
+### Models repacking
+
+To make model name available from JSON input script, one have to modify the `ModelSelector` class.
+In `Majoranapp/Majoranapp_bits/Parsers/ModelSelector.hpp`
+in function
+
+```c++
+template <class T> static auto SelectModel(QuantumSystem &quantumSystem)
+```
+
+It can be achieved by adding appropriate `case` with `GetHamiltonian<T1,T2>` function in the `switch` sequence
+
+```c++
+// ...
+    case str2int(SpinlessUniformChain::name):
+        return GetHamiltonian<SpinlessUniformChain,T>(quantumSystem);
+// ...
+```
 
 ### Model Summary
 
-TODO
+To implement new model
+
+1. Create header file of new model in `Majoranapp/Majoranapp_bits/Factory/.`;
+2. Make sure that `VectorViewer` is specified for the model (parent class);
+3. Inlude new model in the `Majoranapp/Majoranapp_bits/Factory.hpp`;
+4. Update apropriete function in `Majoranapp/Majoranapp_bits/Parser/ModelSelector.hpp`.
 
 [pub]:tutaj_super_link

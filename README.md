@@ -40,7 +40,7 @@ Before installing Armadillo, it is recommended to install (at least) the followi
 [LAPACK](http://www.netlib.org/lapack/),
 [ARPACK](https://www.caam.rice.edu/software/ARPACK/),
 [BLAS](http://www.netlib.org/blas/),
-[OPENBLAS](https://www.openblas.net/) (*highly recommended!*). When the installation of the selected libraries is completed, please install Armadillo.
+[OPENBLAS](https://www.openblas.net/) (**highly recommended!**). When the installation of the selected libraries is completed, please install Armadillo.
 
 #### Installing `nlohmann-json`
 
@@ -122,7 +122,7 @@ To see example scripts go int `InputScripts` directory.
 
 ### Run
 
-I have prepared input script what is the next step?
+What is the next step after prepared input script?
 To run the simulation for the selected `input_script.json`, type
 
 ```bash
@@ -130,14 +130,15 @@ To run the simulation for the selected `input_script.json`, type
 ```
 
 One does not have to prepare separate input scripts for slightly different cases.
-One can specify parameters after input script, example
+One can specify parameters after input script flag, example
 
 ```bash
 ./majoranapp.exe -f input_script.json -L 10
 ```
 
 This will run simulation for system with parameters set in input script but the length will be set to 10.
-Use `-h` flag to see the current key bindings for system parameters and program option:
+
+Use `-h` flag to see the current key bindings for system parameters and program options:
 
 ```bash
 $ ./majoranapp.exe -h
@@ -179,7 +180,7 @@ $ ./majoranapp.exe -h
 # ./majoranapp.exe -f inputscript.json -L 100
 ```
 
-Verbose flag (`-v`) can be useful for debugging and for measuring the program time.
+Verbose flag (`-v`) can be useful for debugging and for measuring the program execution time.
 
 ## Models
 
