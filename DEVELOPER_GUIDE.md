@@ -1,5 +1,15 @@
 # Developer guide
 
+## Table of contents
+
+- [Developer guide](#developer-guide)
+  - [Table of contents](#table-of-contents)
+  - [Adding term](#adding-term)
+  - [Connection repacking](#connection-repacking)
+  - [Adding model](#adding-model)
+  - [Models repacking](#models-repacking)
+  - [Vector Viewers](#vector-viewers)
+
 ## Adding term
 
 The program supports Hamiltonian, which can be written in the following form
@@ -77,6 +87,10 @@ All implemented terms in the program can be found in
 and
 `Majoranapp/Majoranapp_bits/SpinlessFiller/.`.
 
+## Connection repacking
+
+TODO
+
 ## Adding model
 
 Consider `SpinlessUniformChainModel`
@@ -117,5 +131,13 @@ public:
 ```
 
 All implemented models can be found in ``Majoranapp/Majoranapp_bits/Factory/.`
+
+## Models repacking
+
+TODO
+
+## Vector Viewers
+
+TODO
 
 [pub]:tutaj_super_link
