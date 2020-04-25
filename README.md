@@ -27,6 +27,8 @@ The program supports Hamiltonian, which can be written in the following form
 
 ![](https://latex.codecogs.com/svg.latex?y%3Dx%5E2)
 
+<img src="https://latex.codecogs.com/svg.latex?O_t=\text { Onset event at time bin } t " /> 
+
 ## Quick tutorial
 
 ### Install
