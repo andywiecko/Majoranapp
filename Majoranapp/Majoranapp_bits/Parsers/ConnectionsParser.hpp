@@ -88,7 +88,7 @@ public:
     static ParametersConnections Parse(json &jsonConnections, T &parameters)
     {
         ParametersConnections parConn;
-        for (auto parameterConnectionsItem : json::iterator_wrapper(jsonConnections))
+        for (auto parameterConnectionsItem : jsonConnections.items())
         {
             json &parameterConnections = parameterConnectionsItem.value();
             const std::string &key = parameterConnectionsItem.key();

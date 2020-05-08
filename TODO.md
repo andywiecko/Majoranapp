@@ -8,6 +8,7 @@
 * ~restore spinless delta term~
 * ~[!] key bindings in argv parser~
 * ~[!] static names in terms~
-* debug
-* info class (gamma ascii for fun)
-* add "system" key description in key bindings
+* ~info class (gamma ascii for fun)~
+* ~debug~
+* ~add "system" key description in key bindings~
+* add ::name in models and clean the `ModelSelector` class

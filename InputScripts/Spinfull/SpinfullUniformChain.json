@@ -1,0 +1,22 @@
+{
+  "model name": "SpinfullUniformChain",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 300
+  },
+  "parameters": {
+    "t_integral": 100.0,
+    "delta": 100.0,
+    "rashbaY": 10.0,
+    "zeemanZ": 200.0,
+    "mu_potential": 200.0
+  },
+  "solver options": {
+    "tol": 0.0,
+    "noe": 50,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
+  }
+}

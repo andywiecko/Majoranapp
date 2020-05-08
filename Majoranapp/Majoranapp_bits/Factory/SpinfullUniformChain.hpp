@@ -6,6 +6,8 @@
 #include "../Filler.hpp"
 #include "../Info.hpp"
 
+#include "../VectorViewers/DefaultViewer.hpp"
+
 /**
  * @brief Spinfull uniform 1D chain with open boundary conditions
  * 
@@ -22,7 +24,7 @@
  *      - Spinfull::ZeemanZTerm
  *      - Spinfull::ChemicalTerm
  */
-class SpinfullUniformChain
+class SpinfullUniformChain : public DefaultViewer
 {
 public:
     template <class T>
@@ -55,6 +57,9 @@ public:
 
         return ham;
     }
+
+    static constexpr char name[] = "SpinfullUniformChain";
+
 };
 
 #endif

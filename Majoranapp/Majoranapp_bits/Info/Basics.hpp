@@ -46,7 +46,7 @@ public:
     template <class T1, class T2>
     static void Comment(T1 key, T2 value)
     {
-        std::cout << comment << key << ": " << value << "\n";
+        std::cout << comment << "-" << key << " " << value << "\n";
     }
 
     /**

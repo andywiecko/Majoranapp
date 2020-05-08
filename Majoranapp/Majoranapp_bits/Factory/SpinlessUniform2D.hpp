@@ -74,6 +74,9 @@ public:
 
         return ham;
     }
+
+    static constexpr char name[] = "SpinlessUniform2D";
+
 };
 
 #endif

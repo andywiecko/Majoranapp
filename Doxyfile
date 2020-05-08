@@ -32,7 +32,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "Counting Majorana"
+PROJECT_NAME           = "Majoranapp"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -743,15 +743,15 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = CountingMajorana/ \
-                         CountingMajorana/CountingMajorana_bits/ \
-                         CountingMajorana/CountingMajorana_bits/Factory/ \
-                         CountingMajorana/CountingMajorana_bits/Info/ \
-                         CountingMajorana/CountingMajorana_bits/Parsers/ \
-                         CountingMajorana/CountingMajorana_bits/QuantumSystems/ \
-                         CountingMajorana/CountingMajorana_bits/SpinlessFiller/ \
-                         CountingMajorana/CountingMajorana_bits/SpinfullFiller/ \
-                         CountingMajorana/CountingMajorana_bits/VectorViewers/ \
+INPUT                  = Majoranapp/ \
+                         Majoranapp/Majoranapp_bits/ \
+                         Majoranapp/Majoranapp_bits/Factory/ \
+                         Majoranapp/Majoranapp_bits/Info/ \
+                         Majoranapp/Majoranapp_bits/Parsers/ \
+                         Majoranapp/Majoranapp_bits/QuantumSystems/ \
+                         Majoranapp/Majoranapp_bits/SpinlessFiller/ \
+                         Majoranapp/Majoranapp_bits/SpinfullFiller/ \
+                         Majoranapp/Majoranapp_bits/VectorViewers/ \
                          main.cpp \
                          README.md \
                          LICENSE.md \

@@ -47,7 +47,8 @@ public:
      */
     static void ShowVersion()
     {
-        std::cout << "# " << libname << " @ " << Version() << " (" << vername << ")\n";
+        // TODO set width depending on max lib name
+        std::cout << "# " << libname << "       @ " << Version() << " (" << vername << ")\n";
         std::cout << "# armadillo       "
                   << " @ " << armaVersion.as_string() << "\n";
         std::cout << "# nlohmann JSON   "
@@ -56,7 +57,7 @@ public:
     }
 };
 
-const std::string VersionInfo::libname{"CountingMajorana"};
+const std::string VersionInfo::libname{"Majoranapp"};
 const std::string VersionInfo::vername{"alpha"};
 const nlohmann::basic_json<> VersionInfo::jsonVer = nlohmann::json::meta();
 const std::string VersionInfo::jsonVersion = VersionInfo::jsonVer["version"]["string"];

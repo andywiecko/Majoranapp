@@ -1,5 +1,5 @@
-#ifndef SPINFULLFILLER_HPP
-#define SPINFULLFILLER_HPP
+#ifndef FILLER_HPP
+#define FILLER_HPP
 
 #include "QuantumSystem/Parameters.hpp"
 #include "EnumGamma.hpp"

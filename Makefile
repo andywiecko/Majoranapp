@@ -4,8 +4,8 @@ FLAGS=-larmadillo -O3 -std=c++17
 VERB=-Wall -Werror -Wpedantic
 WEB=firefox
 
-all: main.cpp
-	${GCC} main.cpp -o main.exe ${FLAGS} ${VERB}
+all: majoranapp.cpp
+	${GCC} majoranapp.cpp -o majoranapp.exe ${FLAGS} ${VERB}
 
 doxy:
 	doxygen
@@ -14,7 +14,7 @@ doxy:
 .PHONY: clean
 clean: 
 	rm \
-	    main.exe \
+	    majoranapp.exe \
 	    Doxy/html/search/*
 	    Doxy/html/* \
 	    Doxy/latex/*

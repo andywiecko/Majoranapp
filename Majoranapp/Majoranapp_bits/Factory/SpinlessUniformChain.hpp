@@ -6,6 +6,8 @@
 #include "../Filler.hpp"
 #include "../Info.hpp"
 
+#include "../VectorViewers/DefaultViewer.hpp"
+
 /**
  * @brief Spinless uniform 1D chain with open boundary conditions
  * 
@@ -19,7 +21,7 @@
  * - Local terms:
  *      - Spinless::ChemicalTerm
  */
-class SpinlessUniformChain
+class SpinlessUniformChain : public DefaultViewer
 {
 public:
     template <class T>
@@ -50,6 +52,9 @@ public:
 
         return ham;
     }
+
+    static constexpr char name[] = "SpinlessUniformChain";
+
 };
 
 #endif

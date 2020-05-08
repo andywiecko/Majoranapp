@@ -35,7 +35,7 @@ private:
     template <class T>
     static void ParseMap(json &jsonMap, T &map)
     {
-        for (auto it : json::iterator_wrapper(jsonMap))
+        for (auto it : jsonMap.items())
         {
             json &val = it.value();
             const std::string &key = it.key();
@@ -51,7 +51,7 @@ private:
      */
     static void ParseSolverOptions(json &solverOptions)
     {
-        for (auto it : json::iterator_wrapper(solverOptions))
+        for (auto it : solverOptions.items())
         {
             json &val = it.value();
             const std::string &key = it.key();

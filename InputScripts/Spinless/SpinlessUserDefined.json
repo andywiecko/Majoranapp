@@ -1,0 +1,45 @@
+{
+  "model name": "SpinlessUserDefined",
+  "matrix type": "sparse",
+  "dimensions": {
+    "Length": 10
+  },
+  "parameters": {
+    "t_integral": 1.0,
+    "delta": 1.0,
+    "mu_potential": 1.0
+  },
+  "connections": {
+    "t_integral": [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+      [4, 5],
+      [5, 6],
+      [6, 7],
+      [7, 8],
+      [8, 9]
+    ],
+    "delta": [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+      [4, 5],
+      [5, 6],
+      [6, 7],
+      [7, 8],
+      [8, 9]
+    ],
+    "mu_potential": [[4], [5]]
+  },
+  "solver options": {
+    "tol": 0.0,
+    "noe": 50,
+    "nov": 2,
+    "target": "sa",
+    "showEigenvalues": true,
+    "showEigenvectors": true
+  }
+}
