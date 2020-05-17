@@ -223,7 +223,7 @@ dimensions
     // check width and height for warning
     int W = dimensions.GetWidth();
     int H = dimensions.GetHeight();
-``
+```
 
 In the implementation we used
 
