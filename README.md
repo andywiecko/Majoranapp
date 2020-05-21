@@ -19,8 +19,8 @@
 ## About
 
 Codes for Majorana zero modes identification in non-interacting systems.
-The program supports input script in JSON format, see an example below.
-Current version of the program is header-only.
+The program supports the input script in JSON format, see an example below.
+The current version of the program is header-only.
 The program supports Hamiltonian, which can be written in the following form
 
 ![hamiltonian](https://latex.codecogs.com/svg.latex?%5Chat%20H%20%3D%20%5Ctext%20i%20%5Csum_%7Bij%7D%20H_%7Bij%7D%20%5Cgamma_i%20%5Cgamma_j)
@@ -34,7 +34,7 @@ The detailed description of the algorithm, which is used for identification of t
 
 #### Installing `Armadillo`
 
-`Majoranapp` depends on [`Armadillo`][arma] library.
+`Majoranapp` depends on the [`Armadillo`][arma] library.
 Before compiling `Majoranapp` please follow the instructions for `Armadillo` installation.
 Before installing Armadillo, it is recommended to install (at least) the following libraries: 
 [LAPACK](http://www.netlib.org/lapack/),
@@ -46,8 +46,8 @@ Before installing Armadillo, it is recommended to install (at least) the followi
 
 `Majoranapp` supports input scripts for setting system parameters.
 One have to install [nlohmann-json](https://github.com/nlohmann/json).
-It can be install from `github`
-or from package manager
+It can be install from `Github`
+or package manager
 
 ```bash
 sudo apt install nlohmann-json-dev
@@ -58,7 +58,7 @@ Make sure that you have installed at least `version 3.7.3`.
 ### Compiling `Majoranapp`
 
 `Majoranapp` requires `C++17` and it is tested with `g++-7.5`,
-to complie run make
+to complie run `make`
 
 ```bash
 make
@@ -75,7 +75,7 @@ which requires `doxygen`.
 ### Prepare input script
 
 `Majoranapp` handles custom user input scripts, which are stored in JSON format.
-Input scripts have 5 parts (2 of them are nesesery)
+Input scripts have 5 parts (2 of them are necessary)
 
 - `model name` (mandatory) select model (see [Docs][docs] for details);
 - `matrix type` (mandatory) select matrix data storage type, current two options are available:
@@ -118,11 +118,11 @@ Input scripts have 5 parts (2 of them are nesesery)
 }
 ```
 
-To see example scripts go int `InputScripts` directory.
+To see example scripts go into the `InputScripts` directory.
 
 ### Run
 
-What is the next step after prepared input script?
+What is the next step after the prepared input script?
 To run the simulation for the selected `input_script.json`, type
 
 ```bash
@@ -130,15 +130,15 @@ To run the simulation for the selected `input_script.json`, type
 ```
 
 One does not have to prepare separate input scripts for slightly different cases.
-One can specify parameters after input script flag, example
+ The parameters can be specified after input script flag, example
 
 ```bash
 ./majoranapp.exe -f input_script.json -L 10
 ```
 
-This will run simulation for system with parameters set in input script but the length will be set to 10.
+This will run the simulation for the system with parameters set in the input script but the length will be set to 10.
 
-Use `-h` flag to see the current key bindings for system parameters and program options:
+Use `-h` flag to see the current key bindings for the system parameters and program options:
 
 ```bash
 $ ./majoranapp.exe -h
@@ -180,7 +180,7 @@ $ ./majoranapp.exe -h
 # ./majoranapp.exe -f inputscript.json -L 100
 ```
 
-Verbose flag (`-v`) can be useful for debugging and for measuring the program execution time.
+The verbose flag (`-v`) can be useful for debugging and for measuring the program execution time.
 
 ## Models
 
