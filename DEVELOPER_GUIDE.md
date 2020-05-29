@@ -19,14 +19,14 @@ The program supports Hamiltonian, which can be written in the following form
 
 ![hamiltonian](https://latex.codecogs.com/svg.latex?%5Chat%20H%20%3D%20%5Ctext%20i%20%5Csum_%7Bij%7D%20H_%7Bij%7D%20%5Cgamma_i%20%5Cgamma_j)
 
-The detailed explanation about algorithm can be found in the [paper][pub].
+A detailed explanation of the algorithm can be found in the [paper][pub].
 
 Consider the implementation of `Spinfull::ChemicalTerm`, which describes on-site chemical potential interaction.
 Chemical potential term (for spinfull systems) can be written in the following form
 
 ![chemical](https://latex.codecogs.com/svg.latex?%5Cmu_i%20%28%5Chat%20n_%7Bi%5Cuparrow%7D&plus;%5Chat%20n_%7Bi%5Cdownarrow%7D%29%20%3D%20-%5Ctfrac%7B%5Ctext%20i%5Cmu_i%7D%7B2%7D%28%20%5Cgamma_%7Bi%5Cuparrow%7D%5E&plus;%5Cgamma_%7Bi%5Cuparrow%7D%5E-&plus;%20%5Cgamma_%7Bi%5Cdownarrow%7D%5E&plus;%5Cgamma_%7Bi%5Cdownarrow%7D%5E-%20%29)
 
-Below it will be demonstrated an example (based on `Spinfull::ChemicalTerm`) how to implement new terms.
+An example of how to implement new terms will be demonstrated below (based on `Spinfull::ChemicalTerm`).
 
 ### Term implementation
 
@@ -51,7 +51,7 @@ public:
 const std::string ChemicalTerm::name{"mu_potential"};
 ```
 
-All classes, which represent Hamiltonian's term must have template member function
+All classes, which represent Hamiltonian's term must have a template member function
 
 ```c++
 template <class T>
@@ -66,14 +66,14 @@ and two `const(expr)` variables:
 - `static const std::string name` term ID used e.g. for input scripts;
 - `static constexpr size_t locality` number of sites related to the term.
 
-To implement term of the Hamiltonian, one needs to use `Hamiltonian<T>` member function `.InsertBlock`, which has the following syntax
+To implement the term of the Hamiltonian, one needs to use the `Hamiltonian<T>` member function `.InsertBlock`, which has the following syntax
 
 ```c++
 ham.InsertBlock(gamma1, site1, gamma2, site2, value);
 ```
 
-where `gamma1` is the first gamma in the term and `site` is corresponding site number to the `gamma1`.
-`gamma2` and `site2` is the second operator defined in term.
+where `gamma1` is the first gamma in the term and the `site` is corresponding site number to the `gamma1`.
+`gamma2` and `site2` is the second operator defined in the term.
 `value` is potential value of the term excluding imaginary unit i (imaginary unit is implied).
 `gamma1` and `gamma2` are `enum class` for Majorana operator enumeration
 
