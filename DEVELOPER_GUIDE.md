@@ -87,7 +87,7 @@ enum class Gamma
 };
 ```
 
-This enumeration class is used for enumeration of Hamiltonian's matrix rows and columns.
+This enumeration class is used for the enumeration of Hamiltonian's matrix rows and columns.
 
 All implemented terms in the program can be found in
 `Majoranapp/Majoranapp_bits/SpinfullFiller/.`
@@ -106,8 +106,8 @@ New terms must be included in `Majoranapp/Majoranapp_bits/Filler.hpp` file.
 
 ### Connection repacking
 
-To enable user defined connections for new implemented terms to work with JSON script, one have to modify the `Majoranapp/Majoranapp_bits/ConnectionsFiller.hpp`.
-Depending on the namespace `Spinfull`, `Spinless` or other, one have to add new term to the corresponding function `static void SpinfullSwitch` or `static void SpinlessSwitch`, by expanding the function with the following code
+To enable defined connections by the user for newly implemented terms to work with JSON script, one has to modify the `Majoranapp/Majoranapp_bits/ConnectionsFiller.hpp`.
+Depending on the namespace `Spinfull`, `Spinless` or other, one has to add a new term to the corresponding function `static void SpinfullSwitch` or `static void SpinlessSwitch`, by expanding the function with the following code
 
 ```c++
 template <class T>
@@ -124,10 +124,10 @@ static void SpinfullSwitch(
 
 ### Term Summary
 
-To implement new term:
+To implement a new term:
 
-1. Create header file of the new term in `Majoranapp/Majoranapp_bits/SpinfullFiller/.`,
-`Majoranapp/Majoranapp_bits/SpinlessFiller/.` or other namespace than `Spinfull`/`Spinless`;
+1. Create a header file of the new term in `Majoranapp/Majoranapp_bits/SpinfullFiller/.`,
+`Majoranapp/Majoranapp_bits/SpinlessFiller/.` or other namespaces than `Spinfull`/`Spinless`;
 2. Include header in `Filler`: `Majoranapp/Majoranapp_bits/Filler.hpp`;
 3. Update appropriate function in `Majoranapp/Majoranapp_bits/ConnectionsFiller.hpp`;
 4. Recompile.
@@ -197,8 +197,8 @@ static constexpr char  name[]
 ```
 
 which is used as a model's ID in JSON script.
-`Generate(...)` function has argument of a type `QuantumSystem`.
-In `QuantumSystem` all information about system is stored (dimensions, parameters, connections etc.).
+`Generate(...)` function has an argument of a type `QuantumSystem`.
+In `QuantumSystem` all information about the system is stored (dimensions, parameters, connections, etc.).
 The model implementation is straightforward.
 First, all needed dimensions
 
@@ -231,18 +231,18 @@ In the implementation we used
     Info::DimensionsWarningOnly1D(L,W,H);
 ```
 
-such command checks if **only** `L>1`, otherwise an appropriate notification will be display on the screen (note: chain is one dimensional system).
+such command checks if **only** `L>1 and W=H=1`, otherwise an appropriate notification will be display on the screen (note: chain is the one-dimensional system).
 
-In the next step, user have to specify explicit form of the Hamiltonian, by selecting the terms and connections.
-Then, definition of the Hamiltonian object
+In the next step, users have to specify the explicit form of the Hamiltonian, by selecting the terms and connections.
+Then, the definition of the Hamiltonian object
 
 ```c++
     Hamiltonian<T> ham(L, deg);
 ```
 
-system size (number of sites = `L`) and degree of the system (`deg`) is specified.
+system size (the number of sites = `L`) and degree of the system (`deg`) is specified.
 
-`Filler<T>` class is used to fill the Hamiltonian matrix elements, e.g. implementation of the uniform chemical potential interaction(`ChemicalTerm`) can be achieved by the following
+`Filler<T>` class is used to fill the Hamiltonian matrix elements, e.g. implementation of the uniform chemical potential interaction (`ChemicalTerm`) can be achieved by the following
 
 ```c++
     // `i` enumerates sites
@@ -259,7 +259,7 @@ The presented above code snippet corresponds to the following Hamiltonian term
 
 ![chemical term](https://latex.codecogs.com/svg.latex?%5Chat%20H_%5Cmu%20%3D%20%5Csum_i%20%5Cmu_i%20%5Chat%20n_i)
 
-In similar way other terms of Hamiltonian, for one-dimensional spinless chain can be adding (particle hopping and proximity effect of the superconductor)
+Similarly, other terms of Hamiltonian, for the one-dimensional spinless chain can be adding (particle hopping and proximity effect of the superconductor)
 
 ```c++
     for (int i = 0; i < L - 1; i++)
@@ -269,13 +269,13 @@ In similar way other terms of Hamiltonian, for one-dimensional spinless chain ca
     }
 ```
 
-Finally, one have to include new model class in `Majoranapp/Majoranapp_bits/Factory.hpp` header to make it available in the program.
+Finally, one has to include a new model class in `Majoranapp/Majoranapp_bits/Factory.hpp` header to make it available in the program.
 
 ### Vector Viewers
 
-In the previous example, defined class is derived from `public DefaultViewer`.
-By inheritance, author of the model must select `VectorViewer` for the model.
-`VectorViewer` specifies how sites should be displayed in the result, e.g. `Grid2DViewer` will map site number *i* in two dimensional grid layout: *i* ->(*x,y*).
+In the previous example, a defined class is derived from `public DefaultViewer`.
+By inheritance, the author of the model must select `VectorViewer` for the model.
+`VectorViewer` specifies how sites should be displayed in the result, e.g. `Grid2DViewer` will map site number *i* in a two-dimensional grid layout: *i* ->(*x,y*).
 `VectorViewers`, which are available, can be found in `Majoranapp/Majoranapp_bits/VectorViewers/.`.
 Current version support 3 different `VectorViewers`
 
@@ -285,7 +285,7 @@ Current version support 3 different `VectorViewers`
 
 ### Models repacking
 
-To make model name available from JSON input script, one have to modify the `ModelSelector` class.
+To make the model name available from the JSON input script, one has to modify the `ModelSelector` class.
 In `Majoranapp/Majoranapp_bits/Parsers/ModelSelector.hpp`
 in function
 
@@ -304,7 +304,7 @@ It can be achieved by adding appropriate `case` with `GetHamiltonian<T1,T2>` fun
 
 ### Model Summary
 
-To implement new model
+To implement a new model
 
 1. Create header file of new model in `Majoranapp/Majoranapp_bits/Factory/.`;
 2. Make sure that `VectorViewer` is specified for the model (parent class);
