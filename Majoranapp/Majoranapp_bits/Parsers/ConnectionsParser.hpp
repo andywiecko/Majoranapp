@@ -47,7 +47,7 @@ private:
                 if (el.is_array())
                     connection = el.get<Connection>();
 
-                else if (el.is_number_float())
+                else if (el.is_number_float() or el.is_number_integer())
                     value = el.get<double>();
             }
         // no value has been provided, provided numbers are sites coordinates

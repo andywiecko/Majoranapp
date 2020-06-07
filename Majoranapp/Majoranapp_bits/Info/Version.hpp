@@ -15,7 +15,7 @@ private:
     static const std::string vername;
     static const int major{0};
     static const int minor{200};
-    static const int patch{0};
+    static const int patch{1};
 
     /**
      * @brief armadillo version
