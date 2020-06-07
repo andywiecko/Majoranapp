@@ -11,4 +11,4 @@
 * ~info class (gamma ascii for fun)~
 * ~debug~
 * ~add "system" key description in key bindings~
-* add ::name in models and clean the `ModelSelector` class
+* ~add ::name in models and clean the `ModelSelector` class~

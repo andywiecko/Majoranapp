@@ -1,8 +1,8 @@
 /**
  * @file majoranapp.hpp
- * @author your name (andrzej.wieckowski@pwr.edu.pl)
+ * @author Andrzej Więckowski (andrzej.wieckowski@pwr.edu.pl)
  * @brief majoranapp header file
- * @version 0.1
+ * @version 0.200.1
  * @date 2020-03-06
  * 
  * @copyright Copyright (c) 2020
