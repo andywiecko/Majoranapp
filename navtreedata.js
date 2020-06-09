@@ -4,6 +4,7 @@ var NAVTREE =
     [ "Majoranapp", "md_README.html", null ],
     [ "TODO list", "md_TODO.html", null ],
     [ "Dependencies", "md_DEPENDENCY.html", null ],
+    [ "Developer guide", "md_DEVELOPER_GUIDE.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
     ] ],
