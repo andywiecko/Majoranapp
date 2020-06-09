@@ -1,6 +1,0 @@
-<map id="DefaultViewer" name="DefaultViewer">
-<area shape="rect" id="node2" href="$classSpinfullUniformChain.html" title="Spinfull uniform 1D chain with open boundary conditions. " alt="" coords="5,80,151,107"/>
-<area shape="rect" id="node3" href="$classSpinfullUserDefined.html" title="Spinfull User Defined Hamiltonian. " alt="" coords="175,80,314,107"/>
-<area shape="rect" id="node4" href="$classSpinlessUniformChain.html" title="Spinless uniform 1D chain with open boundary conditions. " alt="" coords="338,80,490,107"/>
-<area shape="rect" id="node5" href="$classSpinlessUserDefined.html" title="Spinless User Defined Hamiltonian. " alt="" coords="515,80,660,107"/>
-</map>

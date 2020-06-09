@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classGrid2DViewer.html" title="displays vectors with sites numbered in 2D grid, " alt="" coords="5,31,108,57"/>
-<area shape="rect" id="node2" href="$classSpinfullUniform2D.html" title="Spinfull 2D plaquette with open boundary conditions. " alt="" coords="159,5,287,32"/>
-<area shape="rect" id="node3" href="$classSpinlessUniform2D.html" title="Spinless uniform 2D plaquette with open boundary conditions. " alt="" coords="156,56,291,83"/>
-</map>
