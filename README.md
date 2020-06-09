@@ -210,4 +210,4 @@ Please cite the following papers if you use the program in your research and/or 
 
 [pub]:kiedys_tutaj_fajny_adres
 [arma]:http://arma.sourceforge.net/
-[docs]:https://andywiecko.github.io/Majoranapp/intex.html
+[docs]:https://andywiecko.github.io/Majoranapp/index.html
