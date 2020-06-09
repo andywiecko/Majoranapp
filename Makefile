@@ -9,6 +9,7 @@ all: majoranapp.cpp
 
 doxy:
 	doxygen
+	#for file in *; do sed 's/MathJax.js/MathJax.js?config=TeX-AMS-MML_HTMLorMML/' $file | sponge $file; done
 	${WEB} Doxy/html/index.html &
 
 .PHONY: clean
