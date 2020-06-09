@@ -1,0 +1,24 @@
+<map id="Majoranapp/Majoranapp_bits/Info/Basics.hpp" name="Majoranapp/Majoranapp_bits/Info/Basics.hpp">
+<area shape="rect" id="node2" href="$Info_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Info.hpp" alt="" coords="733,184,893,225"/>
+<area shape="rect" id="node21" href="$ShowMap_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Info/ShowMap.hpp" alt="" coords="639,95,802,136"/>
+<area shape="rect" id="node22" href="$Version_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Info/Version.hpp" alt="" coords="826,95,986,136"/>
+<area shape="rect" id="node23" href="$DimensionsWarning_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Info/DimensionsWarning.hpp" alt="" coords="1011,95,1233,136"/>
+<area shape="rect" id="node3" href="$KeyBindings_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Parsers/KeyBindings.hpp" alt="" coords="5,675,207,716"/>
+<area shape="rect" id="node6" href="$VectorViewer_8hpp.html" title="Majoranapp/Majoranapp\l_bits/VectorViewer.hpp" alt="" coords="398,385,558,426"/>
+<area shape="rect" id="node13" href="$SpinfullUniform2D_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinfullUniform2\lD.hpp" alt="" coords="563,571,761,627"/>
+<area shape="rect" id="node16" href="$DefaultViewer_8hpp.html" title="Majoranapp/Majoranapp\l_bits/VectorViewers/Default\lViewer.hpp" alt="" coords="785,273,971,329"/>
+<area shape="rect" id="node17" href="$SpinlessUniformChain_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinlessUniform\lChain.hpp" alt="" coords="655,377,853,433"/>
+<area shape="rect" id="node18" href="$SpinlessUserDefined_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinlessUserDefined.hpp" alt="" coords="878,385,1129,426"/>
+<area shape="rect" id="node19" href="$SpinfullUniformChain_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinfullUniform\lChain.hpp" alt="" coords="1153,377,1344,433"/>
+<area shape="rect" id="node20" href="$SpinfullUserDefined_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinfullUserDefined.hpp" alt="" coords="1369,385,1611,426"/>
+<area shape="rect" id="node4" href="$ArgvParser_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Parsers/ArgvParser.hpp" alt="" coords="13,943,207,984"/>
+<area shape="rect" id="node5" href="$Majoranapp_8hpp.html" title="Majoranapp/Majoranapp.hpp" alt="" coords="228,1032,413,1059"/>
+<area shape="rect" id="node7" href="$Solver_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Solver.hpp" alt="" coords="165,764,325,805"/>
+<area shape="rect" id="node9" href="$Grid2DViewer_8hpp.html" title="Majoranapp/Majoranapp\l_bits/VectorViewers/Grid2DViewer.hpp" alt="" coords="332,481,581,523"/>
+<area shape="rect" id="node12" href="$ModelSelector_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Parsers/ModelSelector.hpp" alt="" coords="349,764,559,805"/>
+<area shape="rect" id="node14" href="$Grid3DViewer_8hpp.html" title="Majoranapp/Majoranapp\l_bits/VectorViewers/Grid3DViewer.hpp" alt="" coords="695,481,944,523"/>
+<area shape="rect" id="node8" href="$InputScriptParser_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Parsers/InputScriptParser.hpp" alt="" coords="282,853,511,895"/>
+<area shape="rect" id="node10" href="$SpinlessUniform2D_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinlessUniform2\lD.hpp" alt="" coords="333,571,538,627"/>
+<area shape="rect" id="node11" href="$Factory_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory.hpp" alt="" coords="805,675,965,716"/>
+<area shape="rect" id="node15" href="$SpinfullUniform3D_8hpp.html" title="Majoranapp/Majoranapp\l_bits/Factory/SpinfullUniform3\lD.hpp" alt="" coords="785,571,984,627"/>
+</map>

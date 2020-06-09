@@ -1,0 +1,9 @@
+<map id="Info" name="Info">
+<area shape="rect" id="node2" href="$classBasicsInfo.html" title="Basic info functions. " alt="" coords="44,5,128,32"/>
+<area shape="rect" id="node3" href="$classShowMapInfo.html" title="helpers for displaying key bindings maps and others " alt="" coords="35,56,137,83"/>
+<area shape="rect" id="node4" href="$classGammaASCII.html" title="Some ASCII art decorators. " alt="" coords="34,107,138,133"/>
+<area shape="rect" id="node5" href="$classVersionInfo.html" title="Version of the lib and dependency libs. " alt="" coords="42,157,130,184"/>
+<area shape="rect" id="node6" href="$classColorsInfo.html" title="Colorizing the text. " alt="" coords="45,208,127,235"/>
+<area shape="rect" id="node7" href="$classDimensionsWarningInfo.html" title="A few warnings for parsed dimensions. " alt="" coords="5,259,167,285"/>
+<area shape="rect" id="node8" href="$classTimeInfo.html" title="clock for time measurement " alt="" coords="49,309,123,336"/>
+</map>
