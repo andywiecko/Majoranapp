@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classBasicsInfo.html" title="Basic info functions. " alt="" coords="44,5,128,32"/>
+<area shape="rect" id="node2" href="$classInfo.html" title="misc class containing all stuff related with cout, clog " alt="" coords="215,157,259,184"/>
+<area shape="rect" id="node3" href="$classColorsInfo.html" title="Colorizing the text. " alt="" coords="45,56,127,83"/>
+<area shape="rect" id="node4" href="$classDimensionsWarningInfo.html" title="A few warnings for parsed dimensions. " alt="" coords="5,107,167,133"/>
+<area shape="rect" id="node5" href="$classGammaASCII.html" title="Some ASCII art decorators. " alt="" coords="34,157,138,184"/>
+<area shape="rect" id="node6" href="$classShowMapInfo.html" title="helpers for displaying key bindings maps and others " alt="" coords="35,208,137,235"/>
+<area shape="rect" id="node7" href="$classTimeInfo.html" title="clock for time measurement " alt="" coords="49,259,123,285"/>
+<area shape="rect" id="node8" href="$classVersionInfo.html" title="Version of the lib and dependency libs. " alt="" coords="42,309,130,336"/>
+</map>
