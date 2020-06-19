@@ -311,4 +311,4 @@ To implement a new model
 3. Inlude new model in the `Majoranapp/Majoranapp_bits/Factory.hpp`;
 4. Update apropriete function in `Majoranapp/Majoranapp_bits/Parser/ModelSelector.hpp`.
 
-[pub]:tutaj_super_link
+[pub]:https://arxiv.org/abs/2006.10153
