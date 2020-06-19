@@ -208,6 +208,6 @@ Please cite the following papers if you use the program in your research and/or 
 - [Andrzej Więckowski](https://andywiecko.github.io) @ Wrocław University of Science and Technology
 - [Michał Kupczyński](https://scholar.google.com/citations?user=0aTIsJMAAAAJ&hl=en) @ Wrocław University of Science and Technology
 
-[pub]:kiedys_tutaj_fajny_adres
+[pub]:https://arxiv.org/abs/2006.10153
 [arma]:http://arma.sourceforge.net/
 [docs]:https://andywiecko.github.io/Majoranapp/index.html
