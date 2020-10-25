@@ -12,3 +12,6 @@
 * ~debug~
 * ~add "system" key description in key bindings~
 * ~add ::name in models and clean the `ModelSelector` class~
+* add test framework 
+* upgrade solver options introduced in Armadillo 10.1
+* general code refractor
