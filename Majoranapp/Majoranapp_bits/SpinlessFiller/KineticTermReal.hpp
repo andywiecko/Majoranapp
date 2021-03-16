@@ -46,7 +46,7 @@ public:
     static constexpr size_t locality{2};
 };
 
-const std::string KineticTerm::name{"t_imag"};
+const std::string RealKineticTerm::name{"t_imag"};
 
 }
 
