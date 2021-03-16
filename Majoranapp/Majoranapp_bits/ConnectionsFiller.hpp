@@ -120,6 +120,10 @@ private:
         ConnectionsRepacking<T, Spinless::ChemicalTerm>(hamiltonian, connections, name);
         ConnectionsRepacking<T, Spinless::ProxTerm>(hamiltonian, connections, name);
         ConnectionsRepacking<T, Spinless::KineticTerm>(hamiltonian, connections, name);
+        ConnectionsRepacking<T, Spinless::RealProxTerm>(hamiltonian, connections, name);
+        ConnectionsRepacking<T, Spinless::ImagProxTerm>(hamiltonian, connections, name);
+        ConnectionsRepacking<T, Spinless::RealKineticTerm>(hamiltonian, connections, name);
+        ConnectionsRepacking<T, Spinless::ImagKineticTerm>(hamiltonian, connections, name);
     }
 
 public:

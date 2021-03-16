@@ -22,7 +22,10 @@
 #include "SpinlessFiller/ChemicalTerm.hpp"
 #include "SpinlessFiller/KineticTerm.hpp"
 #include "SpinlessFiller/ProxTerm.hpp"
-
+#include "SpinlessFiller/ProxTermImag.hpp"
+#include "SpinlessFiller/ProxTermReal.hpp"
+#include "SpinlessFiller/KineticTermReal.hpp"
+#include "SpinlessFiller/KineticTermImag.hpp"
 /**
  * @brief static class for spinfull model term filler
  * 
