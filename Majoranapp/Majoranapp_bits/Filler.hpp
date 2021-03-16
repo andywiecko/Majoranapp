@@ -9,6 +9,8 @@
 #include "SpinfullFiller/ChemicalTerm.hpp"
 #include "SpinfullFiller/KineticTerm.hpp"
 #include "SpinfullFiller/ProxTerm.hpp"
+#include "SpinfullFiller/KineticTermReal.hpp"
+#include "SpinfullFiller/KineticTermImag.hpp"
 // - rashba
 #include "SpinfullFiller/RashbaXTerm.hpp"
 #include "SpinfullFiller/RashbaYTerm.hpp"

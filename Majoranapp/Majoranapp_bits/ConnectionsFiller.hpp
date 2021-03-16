@@ -102,6 +102,8 @@ private:
         ConnectionsRepacking<T, Spinfull::RashbaXTerm>(hamiltonian, connections, name);
         ConnectionsRepacking<T, Spinfull::RashbaYTerm>(hamiltonian, connections, name);
         ConnectionsRepacking<T, Spinfull::RashbaZTerm>(hamiltonian, connections, name);
+        ConnectionsRepacking<T, Spinfull::RealKineticTerm>(hamiltonian, connections, name);
+        ConnectionsRepacking<T, Spinfull::ImagKineticTerm>(hamiltonian, connections, name);
     }
 
     /**
