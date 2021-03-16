@@ -14,7 +14,7 @@ namespace Spinless
  * \hat H_{\mathrm{prox}} = 
  * \sum_{\langle i,j\rangle}
  * \left(\Delta_{ij}e^{i\phi_{ij}}
- * c_{i}^\dagger c_{j}+\mathrm{h.c.}\right) = 
+ * c_{i}^\dagger c_{j}^\dagger+\mathrm{h.c.}\right) = 
  * i\sum_{\langle i,j\rangle}
  * \frac{\Delta_{ij}}{2}\left(
  * \sin \phi_{ij} \gamma_i^+ \gamma_j^+
