@@ -106,6 +106,7 @@ const std::map<char, std::string> KeyBindings::mapParameters{
     {'Z', Spinfull::RashbaZTerm::name},
     {'x', Spinfull::ZeemanXTerm::name},
     {'y', Spinfull::ZeemanYTerm::name},
-    {'z', Spinfull::ZeemanZTerm::name}};
+    {'z', Spinfull::ZeemanZTerm::name},
+    {'p', "magnetic_field"}};
 
 #endif
