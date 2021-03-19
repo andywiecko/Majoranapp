@@ -48,6 +48,8 @@ public:
             return GetHamiltonian<SpinfullUniformChain,T>(quantumSystem);
         case str2int(SpinfullUserDefined::name):
             return GetHamiltonian<SpinfullUserDefined,T>(quantumSystem);
+        case str2int(SpinfullUniformMagnetic2D::name):
+            return GetHamiltonian<SpinfullUniformMagnetic2D,T>(quantumSystem);
 
         // Spinless cases
         case str2int(SpinlessUniform2D::name):

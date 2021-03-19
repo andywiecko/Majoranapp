@@ -15,6 +15,7 @@
 // - Spinfull
 #include "Factory/SpinfullUniformChain.hpp"
 #include "Factory/SpinfullUniform2D.hpp"
+#include "Factory/SpinfullUniformMagnetic2D.hpp"
 #include "Factory/SpinfullUniform3D.hpp"
 #include "Factory/SpinfullUserDefined.hpp"
 
